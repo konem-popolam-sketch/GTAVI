@@ -8,6 +8,7 @@ export/
 
 # Local tools and logs
 tools/*.zip
+!tools/Godot_v4.7.2-stable_win64.exe.zip
 tools/*.exe
 tools/piper/
 tools/*.log
