@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://pq885wh8lggh"
+path="res://.godot/imported/634 master.mp3-f0be53753cec279dc1e6b1b70fd0f6ce.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/634 master.mp3"
+dest_files=["res://.godot/imported/634 master.mp3-f0be53753cec279dc1e6b1b70fd0f6ce.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

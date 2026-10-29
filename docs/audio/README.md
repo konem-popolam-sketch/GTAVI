@@ -35,11 +35,12 @@ assets/audio/sfx/        step_asphalt_01..04, step_wood_01..02,
                          horn_distant, door_creak, ui_click, pickup
 assets/audio/ambience/   rain_light_loop, rain_heavy_loop, city_hum_loop,
                          neon_hum_loop, water_wind_loop
-assets/audio/music/      mus_night_shift_loop
+assets/audio/music/      634, 634 master  (mp3, играются плейлистом)
 assets/audio/voice/      <dialogue_id>_<node_id>.wav  (рендерит t13, здесь только чтение)
 ```
 
-Формат всех файлов: WAV PCM, 44.1 кГц, 16 бит. Дождь (t28) — **моно**,
+Формат остальных файлов: WAV PCM, 44.1 кГц, 16 бит; музыка — mp3 (Godot 4 читает их как
+`AudioStreamMP3`). Дождь (t28) — **моно**,
 пик **−6 dBFS**: это фон, он не должен перекрывать шаги и голос. Остальные петли
 окружения и музыка — стерео, пик −1 dBFS; короткие SFX (шаги, клик, скрип) — моно,
 пик −1 dBFS. Петли склеены кроссфейдом: у дождя cos/sin 0.5 с, у прочих петель
@@ -56,7 +57,7 @@ assets/audio/voice/      <dialogue_id>_<node_id>.wav  (рендерит t13, з�
 | `city_hum_loop` | ~30 с | петля | зона у забора/парковки (далёкий город) |
 | `neon_hum_loop` | ~22 с | петля | зона у магазина «Луна» (неон, 100 Гц гул, треск) |
 | `water_wind_loop` | ~26 с | петля | пирс: ветер + вода |
-| `mus_night_shift_loop` | ~42.7 с | петля, стерео, стык ≤2 дБ | музыка на старте (A minor, 90 BPM, i–VI–III–VII) |
+| `634`, `634 master` | ~3:04 | mp3 192 кбит/с, стерео, по одному проходу | саундтрек: плейлист, на старте порядок перемешивается, дальше треки идут друг за другом |
 | `step_asphalt_01..04` | ~0.24 с | one-shot | шаги по асфальту (4 варианта) |
 | `step_wood_01..02` | ~0.30 с | one-shot | шаги по настилу пирса |
 | `horn_distant` | ~3.2 с | one-shot | далёкий гудок (атмосфера, при желании — триггер) |
@@ -210,8 +211,10 @@ Main (Node3D)
 │                  rain_enabled = true, rain_volume_db = -2.0,
 │                  rain_variants = ["rain_light_loop", "rain_heavy_loop"],
 │                  rain_change_seconds = 34.0,
-│                  music_enabled = true, music_name = "mus_night_shift_loop",
-│                  music_volume_db = -3.0,
+│                  music_enabled = true,
+│                  music_playlist = ["634", "634 master"],
+│                  music_shuffle = true, music_volume_db = -3.0,
+│                  music_fade_seconds = 3.0,
 │                  zones = [] (пусто = координаты из World.get_poi),
 │                  auto_register_player = true
 └── DialogueAudio  Node, script res://scripts/audio/dialogue_audio.gd

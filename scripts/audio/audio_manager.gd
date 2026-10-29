@@ -12,8 +12,9 @@ extends Node
 ## Удобное сверх контракта:
 ##   play_ambience(name, fade = 1.0, volume_db = 0.0) -> bool
 ##   stop_ambience(fade = 1.0)
-##   play_music(name, fade = 1.0, volume_db = 0.0) -> bool
+##   play_music(name, fade = 1.0, volume_db = 0.0, loop = true) -> bool
 ##   stop_music(fade = 1.0)
+##   music_finished(track)                  # сигнал: трек доиграл (loop = false)
 ##   register_player(node)                  # шаги по движению игрока
 ##   set_footstep_surface(surface)          # "asphalt" (по умолчанию) / "wood"
 ##   get_footstep_surface() -> String
@@ -47,6 +48,9 @@ signal bus_volume_changed(bus_name: String, linear: float)
 ## Автолоад загрузил user://audio.cfg и применил шины. До этого сигнала
 ## get_bus_volume() отдаёт заводские значения, а не нули.
 signal audio_ready()
+## Музыкальный трек доиграл до конца. Приходит только в режиме плейлиста,
+## то есть после play_music(..., loop = false); у петли сигнала не будет.
+signal music_finished(track: String)
 
 const AUDIO_ROOT := "res://assets/audio"
 const SFX_DIR := "res://assets/audio/sfx"
@@ -109,6 +113,7 @@ var _amb_tweens: Array[Tween] = []
 var _music_players: Array[AudioStreamPlayer] = []
 var _music_active: int = 0
 var _music_name: String = ""
+var _music_loop: bool = true
 var _music_volume_db: float = 0.0
 var _music_tweens: Array[Tween] = []
 
@@ -459,19 +464,21 @@ func get_ambience_name() -> String:
 	return _amb_name
 
 
-## Музыкальная петля с кроссфейдом.
-func play_music(name: String, fade: float = 1.0, volume_db: float = 0.0) -> bool:
+## Музыка с кроссфейдом.
+## loop = true — бесконечная петля (фоновый эмбиент);
+## loop = false — трек играет один раз и по концу шлёт music_finished (плейлист).
+func play_music(name: String, fade: float = 1.0, volume_db: float = 0.0, loop: bool = true) -> bool:
 	if _shutdown_done:
 		return false
 	if name.is_empty():
 		stop_music(fade)
 		return false
-	var stream := get_stream(name, "music", true)
+	var stream := get_stream(name, "music", loop)
 	if stream == null:
 		push_warning("[audio] play_music: нет звука '%s'" % name)
 		return false
 	_ensure_music_players()
-	if _music_name == name and _music_players[_music_active].playing:
+	if _music_name == name and _music_loop == loop and _music_players[_music_active].playing:
 		_music_volume_db = volume_db
 		_music_players[_music_active].volume_db = volume_db
 		return true
@@ -479,6 +486,7 @@ func play_music(name: String, fade: float = 1.0, volume_db: float = 0.0) -> bool
 	var outgoing: AudioStreamPlayer = _music_players[_music_active]
 	_music_active = 1 - _music_active
 	_music_name = name
+	_music_loop = loop
 	_music_volume_db = volume_db
 	_kill_tweens(_music_tweens)
 	var duration := maxf(fade, 0.05)
@@ -776,8 +784,21 @@ func _ensure_music_players() -> void:
 		player.name = "Music%d" % i
 		player.bus = bus
 		player.volume_db = SILENT_DB
+		# Конец трека нужен плейлисту: только у loop = false сигнал вообще придёт.
+		player.finished.connect(_on_music_player_finished.bind(player))
 		add_child(player)
 		_music_players.append(player)
+
+
+func _on_music_player_finished(player: AudioStreamPlayer) -> void:
+	if _shutdown_done or _music_name.is_empty():
+		return
+	if _music_players.is_empty() or player != _music_players[_music_active]:
+		# Это доигрывающий «старый» плеер после кроссфейда, а не текущий трек.
+		return
+	var track := _music_name
+	_music_name = ""
+	music_finished.emit(track)
 
 
 func _ensure_voice_player() -> void:
@@ -871,10 +892,14 @@ func _resolve_audio_path(name: String, preferred_dir: String) -> String:
 		seen[dir_path] = true
 		var path := "%s/%s" % [dir_path, name]
 		var lower := path.to_lower()
-		if not lower.ends_with(".wav") and not lower.ends_with(".ogg"):
-			path += ".wav"
-		if _file_exists(path):
-			return path
+		if lower.ends_with(".wav") or lower.ends_with(".ogg") or lower.ends_with(".mp3"):
+			if _file_exists(path):
+				return path
+			continue
+		# Имя без расширения: пробуем форматы по очереди (wav — основной в проекте).
+		for extension in [".wav", ".ogg", ".mp3"]:
+			if _file_exists(path + extension):
+				return path + extension
 	return ""
 
 
@@ -965,6 +990,10 @@ func _get_stream(path: String, loop: bool) -> AudioStream:
 		return null
 	if stream is AudioStreamWAV:
 		_configure_wav(stream as AudioStreamWAV, loop)
+	elif stream is AudioStreamMP3:
+		(stream as AudioStreamMP3).loop = loop
+	elif stream is AudioStreamOggVorbis:
+		(stream as AudioStreamOggVorbis).loop = loop
 	_streams[key] = stream
 	return stream
 

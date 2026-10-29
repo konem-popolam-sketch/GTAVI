@@ -10,7 +10,8 @@ extends Node3D
 ##   3) переключает поверхность шагов игрока (пирс — дерево);
 ##   4) регистрирует игрока в AudioManager, чтобы шаги заработали без правок
 ##      scenes/player/player.tscn;
-##   5) включает ночную музыкальную петлю (можно выключить music_enabled).
+##   5) играет ночной саундтрек из плейлиста (music_playlist): на старте
+##      порядок перемешивается, дальше треки идут друг за другом по кругу.
 ##
 ## Зоны можно задать в инспекторе (Array[Dictionary]), а можно оставить пустыми —
 ## тогда берутся координаты из scenes/world/block.tscn.
@@ -36,8 +37,15 @@ extends Node3D
 
 @export_group("Музыка")
 @export var music_enabled: bool = true
-@export var music_name: String = "mus_night_shift_loop"
+## Плейлист: имена файлов из assets/audio/music (с расширением или без).
+## На старте порядок перемешивается, дальше треки идут друг за другом по кругу.
+@export var music_playlist: PackedStringArray = PackedStringArray(["634", "634 master"])
+## Перемешивать порядок при каждом заходе — первым может зайти любой трек.
+@export var music_shuffle: bool = true
+## Устаревшее одиночное имя трека: работает, только если music_playlist пуст.
+@export var music_name: String = ""
 @export var music_volume_db: float = -3.0
+@export var music_fade_seconds: float = 3.0
 
 @export_group("Зоны")
 @export var zones: Array[Dictionary] = []
@@ -62,6 +70,10 @@ var _zone_state: Dictionary = {}
 var _surface_current: String = SURFACE_DEFAULT
 var _search_clock: float = 0.0
 var _rng := RandomNumberGenerator.new()
+
+var _music_queue: Array[String] = []
+var _music_cursor: int = 0
+var _music_started: bool = false
 
 
 func _ready() -> void:
@@ -141,6 +153,18 @@ func get_current_rain() -> String:
 	return _rain_current
 
 
+## Порядок треков на этот заход (после перемешивания).
+func get_music_queue() -> Array[String]:
+	return _music_queue.duplicate()
+
+
+## Что играет прямо сейчас ("" — музыки нет).
+func get_current_music() -> String:
+	if _audio == null or not _music_started:
+		return ""
+	return str(_audio.get_music_name())
+
+
 # --- Старт -------------------------------------------------------------------
 
 
@@ -150,14 +174,78 @@ func _start() -> void:
 	_spawn_zones()
 	_find_player()
 	_update_rain(0.0)
-	if music_enabled and not music_name.is_empty():
-		_audio.play_music(music_name, 3.0, music_volume_db)
+	if music_enabled:
+		_start_music()
 	if verbose:
 		print("[ambience] зон: %d, дождь: %s, музыка: %s" % [
 			_zone_state.size(),
 			"вкл" if rain_enabled else "выкл",
-			music_name if music_enabled else "выкл",
+			", ".join(_music_queue) if music_enabled else "выкл",
 		])
+
+
+# --- Музыка ------------------------------------------------------------------
+
+
+## Собрать очередь: сначала плейлист, иначе устаревший одиночный music_name.
+func _build_music_queue() -> Array[String]:
+	var result: Array[String] = []
+	for track in music_playlist:
+		var track_name := str(track).strip_edges()
+		if not track_name.is_empty() and not result.has(track_name):
+			result.append(track_name)
+	var legacy := music_name.strip_edges()
+	if result.is_empty() and not legacy.is_empty():
+		result.append(legacy)
+	return result
+
+
+## Перемешать очередь один раз на старте: «при заходе рандомно выбирается трек».
+## Дальше треки идут по кругу в этом порядке («друг за другом»).
+func _shuffle_music_queue() -> void:
+	if not music_shuffle or _music_queue.size() < 2:
+		return
+	for index in range(_music_queue.size() - 1, 0, -1):
+		var swap_with := _rng.randi_range(0, index)
+		var tmp := _music_queue[index]
+		_music_queue[index] = _music_queue[swap_with]
+		_music_queue[swap_with] = tmp
+
+
+func _start_music() -> void:
+	if _audio == null:
+		return
+	_music_queue = _build_music_queue()
+	if _music_queue.is_empty():
+		push_warning("[ambience] музыка: пустой плейлист — треки не играют")
+		return
+	_shuffle_music_queue()
+	if _audio.has_signal("music_finished") and not _audio.music_finished.is_connected(_on_music_finished):
+		_audio.music_finished.connect(_on_music_finished)
+	_music_started = true
+	_music_cursor = 0
+	_play_music_at_cursor()
+
+
+func _play_music_at_cursor() -> void:
+	if not _music_started or _music_queue.is_empty() or _audio == null:
+		return
+	# Один проход по очереди: битый/пропавший трек пропускаем, а не зацикливаемся.
+	for _attempt in _music_queue.size():
+		var track := _music_queue[_music_cursor]
+		if bool(_audio.play_music(track, music_fade_seconds, music_volume_db, false)):
+			if verbose:
+				print("[ambience] музыка: %s" % track)
+			return
+		push_warning("[ambience] музыка: нет трека '%s'" % track)
+		_music_cursor = (_music_cursor + 1) % _music_queue.size()
+
+
+func _on_music_finished(_track: String) -> void:
+	if not _music_started or _music_queue.is_empty():
+		return
+	_music_cursor = (_music_cursor + 1) % _music_queue.size()
+	_play_music_at_cursor()
 
 
 func _build_default_zones() -> Array[Dictionary]:

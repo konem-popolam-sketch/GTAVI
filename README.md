@@ -121,3 +121,19 @@ certificate store` в консоли — известный шум песочн�
   корпуса, прирост FOV и возврат камеры после отпускания. Успех печатает `SPRINT SMOKE OK`:
 
       .\tools\Godot_v4.7.2-stable_win64_console.exe --headless --path . tests/sprint_smoke.tscn
+
+- `tests/music_playlist_smoke.tscn` — headless-проверка саундтрека: оба трека плейлиста
+  находятся и грузятся, `play_music(..., loop = false)` доводит трек до конца и шлёт
+  `music_finished`, а `AmbienceController` после конца трека включает следующий. Успех печатает
+  `MUSIC PLAYLIST SMOKE OK`:
+
+      .\tools\Godot_v4.7.2-stable_win64_console.exe --headless --path . tests/music_playlist_smoke.tscn
+
+## Музыка
+
+Саундтрек лежит в `assets/audio/music` (сейчас `634.mp3` и `634 master.mp3`) и играется
+плейлистом: `scripts/audio/ambience_controller.gd` на старте перемешивает `music_playlist`,
+запускает первый трек, а по его концу (сигнал `music_finished` из AudioManager) включает
+следующий — по кругу. Чтобы добавить трек, положите файл в `assets/audio/music` и допишите имя
+(без расширения) в `music_playlist` узла `Audio` в `scenes/main.tscn` или в значение по умолчанию
+скрипта.

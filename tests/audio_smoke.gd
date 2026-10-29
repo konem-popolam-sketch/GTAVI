@@ -99,7 +99,8 @@ func _check_loops() -> void:
 		{"name": "city_hum_loop", "category": "ambience", "min": 15.0},
 		{"name": "neon_hum_loop", "category": "ambience", "min": 15.0},
 		{"name": "water_wind_loop", "category": "ambience", "min": 15.0},
-		{"name": "mus_night_shift_loop", "category": "music", "min": 40.0},
+		{"name": "634", "category": "music", "min": 60.0},
+		{"name": "634 master", "category": "music", "min": 60.0},
 	]
 	for entry in loops:
 		var data: Dictionary = entry
@@ -130,8 +131,8 @@ func _check_playback() -> void:
 	_audio.stop_voice()
 	if not bool(_audio.play_ambience("rain_light_loop", 0.1, -6.0)):
 		_failures.append("play_ambience('rain_light_loop') не запустился")
-	if not bool(_audio.play_music("mus_night_shift_loop", 0.1, -6.0)):
-		_failures.append("play_music('mus_night_shift_loop') не запустился")
+	if not bool(_audio.play_music("634", 0.1, -6.0)):
+		_failures.append("play_music('634') не запустился")
 	if str(_audio.get_ambience_name()) != "rain_light_loop":
 		_failures.append("get_ambience_name() = '%s'" % str(_audio.get_ambience_name()))
 	_audio.play_sfx("door_creak", Vector3(1.0, 0.0, 2.0), -3.0)
