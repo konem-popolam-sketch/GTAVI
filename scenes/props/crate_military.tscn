@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3]
+
+; Армейский (оливковый) ящик — для склада в переулке.
+
+[ext_resource type="Material" path="res://assets/materials/prop_wood_olive.tres" id="1_olive"]
+
+[sub_resource type="BoxMesh" id="MeshBody"]
+size = Vector3(0.95, 0.55, 0.65)
+
+[sub_resource type="BoxMesh" id="MeshStrap"]
+size = Vector3(0.97, 0.06, 0.67)
+
+[sub_resource type="BoxShape3D" id="ShapeBody"]
+size = Vector3(0.95, 0.55, 0.65)
+
+[node name="CrateMilitary" type="Node3D"]
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.275, 0)
+mesh = SubResource("MeshBody")
+material_override = ExtResource("1_olive")
+
+[node name="StrapA" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.4, 0)
+mesh = SubResource("MeshStrap")
+material_override = ExtResource("1_olive")
+
+[node name="StrapB" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.16, 0)
+mesh = SubResource("MeshStrap")
+material_override = ExtResource("1_olive")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 0.275, 0)
+shape = SubResource("ShapeBody")

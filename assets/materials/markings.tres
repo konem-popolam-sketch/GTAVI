@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+; Разметка: светло-тёплая, чуть самосветится, чтобы читалась в темноте и на мокром асфальте.
+[resource]
+resource_name = "markings"
+albedo_color = Color(0.52, 0.5, 0.42, 1)
+metallic = 0.1
+roughness = 0.55
+emission_enabled = true
+emission = Color(1, 0.86, 0.6, 1)
+emission_energy_multiplier = 0.12

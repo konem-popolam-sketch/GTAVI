@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/game/projectile.gd" id="1_projectile"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tracer"]
+size = Vector3(0.012, 0.012, 1.0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tracer"]
+shading_mode = 0
+albedo_color = Color(1, 0.82, 0.42, 1)
+emission_enabled = true
+emission = Color(1, 0.72, 0.3, 1)
+emission_energy_multiplier = 3.5
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_projectile")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_tracer")
+material_override = SubResource("StandardMaterial3D_tracer")

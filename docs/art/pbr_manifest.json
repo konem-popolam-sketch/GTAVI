@@ -1,0 +1,52 @@
+{
+  "generator": "tools/gen_pbr_textures.py",
+  "size": 1024,
+  "seed": 20261026,
+  "license": "procedural (оригинальная генерация, без внешних ассетов)",
+  "sets": {
+    "brick": {
+      "size": 1024,
+      "uv": 6.0,
+      "metallic": 0.0,
+      "files": {
+        "diff": "assets/textures/brick/brick_diff_2k.png",
+        "normal": "assets/textures/brick/brick_normal_2k.png",
+        "rough": "assets/textures/brick/brick_rough_2k.png",
+        "ao": "assets/textures/brick/brick_ao_2k.png"
+      },
+      "seam_error": {
+        "diff": 0.05,
+        "normal": 0.1729,
+        "rough": 0.0364,
+        "ao": 0.0079
+      },
+      "seam_ratio_xy": {
+        "diff": [
+          1.724,
+          1.651
+        ],
+        "normal": [
+          1.207,
+          2.147
+        ],
+        "rough": [
+          0.871,
+          0.854
+        ],
+        "ao": [
+          0.554,
+          0.066
+        ]
+      }
+    }
+  },
+  "materials": [
+    "assets/materials/brick_red_pbr.tres",
+    "assets/materials/brick_grey_pbr.tres",
+    "assets/materials/prop_wood_olive.tres",
+    "assets/materials/prop_plastic.tres",
+    "assets/materials/prop_sign_white.tres",
+    "assets/materials/prop_bag_dark.tres",
+    "assets/materials/prop_rust.tres"
+  ]
+}

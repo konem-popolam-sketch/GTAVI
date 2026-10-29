@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=1 format=3]
+
+; Краска машины, графит (t46). Clearcoat даёт «автомобильный» блик двумя слоями:
+; база metallic 0.55 / roughness 0.28 + лак 1.0 / roughness 0.08.
+; Подключать на корпус в scenes/objects/vehicle.tscn (владелец — Рэм).
+
+[resource]
+resource_name = "car_paint_graphite"
+albedo_color = Color(0.09, 0.10, 0.12, 1)
+metallic = 0.55
+metallic_specular = 0.5
+roughness = 0.28
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_roughness = 0.08

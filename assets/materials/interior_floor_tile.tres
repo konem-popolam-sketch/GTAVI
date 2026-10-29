@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=1 format=3]
+
+; Интерьер: тёмный кафель пола (t46). Небольшая металличность + низкая roughness —
+; пол ловит отражения неона и ламп, но не превращается в зеркало.
+; Подключать на пол клуба/магазина (интерьеры t36, Эрен).
+
+[resource]
+resource_name = "interior_floor_tile"
+albedo_color = Color(0.055, 0.06, 0.065, 1)
+metallic = 0.20
+metallic_specular = 0.55
+roughness = 0.30

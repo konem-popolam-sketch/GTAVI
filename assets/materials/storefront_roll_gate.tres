@@ -1,0 +1,24 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3]
+
+; Роллет/секционные ворота (t42): тёплый ржавый металл, грубее жалюзи.
+; Для автосервиса, складов, служебных входов — не для главных витрин.
+
+[ext_resource type="Texture2D" path="res://assets/textures/metal/metal_diff_2k.png" id="1_albedo"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal/metal_normal_2k.png" id="2_normal"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal/metal_rough_2k.png" id="3_rough"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal/metal_ao_2k.png" id="4_ao"]
+
+[resource]
+resource_name = "storefront_roll_gate"
+albedo_texture = ExtResource("1_albedo")
+albedo_color = Color(0.26, 0.20, 0.16, 1)
+metallic = 0.50
+metallic_specular = 0.40
+roughness = 0.78
+normal_enabled = true
+normal_texture = ExtResource("2_normal")
+normal_scale = 0.70
+ao_enabled = true
+ao_texture = ExtResource("4_ao")
+ao_light_affect = 0.40
+uv1_scale = Vector3(3.0, 3.0, 3.0)

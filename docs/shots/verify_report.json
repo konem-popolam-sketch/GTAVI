@@ -1,0 +1,98 @@
+{
+  "probe": {
+    "error": "Failed to compile GDScript (error 43). Check syntax.",
+    "id": 1.0
+  },
+  "shots": [
+    {
+      "stop": "shop",
+      "poi": "POI_Shop",
+      "moved": {
+        "id": 1.0,
+        "result": {
+          "x": -4.0,
+          "y": 0.0,
+          "z": -10.8999996185303
+        },
+        "success": true
+      },
+      "shot": {
+        "saved": "docs\\shots\\poi_shop.png",
+        "width": 1600,
+        "height": 900
+      }
+    },
+    {
+      "stop": "pier",
+      "poi": "POI_Pier",
+      "moved": {
+        "id": 1.0,
+        "result": {
+          "x": 0.0,
+          "y": -0.699999988079071,
+          "z": 34.5
+        },
+        "success": true
+      },
+      "shot": {
+        "saved": "docs\\shots\\poi_pier.png",
+        "width": 1600,
+        "height": 900
+      }
+    },
+    {
+      "stop": "fence",
+      "poi": "POI_Fence",
+      "moved": {
+        "id": 1.0,
+        "result": {
+          "x": -8.48545169830322,
+          "y": 8.86498019099236e-05,
+          "z": 11.5000286102295
+        },
+        "success": true
+      },
+      "shot": {
+        "saved": "docs\\shots\\poi_fence.png",
+        "width": 1600,
+        "height": 900
+      }
+    },
+    {
+      "stop": "alley",
+      "poi": "POI_Alley",
+      "moved": {
+        "id": 1.0,
+        "result": {
+          "x": 4.0,
+          "y": 0.0,
+          "z": -11.6000003814697
+        },
+        "success": true
+      },
+      "shot": {
+        "saved": "docs\\shots\\poi_alley.png",
+        "width": 1600,
+        "height": 900
+      }
+    },
+    {
+      "stop": "spawn",
+      "poi": "PlayerSpawn",
+      "moved": {
+        "id": 1.0,
+        "result": {
+          "x": 0.0,
+          "y": 9.76547598838806e-05,
+          "z": 10.0
+        },
+        "success": true
+      },
+      "shot": {
+        "saved": "docs\\shots\\poi_spawn.png",
+        "width": 1600,
+        "height": 900
+      }
+    }
+  ]
+}

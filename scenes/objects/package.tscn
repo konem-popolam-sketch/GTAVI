@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/game/carried_item.gd" id="1_item"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_package"]
+size = Vector3(0.58, 0.4, 0.46)
+
+[sub_resource type="BoxMesh" id="BoxMesh_package"]
+size = Vector3(0.58, 0.4, 0.46)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cardboard"]
+albedo_color = Color(0.44, 0.32, 0.22, 1)
+roughness = 0.92
+
+[sub_resource type="BoxMesh" id="BoxMesh_tape_long"]
+size = Vector3(0.14, 0.012, 0.478)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tape_cross"]
+size = Vector3(0.592, 0.012, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tape"]
+albedo_color = Color(0.72, 0.66, 0.5, 1)
+roughness = 0.8
+
+[node name="Package" type="StaticBody3D"]
+collision_layer = 1
+collision_mask = 1
+script = ExtResource("1_item")
+item_id = "package"
+item_name = "Посылка"
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_package")
+material_override = SubResource("StandardMaterial3D_cardboard")
+cast_shadow = 1
+
+[node name="TapeLong" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206, 0)
+mesh = SubResource("BoxMesh_tape_long")
+material_override = SubResource("StandardMaterial3D_tape")
+cast_shadow = 1
+
+[node name="TapeCross" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212, 0)
+mesh = SubResource("BoxMesh_tape_cross")
+material_override = SubResource("StandardMaterial3D_tape")
+cast_shadow = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_package")

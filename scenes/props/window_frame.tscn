@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3]
+
+; Переплёт витрины «Луны»: три вертикальных и два горизонтальных импоста.
+; Ставится ПЕРЕД emissive-плоскостью входа (z ≈ -11.80), чтобы витрина читалась
+; стеклом с рамой, а не выбеленным прямоугольником. Коллизии нет — декор.
+
+[ext_resource type="Material" path="res://assets/materials/metal_pbr.tres" id="1_metal"]
+
+[sub_resource type="BoxMesh" id="MeshBarV"]
+size = Vector3(0.06, 3.0, 0.05)
+
+[sub_resource type="BoxMesh" id="MeshBarH"]
+size = Vector3(2.4, 0.06, 0.05)
+
+[node name="ShopWindowFrame" type="Node3D"]
+
+[node name="BarV1" type="MeshInstance3D" parent="."]
+position = Vector3(-0.78, 0, 0)
+mesh = SubResource("MeshBarV")
+material_override = ExtResource("1_metal")
+
+[node name="BarV2" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0)
+mesh = SubResource("MeshBarV")
+material_override = ExtResource("1_metal")
+
+[node name="BarV3" type="MeshInstance3D" parent="."]
+position = Vector3(0.78, 0, 0)
+mesh = SubResource("MeshBarV")
+material_override = ExtResource("1_metal")
+
+[node name="BarH1" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.75, 0)
+mesh = SubResource("MeshBarH")
+material_override = ExtResource("1_metal")
+
+[node name="BarH2" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.75, 0)
+mesh = SubResource("MeshBarH")
+material_override = ExtResource("1_metal")

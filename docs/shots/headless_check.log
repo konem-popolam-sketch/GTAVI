@@ -1,0 +1,29 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2582)
+McpInteractionServer: Listening on 127.0.0.1:9090
+[quest] стартовая цель: Отнеси посылку к пирсу
+[dialogue_data] диалогов загружено: 4 — mila, kostya, foreman, voice
+[dialogue] менеджер готов: диалогов 4
+[main] NIGHT SHIFT — session summary
+[main] scene=Main, player=ok
+[main] player position = (0.0, 0.1, 10.0)
+[world] NIGHT SHIFT — block summary
+[world] top-level nodes (13): WorldEnvironment, MoonLight, Ground, RoadMarkings, Buildings, Shop, Alley, Parking, Waterfront, Perimeter, Lamps, PointsOfInterest, Markers
+[world] POI POI_Shop = (-4.0, 0.0, -10.9)
+[world] POI POI_Pier = (0.0, -0.7, 34.5)
+[world] POI POI_Fence = (-8.2, 0.0, 11.5)
+[world] POI POI_Alley = (4.0, 0.0, -11.6)
+[world] NPC slot NPC_Mila = (-5.8, 0.0, -10.6)
+[world] NPC slot NPC_Foreman = (0.0, -0.7, 35.5)
+[world] NPC slot NPC_Kostya = (-6.5, 0.0, 11.2)
+[world] NPC slot NPC_Phone = (-1.9, 0.0, -11.1)
+[world] player spawn = (0.0, 0.1, 10.0)
+[world] omni lights: 8 (street lamps 7, neon 1)
+[main] npc Mila dialogue='mila' at (-5.8, 0.0, -10.6)
+[main] npc Kostya dialogue='kostya' at (-6.5, 0.0, 11.2)
+[main] npc Foreman dialogue='foreman' at (-2.0, -0.7, 36.2)
+[main] npc VoiceTerminal dialogue='voice' at (-1.9, 0.0, -11.1)
+[main] save exists = false, path = user://save.json (C:/Users/Igor/AppData/Roaming/Godot/app_userdata/GTAVI/)
+McpInteractionServer: Stopped

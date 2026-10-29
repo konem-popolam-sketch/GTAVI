@@ -1,0 +1,159 @@
+{
+  "task": "t41",
+  "generated": "2026-10-26T04:01:20",
+  "checks": [
+    {
+      "point": 1,
+      "id": "rain_loops",
+      "status": "passed",
+      "evidence": "rain_light 24.00s / rain_heavy 28.00s, mono 44100Hz 16bit, peak -6.00 dBFS, RMS -20.04/-20.15 dBFS, seam 0.17/0.16 dB (tools/qa_phase3_rain.log)"
+    },
+    {
+      "point": 1,
+      "id": "rain_cfg_migration",
+      "status": "passed",
+      "evidence": "old audio.cfg v1 ambience=0.1995 -> v2 ambience=0.1258925, log \"[audio] конфиг v1 → v2: Ambience -18.0 dB\" (tools/qa_phase3_audiocfg.log)"
+    },
+    {
+      "point": 1,
+      "id": "rain_audible",
+      "status": "not_checked",
+      "evidence": "нет аудиоустройства/слушателя в сессии; проверены только числа и состояние шин"
+    },
+    {
+      "point": 2,
+      "id": "weapon_live",
+      "status": "passed",
+      "evidence": "E подобрал (owned), F equip, fire true (ammo 8->7), reload 1.6s, блокировка в диалоге try_fire=false; WEAPON SMOKE OK (46)"
+    },
+    {
+      "point": 2,
+      "id": "weapon_save",
+      "status": "passed",
+      "evidence": "save ammo 3/11 -> mutate 8/24 -> load 3/11 (t51 закрыт по факту)"
+    },
+    {
+      "point": 3,
+      "id": "branch_dialogues",
+      "status": "passed",
+      "evidence": "26 диалогов загружены, ветка: kostya_gun/weapon_pickup/timur_gun/guard_confront/guard_aftermath + cut_*; guard_confront 3 варианта"
+    },
+    {
+      "point": 3,
+      "id": "branch_flags",
+      "status": "passed",
+      "evidence": "выборы дали weapon_discharged / weapon_brandished / weapon_holstered (+guard_note); cut_weapon_seen ставится"
+    },
+    {
+      "point": 3,
+      "id": "branch_epilogue",
+      "status": "not_checked",
+      "evidence": "эпилог третьей концовки с сиреной/Галей не проигран вживую; проверены флаги и катсцена"
+    },
+    {
+      "point": 4,
+      "id": "city",
+      "status": "passed",
+      "evidence": "bounds 360x358, 16 POI, road 47 точек/кольцо, ворота свободны x -2.8..1.8 (raycast)"
+    },
+    {
+      "point": 4,
+      "id": "car",
+      "status": "passed",
+      "evidence": "enter/exit, max 108.0 км/ч, 913.6 м по кольцу за прогон; CAR SMOKE OK (23)"
+    },
+    {
+      "point": 4,
+      "id": "car_lap",
+      "status": "not_checked",
+      "evidence": "чистое время круга не замерено: QA-автопилот сходил с трассы; 913 м пройдено, макс 108 км/ч"
+    },
+    {
+      "point": 5,
+      "id": "interiors",
+      "status": "passed",
+      "evidence": "клуб: вход -> (0,-200,4.4), выход -> (0,0.15,-63.84); магазин: вход -> (0,-200,62.1), подсказка \"E — выйти на улицу\", выход -> (-4,0,-9.83); кадры 50/51"
+    },
+    {
+      "point": 6,
+      "id": "cutscenes",
+      "status": "passed",
+      "evidence": "пролог авто-старт после титров (camera current, controls false), skip->controls true; cut_box и cut_weapon играют, время идёт, skip/flags; reload с флагами не запускает повторно"
+    },
+    {
+      "point": 6,
+      "id": "cutscene_known_t52",
+      "status": "passed",
+      "evidence": "gunshot заменён на pistol_fire (WARNING gunshot нет), box.json камера (10,1.78,-25.15) с пролётом 9 с; кадры 42/44"
+    },
+    {
+      "point": 7,
+      "id": "voices",
+      "status": "passed",
+      "evidence": "26 диалогов/207 узлов/203 WAV, 4 немых; 10 спикеров, профили по docs/audio/voices.md (irina 3+tape, denis 2, ruslan 2, dmitri 2); покрытие 203/203"
+    },
+    {
+      "point": 7,
+      "id": "voices_audible",
+      "status": "not_checked",
+      "evidence": "не проверено на слух (нет аудиовыхода); тембры подтверждены только файлами/профилями/манифестом"
+    },
+    {
+      "point": 8,
+      "id": "npc_walking",
+      "status": "passed",
+      "evidence": "Костя прошёл 1.6 м за 7 с, остановился в диалоге и пошёл после; Тимур 1.4 м за 4 с; Мила/Галя/автоответчик стоят; NPC WALK SMOKE OK (10)"
+    },
+    {
+      "point": 9,
+      "id": "female_shape",
+      "status": "passed",
+      "evidence": "Mila=female, Galya=female, Kostya=male (get_body_shape); кадры 71/72; PEOPLE SMOKE OK (53) — анимации/коллизии"
+    },
+    {
+      "point": 10,
+      "id": "detail_frames",
+      "status": "passed",
+      "evidence": "кадры 00,10,12,40,42,44,50,60,61,62,70-75; 17 пропсов, 441 узел города, 89 Omni в сцене (город 58/60 по CITY SMOKE), PBR-материалы t44/t50; визуальная оценка по кадрам"
+    },
+    {
+      "point": 10,
+      "id": "shop_visual",
+      "status": "not_checked",
+      "evidence": "кадр магазина 51 однотонный (27 КБ, mean 0.7/98/132) — визуальное качество интерьера требует просмотра владельцем"
+    },
+    {
+      "point": 99,
+      "id": "headless600",
+      "status": "passed",
+      "evidence": "exit 0, 0 SCRIPT ERROR/Parse Error; шум cert-store и WARNING 10 ObjectDB leaked (tools/qa_phase3_hl.log)"
+    },
+    {
+      "point": 99,
+      "id": "owner_smokes",
+      "status": "passed",
+      "evidence": "AUDIO, WEAPON 46, CITY, NPC WALK, CUTSCENE 29, CAR 23, UI, GAMEPLAY, PEOPLE 53, WORLD 16 POI, CAMERA — все OK"
+    },
+    {
+      "point": 99,
+      "id": "audio_leak",
+      "status": "failed",
+      "evidence": "10 ObjectDB leaked (5x AudioStreamWAV + 5x AudioStreamPlaybackWAV) — low, не блокер"
+    },
+    {
+      "point": 99,
+      "id": "car_door_sfx",
+      "status": "failed",
+      "evidence": "12 WARNING \"[audio] play_sfx: файл не найден — car_door\" в tools/qa_phase3_live.log — low"
+    },
+    {
+      "point": 99,
+      "id": "build_stable",
+      "status": "passed",
+      "evidence": "SHA256 main= A8B08679..., block=4F793B58...; хэши до/после совпали; mtime main 03:23:01, block 03:25:55"
+    }
+  ],
+  "passed": 18,
+  "failed": 2,
+  "not_checked": 5
+}

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3]
+
+; Мусорный бак: корпус, крышка, цилиндрическая коллизия.
+
+[ext_resource type="Material" path="res://assets/materials/metal_pbr.tres" id="1_metal"]
+
+[sub_resource type="CylinderMesh" id="MeshBody"]
+top_radius = 0.27
+bottom_radius = 0.24
+height = 0.75
+radial_segments = 20
+
+[sub_resource type="CylinderMesh" id="MeshLid"]
+top_radius = 0.29
+bottom_radius = 0.29
+height = 0.06
+radial_segments = 20
+
+[sub_resource type="CylinderShape3D" id="ShapeBody"]
+radius = 0.28
+height = 0.8
+
+[node name="TrashCan" type="Node3D"]
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Can" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.375, 0)
+mesh = SubResource("MeshBody")
+material_override = ExtResource("1_metal")
+
+[node name="Lid" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.78, 0)
+mesh = SubResource("MeshLid")
+material_override = ExtResource("1_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 0.4, 0)
+shape = SubResource("ShapeBody")

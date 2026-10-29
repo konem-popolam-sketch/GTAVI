@@ -1,0 +1,189 @@
+[gd_scene load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://scripts/game/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/world/block.tscn" id="2_block"]
+[ext_resource type="PackedScene" path="res://scenes/props/props.tscn" id="3_props"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="4_player"]
+[ext_resource type="PackedScene" path="res://scenes/actors/npc.tscn" id="5_npc"]
+[ext_resource type="PackedScene" path="res://scenes/objects/package.tscn" id="6_package"]
+[ext_resource type="PackedScene" path="res://scenes/objects/package_drop_zone.tscn" id="7_dropzone"]
+[ext_resource type="Script" path="res://scripts/game/objective_marker.gd" id="8_marker"]
+[ext_resource type="Script" path="res://scripts/game/quest_director.gd" id="9_director"]
+[ext_resource type="Script" path="res://scripts/game/night_gate.gd" id="10_gate"]
+[ext_resource type="Script" path="res://scripts/audio/ambience_controller.gd" id="11_audio"]
+[ext_resource type="Script" path="res://scripts/audio/dialogue_audio.gd" id="12_dialogue_audio"]
+[ext_resource type="PackedScene" path="res://ui/dialogue.tscn" id="13_dialogue"]
+[ext_resource type="PackedScene" path="res://ui/hud.tscn" id="14_hud"]
+[ext_resource type="PackedScene" path="res://ui/title_card.tscn" id="15_title"]
+[ext_resource type="PackedScene" path="res://ui/pause_menu.tscn" id="16_pause"]
+[ext_resource type="PackedScene" path="res://scenes/objects/pistol.tscn" id="17_pistol"]
+[ext_resource type="Script" path="res://scripts/game/weapon_controller.gd" id="18_weapon"]
+[ext_resource type="PackedScene" path="res://scenes/game/cutscene_stage.tscn" id="19_cutscenes"]
+[ext_resource type="PackedScene" path="res://scenes/interiors/club.tscn" id="20_club"]
+[ext_resource type="PackedScene" path="res://scenes/interiors/shop.tscn" id="21_shop"]
+[ext_resource type="PackedScene" path="res://scenes/vehicles/car.tscn" id="22_car"]
+[ext_resource type="PackedScene" path="res://scenes/objects/twin_box.tscn" id="23_twin_box"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_main")
+
+[node name="World" parent="." instance=ExtResource("2_block")]
+
+[node name="Props" parent="." instance=ExtResource("3_props")]
+
+[node name="Player" parent="." instance=ExtResource("4_player")]
+position = Vector3(0, 0.1, 10)
+
+[node name="WeaponController" type="Node" parent="Player"]
+script = ExtResource("18_weapon")
+weapon_path = NodePath("../../Pistol")
+
+[node name="Npcs" type="Node3D" parent="."]
+
+[node name="Mila" parent="Npcs" instance=ExtResource("5_npc")]
+position = Vector3(-5.8, 0, -10.6)
+npc_id = "mila"
+display_name = "Мила"
+dialogue_id = "mila"
+
+[node name="Kostya" parent="Npcs" instance=ExtResource("5_npc")]
+position = Vector3(-6.5, 0, 11.2)
+npc_id = "kostya"
+display_name = "Костя"
+dialogue_id = "kostya"
+
+[node name="Foreman" parent="Npcs" instance=ExtResource("5_npc")]
+position = Vector3(-2.0, -0.7, 36.2)
+npc_id = "foreman"
+display_name = "Прораб"
+dialogue_id = "foreman"
+
+[node name="VoiceTerminal" parent="Npcs" instance=ExtResource("5_npc")]
+position = Vector3(-1.9, 0, -11.1)
+npc_id = "voice"
+display_name = "Автоответчик"
+dialogue_id = "voice"
+
+[node name="Galya" parent="Npcs" instance=ExtResource("5_npc")]
+position = Vector3(-6.4, 5.0, -21.2)
+npc_id = "galya"
+display_name = "Галя"
+dialogue_id = "galya"
+skin = "npc"
+
+[node name="Timur" parent="Npcs" instance=ExtResource("5_npc")]
+position = Vector3(-6.9, 0, 14.6)
+npc_id = "timur"
+display_name = "Тимур"
+dialogue_id = "timur"
+
+[node name="Inspector" parent="Npcs" instance=ExtResource("5_npc")]
+position = Vector3(-7.3, 0, 16.2)
+rotation = Vector3(0, 3.14159, 0)
+npc_id = "inspector"
+display_name = "Проверяющий"
+dialogue_id = "guard_confront"
+
+[node name="Cutscenes" parent="." instance=ExtResource("19_cutscenes")]
+
+[node name="PlayerCar" parent="." instance=ExtResource("22_car")]
+position = Vector3(120, 0.2, -58)
+rotation = Vector3(0, 3.14159, 0)
+
+[node name="Interiors" type="Node3D" parent="."]
+
+[node name="Club" parent="Interiors" instance=ExtResource("20_club")]
+position = Vector3(0, -200, 0)
+
+[node name="Shop" parent="Interiors" instance=ExtResource("21_shop")]
+position = Vector3(0, -200, 60)
+
+[node name="Package" parent="." instance=ExtResource("6_package")]
+position = Vector3(-4.6, 0.21, -11.0)
+
+[node name="Pistol" parent="." instance=ExtResource("17_pistol")]
+position = Vector3(-5, 0.22, -10.7)
+rotation = Vector3(0, 0.4, 0)
+
+[node name="PackageDropZone" parent="." instance=ExtResource("7_dropzone")]
+position = Vector3(-2.0, -0.7, 36.8)
+
+[node name="TwinBox" parent="." instance=ExtResource("23_twin_box")]
+position = Vector3(8.0, 0, -24.5)
+
+[node name="QuestDirector" type="Node" parent="."]
+script = ExtResource("9_director")
+
+[node name="NightGate" type="Node3D" parent="." groups=["night_gate"]]
+position = Vector3(-8, 0, 13)
+script = ExtResource("10_gate")
+
+[node name="ObjectiveMarkers" type="Node3D" parent="."]
+
+[node name="MarkerDeliverPackage" type="Node3D" parent="ObjectiveMarkers"]
+position = Vector3(-2.0, -0.7, 36.8)
+script = ExtResource("8_marker")
+stage_id = "deliver_package"
+
+[node name="MarkerAnswerphone" type="Node3D" parent="ObjectiveMarkers"]
+position = Vector3(-2.6, 0, -10.9)
+script = ExtResource("8_marker")
+stage_id = "check_answerphone"
+
+[node name="MarkerDispatcher" type="Node3D" parent="ObjectiveMarkers"]
+position = Vector3(2.85, 0, -14.2)
+script = ExtResource("8_marker")
+stage_id = "reach_dispatcher"
+
+[node name="MarkerSiteCode" type="Node3D" parent="ObjectiveMarkers"]
+position = Vector3(-6.9, 0, 14.6)
+script = ExtResource("8_marker")
+stage_id = "find_site_code"
+
+[node name="MarkerTwinBox" type="Node3D" parent="ObjectiveMarkers"]
+position = Vector3(8.0, 0, -24.5)
+script = ExtResource("8_marker")
+stage_id = "inspect_twin_box"
+
+[node name="MarkerReturnToMila" type="Node3D" parent="ObjectiveMarkers"]
+position = Vector3(-4.6, 0, -9.7)
+script = ExtResource("8_marker")
+stage_id = "return_to_mila"
+
+[node name="MarkerForeman" type="Node3D" parent="ObjectiveMarkers"]
+position = Vector3(-16.0, 0, 11.0)
+script = ExtResource("8_marker")
+stage_id = "find_foreman"
+
+[node name="MarkerKostya" type="Node3D" parent="ObjectiveMarkers"]
+position = Vector3(-5.9, 0, 10.4)
+script = ExtResource("8_marker")
+stage_id = "talk_to_kostya"
+
+[node name="MarkerFinalChoice" type="Node3D" parent="ObjectiveMarkers"]
+position = Vector3(-1.0, -0.7, 34.5)
+script = ExtResource("8_marker")
+stage_id = "final_choice"
+
+[node name="Audio" type="Node3D" parent="."]
+script = ExtResource("11_audio")
+
+[node name="DialogueAudio" type="Node" parent="."]
+script = ExtResource("12_dialogue_audio")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogueUI" parent="UI" instance=ExtResource("13_dialogue")]
+
+[node name="HUD" parent="UI" instance=ExtResource("14_hud")]
+
+[node name="TitleCard" parent="UI" instance=ExtResource("15_title")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("16_pause")]
+
+[node name="PreviewCamera" type="Camera3D" parent="."]
+position = Vector3(0, 10.5, 14)
+rotation = Vector3(-0.3, 0, 0)
+fov = 62.0
+near = 0.05
+far = 400.0

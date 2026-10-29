@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+; Дальний LOD окна, холодный (t42): emission 1.35, ambient отключён.
+; Пара к window_city_warm_far для дальней части города.
+
+[resource]
+resource_name = "window_city_cool_far"
+albedo_color = Color(0.04, 0.05, 0.07, 1)
+metallic = 0.0
+metallic_specular = 0.35
+roughness = 0.45
+emission_enabled = true
+emission = Color(0.58, 0.76, 1.0, 1)
+emission_energy_multiplier = 1.35
+disable_ambient_light = true

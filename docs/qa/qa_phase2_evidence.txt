@@ -1,0 +1,22 @@
+T26 QA evidence — выдержка из docs/qa/qa_phase2_results.json
+Прогон: tools/qa_phase2.log, 2026-10-26 02:53, exit 0, "T22 QA PHASE 2 OK (175 проверок)".
+Итог: 175 проверок, 175 passed, 0 failed.
+
+pbr_materials | PASS | материалов StandardMaterial3D: 480, с albedo+normal: 6 ["metal_pbr", "brick_grey_pbr", "concrete_pbr", "dock_planks_pbr", "asphalt_pbr", "brick_red_pbr"]
+pbr_expected | PASS | нет PBR-материалов: []
+pbr_world_surfaces | PASS | на асфальте/кирпиче/бетоне нет albedo+normal: []
+race_cycles | PASS | 
+race_interval | PASS | цикл открыть→Esc: 0.057–0.155 с (20 циклов)
+race_start_count | PASS | открытий: 20 (ждали 20)
+race_single_transition | PASS | переходов интерактора false→true после последнего закрытия: 1
+race_transition_time | PASS | включение через 338 мс (ждали ~350, допуск 250–500)
+race_no_auto_reopen | PASS | активен=false, лишних открытий=0
+esc_interactor_back | PASS | интерактор вернулся после Esc (кулдаун)
+esc_restores_controls | PASS | управление/интерактор после Esc
+esc_no_auto_reopen | PASS | открытий после Esc: 1 (ждали 1 — сам старт)
+e_interactor_restored | PASS | интерактор вернулся после кулдауна
+no_auto_reopen | PASS | самих открытий после закрытия: 0
+
+Headless 600: tools/qa_hl_600.log — exit 0, SCRIPT ERROR 0, Parse Error 0.
+_wire_late_npc / Cannot convert ERROR в tools/qa_phase2.log: 0.
+Утечка: tools/qa_verbose_leak.log — 10 объектов: 5x AudioStreamWAV + 5x AudioStreamPlaybackWAV.

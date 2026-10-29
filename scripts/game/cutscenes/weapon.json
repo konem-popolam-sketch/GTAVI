@@ -1,0 +1,123 @@
+{
+  "id": "cut_weapon",
+  "title": "Ствол",
+  "duration": 12.0,
+  "skippable": true,
+  "seen_flag": "cut_weapon_seen",
+  "steps": [
+    {
+      "t": 0.0,
+      "type": "camera",
+      "pos": [-4.4, 1.85, 15.6],
+      "look_at": [-7.9, 1.25, 12.05],
+      "fov": 56.0
+    },
+    {
+      "t": 1.0,
+      "type": "line",
+      "dialogue_id": "cut_weapon",
+      "node_id": "cw_01",
+      "speaker": "Проверяющий",
+      "duration": 2.2
+    },
+    {
+      "t": 3.0,
+      "type": "line",
+      "dialogue_id": "cut_weapon",
+      "node_id": "cw_02",
+      "speaker": "Нил",
+      "duration": 1.6
+    },
+    {
+      "t": 4.4,
+      "type": "line",
+      "dialogue_id": "cut_weapon",
+      "node_id": "cw_03",
+      "speaker": "Нил",
+      "duration": 1.0
+    },
+    {
+      "t": 4.5,
+      "type": "sfx",
+      "name": "pistol_fire"
+    },
+    {
+      "t": 4.5,
+      "type": "flash",
+      "alpha": 0.85,
+      "duration": 0.18
+    },
+    {
+      "t": 4.5,
+      "type": "camera",
+      "pos": [-7.0, 1.4, 9.6],
+      "look_at": [-8.0, 9.0, 8.0],
+      "fov": 56.0
+    },
+    {
+      "t": 5.8,
+      "type": "camera",
+      "pos": [-4.9, 1.7, 14.4],
+      "look_at": [-7.7, 1.2, 12.2],
+      "fov": 56.0,
+      "to": [-4.3, 1.72, 15.2],
+      "duration": 6.2,
+      "ease": "in_out"
+    },
+    {
+      "t": 6.4,
+      "type": "npc_move",
+      "npc_id": "inspector",
+      "from": [-7.4, 0.0, 12.4],
+      "to": [-10.2, 0.0, 14.6],
+      "duration": 2.0
+    },
+    {
+      "t": 8.5,
+      "type": "npc_move",
+      "npc_id": "kostya",
+      "from": [-6.5, 0.0, 11.2],
+      "to": [-7.2, 0.0, 12.15],
+      "duration": 1.7
+    },
+    {
+      "t": 9.2,
+      "type": "line",
+      "dialogue_id": "cut_weapon",
+      "node_id": "cw_04",
+      "speaker": "Костя",
+      "duration": 2.8
+    },
+    {
+      "t": 10.6,
+      "type": "npc_move",
+      "npc_id": "kostya",
+      "from": [-7.2, 0.0, 12.15],
+      "to": [-6.5, 0.0, 11.2],
+      "duration": 1.4
+    },
+    {
+      "t": 11.2,
+      "type": "line",
+      "dialogue_id": "cut_weapon",
+      "node_id": "cw_05",
+      "speaker": "Плёнка",
+      "duration": 1.8
+    },
+    {
+      "t": 11.6,
+      "type": "fade",
+      "alpha": 1.0,
+      "duration": 0.4
+    },
+    {
+      "t": 12.0,
+      "type": "end",
+      "player_position": [-6.4, 0.0, 13.0],
+      "player_yaw": 0.0,
+      "set_flag": "weapon_disposed",
+      "remove_item": "weapon",
+      "next_dialogue": "guard_aftermath"
+    }
+  ]
+}

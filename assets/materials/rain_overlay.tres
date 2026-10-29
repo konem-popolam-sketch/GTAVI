@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+; Материал для ColorRect поверх 3D (см. assets/shaders/rain_overlay.gdshader).
+
+[ext_resource type="Shader" path="res://assets/shaders/rain_overlay.gdshader" id="1_rain"]
+
+[resource]
+resource_name = "rain_overlay"
+shader = ExtResource("1_rain")
+shader_parameter/intensity = 0.15
+shader_parameter/rain_tint = Color(0.62, 0.72, 0.9, 1)
+shader_parameter/fall_speed = 1.2
+shader_parameter/columns = 240.0
+shader_parameter/rows = 13.0
+shader_parameter/streak_len = 0.55

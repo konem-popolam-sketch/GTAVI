@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3]
+
+; Деревянная лестница: две тетивы + шесть перекладин.
+
+[ext_resource type="Material" path="res://assets/materials/dock_planks_pbr.tres" id="1_wood"]
+
+[sub_resource type="BoxMesh" id="MeshRail"]
+size = Vector3(0.05, 2.2, 0.05)
+
+[sub_resource type="BoxMesh" id="MeshRung"]
+size = Vector3(0.55, 0.04, 0.05)
+
+[sub_resource type="BoxShape3D" id="ShapeBody"]
+size = Vector3(0.62, 2.2, 0.1)
+
+[node name="Ladder" type="Node3D"]
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="RailLeft" type="MeshInstance3D" parent="Body"]
+position = Vector3(-0.25, 1.1, 0)
+mesh = SubResource("MeshRail")
+material_override = ExtResource("1_wood")
+
+[node name="RailRight" type="MeshInstance3D" parent="Body"]
+position = Vector3(0.25, 1.1, 0)
+mesh = SubResource("MeshRail")
+material_override = ExtResource("1_wood")
+
+[node name="Rung1" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.2, 0)
+mesh = SubResource("MeshRung")
+material_override = ExtResource("1_wood")
+
+[node name="Rung2" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.55, 0)
+mesh = SubResource("MeshRung")
+material_override = ExtResource("1_wood")
+
+[node name="Rung3" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.9, 0)
+mesh = SubResource("MeshRung")
+material_override = ExtResource("1_wood")
+
+[node name="Rung4" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 1.25, 0)
+mesh = SubResource("MeshRung")
+material_override = ExtResource("1_wood")
+
+[node name="Rung5" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 1.6, 0)
+mesh = SubResource("MeshRung")
+material_override = ExtResource("1_wood")
+
+[node name="Rung6" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 1.95, 0)
+mesh = SubResource("MeshRung")
+material_override = ExtResource("1_wood")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 1.1, 0)
+shape = SubResource("ShapeBody")

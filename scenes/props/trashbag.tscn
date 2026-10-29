@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3]
+
+; Мешок мусора: приплюснутая сфера, сферическая коллизия.
+
+[ext_resource type="Material" path="res://assets/materials/prop_bag_dark.tres" id="1_bag"]
+
+[sub_resource type="SphereMesh" id="MeshBag"]
+radius = 0.34
+height = 0.6
+radial_segments = 20
+rings = 10
+
+[sub_resource type="SphereShape3D" id="ShapeBag"]
+radius = 0.3
+
+[node name="TrashBag" type="Node3D"]
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Bag" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.3, 0)
+mesh = SubResource("MeshBag")
+material_override = ExtResource("1_bag")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 0.3, 0)
+shape = SubResource("ShapeBag")

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "prop_sign_white"
+albedo_color = Color(0.720, 0.710, 0.660, 1)
+metallic = 0.00
+metallic_specular = 0.50
+roughness = 0.50

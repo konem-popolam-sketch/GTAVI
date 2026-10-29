@@ -1,0 +1,883 @@
+{
+	"checks": 175,
+	"failed": 0,
+	"failures": [],
+	"passed": 175,
+	"results": [
+		{
+			"detail": "QuestState=true DialogueManager=true AudioManager=true",
+			"id": "autoloads",
+			"ok": true
+		},
+		{
+			"detail": "res://scenes/main.tscn",
+			"id": "scene_load",
+			"ok": true
+		},
+		{
+			"detail": "Player в main.tscn",
+			"id": "scene_player",
+			"ok": true
+		},
+		{
+			"detail": "World в main.tscn",
+			"id": "scene_world",
+			"ok": true
+		},
+		{
+			"detail": "UI/HUD=true DialogueUI=true PauseMenu=true",
+			"id": "scene_ui",
+			"ok": true
+		},
+		{
+			"detail": "последний ребёнок UI: PauseMenu",
+			"id": "ui_pause_last",
+			"ok": true
+		},
+		{
+			"detail": "NPC в группе npc: 6 (ждали 6)",
+			"id": "npc_count",
+			"ok": true
+		},
+		{
+			"detail": "dialogue_id='mila' at (-5.8, 0.0, -10.6)",
+			"id": "npc_mila_dialogue",
+			"ok": true
+		},
+		{
+			"detail": "Body=Body:<MeshInstance3D#55834577042>",
+			"id": "npc_mila_body",
+			"ok": true
+		},
+		{
+			"detail": "сегментов тела: 29",
+			"id": "npc_mila_parts",
+			"ok": true
+		},
+		{
+			"detail": "AnimationPlayer",
+			"id": "npc_mila_animplayer",
+			"ok": true
+		},
+		{
+			"detail": "idle=true walk=true run=true",
+			"id": "npc_mila_animations",
+			"ok": true
+		},
+		{
+			"detail": "играет=true, текущая=idle",
+			"id": "npc_mila_playing",
+			"ok": true
+		},
+		{
+			"detail": "NameLabel=NameLabel:<Label3D#55901685910>",
+			"id": "npc_mila_label",
+			"ok": true
+		},
+		{
+			"detail": "луч вниз: {\"collider\":\"/root/QaPhase2/Main/World/Ground\",\"hit\":true,\"position\":\"(-5.8, 0.0, -10.6)\"}",
+			"id": "npc_mila_on_floor",
+			"ok": true
+		},
+		{
+			"detail": "лучей в стену из 8: 0",
+			"id": "npc_mila_clearance",
+			"ok": true
+		},
+		{
+			"detail": "dialogue_id='kostya' at (-6.5, 0.0, 11.2)",
+			"id": "npc_kostya_dialogue",
+			"ok": true
+		},
+		{
+			"detail": "Body=Body:<MeshInstance3D#55985571995>",
+			"id": "npc_kostya_body",
+			"ok": true
+		},
+		{
+			"detail": "сегментов тела: 27",
+			"id": "npc_kostya_parts",
+			"ok": true
+		},
+		{
+			"detail": "AnimationPlayer",
+			"id": "npc_kostya_animplayer",
+			"ok": true
+		},
+		{
+			"detail": "idle=true walk=true run=true",
+			"id": "npc_kostya_animations",
+			"ok": true
+		},
+		{
+			"detail": "играет=true, текущая=idle",
+			"id": "npc_kostya_playing",
+			"ok": true
+		},
+		{
+			"detail": "NameLabel=NameLabel:<Label3D#56052680863>",
+			"id": "npc_kostya_label",
+			"ok": true
+		},
+		{
+			"detail": "луч вниз: {\"collider\":\"/root/QaPhase2/Main/World/Ground\",\"hit\":true,\"position\":\"(-6.5, 0.0, 11.2)\"}",
+			"id": "npc_kostya_on_floor",
+			"ok": true
+		},
+		{
+			"detail": "лучей в стену из 8: 0",
+			"id": "npc_kostya_clearance",
+			"ok": true
+		},
+		{
+			"detail": "dialogue_id='foreman' at (-2.0, -0.7, 36.2)",
+			"id": "npc_foreman_dialogue",
+			"ok": true
+		},
+		{
+			"detail": "Body=Body:<MeshInstance3D#56136566948>",
+			"id": "npc_foreman_body",
+			"ok": true
+		},
+		{
+			"detail": "сегментов тела: 27",
+			"id": "npc_foreman_parts",
+			"ok": true
+		},
+		{
+			"detail": "AnimationPlayer",
+			"id": "npc_foreman_animplayer",
+			"ok": true
+		},
+		{
+			"detail": "idle=true walk=true run=true",
+			"id": "npc_foreman_animations",
+			"ok": true
+		},
+		{
+			"detail": "играет=true, текущая=idle",
+			"id": "npc_foreman_playing",
+			"ok": true
+		},
+		{
+			"detail": "NameLabel=NameLabel:<Label3D#56203675816>",
+			"id": "npc_foreman_label",
+			"ok": true
+		},
+		{
+			"detail": "луч вниз: {\"collider\":\"/root/QaPhase2/Main/World/Waterfront/PierDeck\",\"hit\":true,\"position\":\"(-2.0, -0.7, 36.2)\"}",
+			"id": "npc_foreman_on_floor",
+			"ok": true
+		},
+		{
+			"detail": "лучей в стену из 8: 0",
+			"id": "npc_foreman_clearance",
+			"ok": true
+		},
+		{
+			"detail": "dialogue_id='voice' at (-1.9, 0.0, -11.1)",
+			"id": "npc_voice_dialogue",
+			"ok": true
+		},
+		{
+			"detail": "Body=Body:<MeshInstance3D#56287561901>",
+			"id": "npc_voice_body",
+			"ok": true
+		},
+		{
+			"detail": "сегментов тела: 27",
+			"id": "npc_voice_parts",
+			"ok": true
+		},
+		{
+			"detail": "AnimationPlayer",
+			"id": "npc_voice_animplayer",
+			"ok": true
+		},
+		{
+			"detail": "idle=true walk=true run=true",
+			"id": "npc_voice_animations",
+			"ok": true
+		},
+		{
+			"detail": "играет=true, текущая=idle",
+			"id": "npc_voice_playing",
+			"ok": true
+		},
+		{
+			"detail": "NameLabel=NameLabel:<Label3D#56354670769>",
+			"id": "npc_voice_label",
+			"ok": true
+		},
+		{
+			"detail": "луч вниз: {\"collider\":\"/root/QaPhase2/Main/World/Ground\",\"hit\":true,\"position\":\"(-1.9, 0.0, -11.1)\"}",
+			"id": "npc_voice_on_floor",
+			"ok": true
+		},
+		{
+			"detail": "лучей в стену из 8: 0",
+			"id": "npc_voice_clearance",
+			"ok": true
+		},
+		{
+			"detail": "dialogue_id='galya' at (-6.4, 5.0, -21.2)",
+			"id": "npc_galya_dialogue",
+			"ok": true
+		},
+		{
+			"detail": "Body=Body:<MeshInstance3D#56438556854>",
+			"id": "npc_galya_body",
+			"ok": true
+		},
+		{
+			"detail": "сегментов тела: 29",
+			"id": "npc_galya_parts",
+			"ok": true
+		},
+		{
+			"detail": "AnimationPlayer",
+			"id": "npc_galya_animplayer",
+			"ok": true
+		},
+		{
+			"detail": "idle=true walk=true run=true",
+			"id": "npc_galya_animations",
+			"ok": true
+		},
+		{
+			"detail": "играет=true, текущая=idle",
+			"id": "npc_galya_playing",
+			"ok": true
+		},
+		{
+			"detail": "NameLabel=NameLabel:<Label3D#56505665722>",
+			"id": "npc_galya_label",
+			"ok": true
+		},
+		{
+			"detail": "луч вниз: {\"collider\":\"/root/QaPhase2/Main/World/Shop/Shell\",\"hit\":true,\"position\":\"(-6.4, 5.0, -21.2)\"}",
+			"id": "npc_galya_on_floor",
+			"ok": true
+		},
+		{
+			"detail": "лучей в стену из 8: 0",
+			"id": "npc_galya_clearance",
+			"ok": true
+		},
+		{
+			"detail": "dialogue_id='timur' at (-6.9, 0.0, 14.6)",
+			"id": "npc_timur_dialogue",
+			"ok": true
+		},
+		{
+			"detail": "Body=Body:<MeshInstance3D#56589551807>",
+			"id": "npc_timur_body",
+			"ok": true
+		},
+		{
+			"detail": "сегментов тела: 27",
+			"id": "npc_timur_parts",
+			"ok": true
+		},
+		{
+			"detail": "AnimationPlayer",
+			"id": "npc_timur_animplayer",
+			"ok": true
+		},
+		{
+			"detail": "idle=true walk=true run=true",
+			"id": "npc_timur_animations",
+			"ok": true
+		},
+		{
+			"detail": "играет=true, текущая=idle",
+			"id": "npc_timur_playing",
+			"ok": true
+		},
+		{
+			"detail": "NameLabel=NameLabel:<Label3D#56656660675>",
+			"id": "npc_timur_label",
+			"ok": true
+		},
+		{
+			"detail": "луч вниз: {\"collider\":\"/root/QaPhase2/Main/World/Ground\",\"hit\":true,\"position\":\"(-6.9, 0.0, 14.6)\"}",
+			"id": "npc_timur_on_floor",
+			"ok": true
+		},
+		{
+			"detail": "лучей в стену из 8: 0",
+			"id": "npc_timur_clearance",
+			"ok": true
+		},
+		{
+			"detail": "NPC с dialogue_id 'mila'",
+			"id": "npc_present_mila",
+			"ok": true
+		},
+		{
+			"detail": "NPC с dialogue_id 'kostya'",
+			"id": "npc_present_kostya",
+			"ok": true
+		},
+		{
+			"detail": "NPC с dialogue_id 'foreman'",
+			"id": "npc_present_foreman",
+			"ok": true
+		},
+		{
+			"detail": "NPC с dialogue_id 'voice'",
+			"id": "npc_present_voice",
+			"ok": true
+		},
+		{
+			"detail": "NPC с dialogue_id 'galya'",
+			"id": "npc_present_galya",
+			"ok": true
+		},
+		{
+			"detail": "NPC с dialogue_id 'timur'",
+			"id": "npc_present_timur",
+			"ok": true
+		},
+		{
+			"detail": "пропсов в Props: 17 (DoD: >= 10)",
+			"id": "props_count",
+			"ok": true
+		},
+		{
+			"detail": "материалов StandardMaterial3D: 480, с albedo+normal: 6 [\"metal_pbr\", \"brick_grey_pbr\", \"concrete_pbr\", \"dock_planks_pbr\", \"asphalt_pbr\", \"brick_red_pbr\"]",
+			"id": "pbr_materials",
+			"ok": true
+		},
+		{
+			"detail": "нет PBR-материалов: []",
+			"id": "pbr_expected",
+			"ok": true
+		},
+		{
+			"detail": "PBR-текстуры на пропсах (дерево/металл): [\"metal_pbr\", \"brick_grey_pbr\", \"concrete_pbr\", \"dock_planks_pbr\", \"asphalt_pbr\", \"brick_red_pbr\"]",
+			"id": "pbr_props",
+			"ok": true
+		},
+		{
+			"detail": "на асфальте/кирпиче/бетоне нет albedo+normal: []",
+			"id": "pbr_world_surfaces",
+			"ok": true
+		},
+		{
+			"detail": "стадий: 10",
+			"id": "stages_10",
+			"ok": true
+		},
+		{
+			"detail": "акты: [1, 2, 3]",
+			"id": "acts_3",
+			"ok": true
+		},
+		{
+			"detail": "ENDING_TITLES: [1, 2, 3]",
+			"id": "endings_3",
+			"ok": true
+		},
+		{
+			"detail": "цепочка стадий: [\"deliver_package\", \"check_answerphone\", \"reach_dispatcher\", \"find_site_code\", \"inspect_twin_box\", \"return_to_mila\", \"find_foreman\", \"talk_to_kostya\", \"final_choice\", \"finished\"]",
+			"id": "stages_chain",
+			"ok": true
+		},
+		{
+			"detail": "QuestLogOverlay=true StagesBox=true",
+			"id": "hud_questlog_nodes",
+			"ok": true
+		},
+		{
+			"detail": "строк в журнале: 10",
+			"id": "hud_questlog_10",
+			"ok": true
+		},
+		{
+			"detail": "ObjectiveLabel max_lines_visible=2",
+			"id": "hud_objective",
+			"ok": true
+		},
+		{
+			"detail": "диалогов: 17",
+			"id": "dialogues_17",
+			"ok": true
+		},
+		{
+			"detail": "узлов: 161",
+			"id": "dialogue_nodes_161",
+			"ok": true
+		},
+		{
+			"detail": "узлов с выбором: 13 (вариантов 27)",
+			"id": "dialogue_choices_13",
+			"ok": true
+		},
+		{
+			"detail": "битых ссылок: 0 []",
+			"id": "dialogue_links",
+			"ok": true
+		},
+		{
+			"detail": "концовки: { 1: \"Молчание\", 2: \"Голос\", 3: \"Смена\" }",
+			"id": "dialogue_endings",
+			"ok": true
+		},
+		{
+			"detail": "пройдено 17/17, ошибок 0 []",
+			"id": "dialogues_all_closed",
+			"ok": true
+		},
+		{
+			"detail": "после прогона всех диалогов менеджер неактивен",
+			"id": "dialogues_no_auto_reopen",
+			"ok": true
+		},
+		{
+			"detail": "start mila",
+			"id": "esc_start",
+			"ok": true
+		},
+		{
+			"detail": "после Esc is_active=false",
+			"id": "esc_closes",
+			"ok": true
+		},
+		{
+			"detail": "интерактор вернулся после Esc (кулдаун)",
+			"id": "esc_interactor_back",
+			"ok": true
+		},
+		{
+			"detail": "управление/интерактор после Esc",
+			"id": "esc_restores_controls",
+			"ok": true
+		},
+		{
+			"detail": "открытий после Esc: 1 (ждали 1 — сам старт)",
+			"id": "esc_no_auto_reopen",
+			"ok": true
+		},
+		{
+			"detail": "start mila (E)",
+			"id": "e_start",
+			"ok": true
+		},
+		{
+			"detail": "дошли до последней реплики: active=true next=false",
+			"id": "e_at_last_line",
+			"ok": true
+		},
+		{
+			"detail": "первое E: active=true typing=false",
+			"id": "e_first_press_completes",
+			"ok": true
+		},
+		{
+			"detail": "после E is_active=false",
+			"id": "e_closes",
+			"ok": true
+		},
+		{
+			"detail": "интерактор погашен сразу после закрытия",
+			"id": "e_interactor_guard",
+			"ok": true
+		},
+		{
+			"detail": "интерактор вернулся после кулдауна",
+			"id": "e_interactor_restored",
+			"ok": true
+		},
+		{
+			"detail": "самих открытий после закрытия: 0",
+			"id": "no_auto_reopen",
+			"ok": true
+		},
+		{
+			"detail": "start finale",
+			"id": "choice_start",
+			"ok": true
+		},
+		{
+			"detail": "узел fin_10 -> fin_10",
+			"id": "choice_e_ignored",
+			"ok": true
+		},
+		{
+			"detail": "вариантов: 2",
+			"id": "choice_count",
+			"ok": true
+		},
+		{
+			"detail": "Esc на развилке закрыл диалог",
+			"id": "choice_esc_closes",
+			"ok": true
+		},
+		{
+			"detail": "",
+			"id": "race_cycles",
+			"ok": true
+		},
+		{
+			"detail": "цикл открыть→Esc: 0.057–0.155 с (20 циклов)",
+			"id": "race_interval",
+			"ok": true
+		},
+		{
+			"detail": "открытий: 20 (ждали 20)",
+			"id": "race_start_count",
+			"ok": true
+		},
+		{
+			"detail": "переходов интерактора false→true после последнего закрытия: 1",
+			"id": "race_single_transition",
+			"ok": true
+		},
+		{
+			"detail": "включение через 338 мс (ждали ~350, допуск 250–500)",
+			"id": "race_transition_time",
+			"ok": true
+		},
+		{
+			"detail": "активен=false, лишних открытий=0",
+			"id": "race_no_auto_reopen",
+			"ok": true
+		},
+		{
+			"detail": "интерактор включён=true",
+			"id": "interactor_ready",
+			"ok": true
+		},
+		{
+			"detail": "интерактор видит: Mila:<StaticBody3D#55801022608>",
+			"id": "mila_target",
+			"ok": true
+		},
+		{
+			"detail": "active=true dialogue=mila",
+			"id": "e_opens",
+			"ok": true
+		},
+		{
+			"detail": "диалог закрыт Esc",
+			"id": "dialogue_closed_after",
+			"ok": true
+		},
+		{
+			"detail": "вариантов: 2",
+			"id": "ending_1_choice_visible",
+			"ok": true
+		},
+		{
+			"detail": "ending_id=1 title='Молчание'",
+			"id": "ending_1",
+			"ok": true
+		},
+		{
+			"detail": "стадия=finished",
+			"id": "ending_1_finished",
+			"ok": true
+		},
+		{
+			"detail": "вариантов: 2",
+			"id": "ending_2_choice_visible",
+			"ok": true
+		},
+		{
+			"detail": "ending_id=2 title='Голос'",
+			"id": "ending_2",
+			"ok": true
+		},
+		{
+			"detail": "стадия=finished",
+			"id": "ending_2_finished",
+			"ok": true
+		},
+		{
+			"detail": "вариантов: 3",
+			"id": "ending_3_choice_visible",
+			"ok": true
+		},
+		{
+			"detail": "ending_id=3 title='Смена'",
+			"id": "ending_3",
+			"ok": true
+		},
+		{
+			"detail": "стадия=finished",
+			"id": "ending_3_finished",
+			"ok": true
+		},
+		{
+			"detail": "voice_manifest.json",
+			"id": "manifest_loaded",
+			"ok": true
+		},
+		{
+			"detail": "узлов в манифесте: 161",
+			"id": "manifest_nodes_161",
+			"ok": true
+		},
+		{
+			"detail": "расхождений текста: 0 []",
+			"id": "manifest_text_equal",
+			"ok": true
+		},
+		{
+			"detail": "без озвучки: 0 [] (озвучено 160)",
+			"id": "voice_coverage",
+			"ok": true
+		},
+		{
+			"detail": "озвученных узлов: 160 (ждали 160)",
+			"id": "voice_160",
+			"ok": true
+		},
+		{
+			"detail": "слишком коротких: 0 []",
+			"id": "voice_lengths",
+			"ok": true
+		},
+		{
+			"detail": "узлы без букв: voice/voice_03",
+			"id": "voice_skip_dots",
+			"ok": true
+		},
+		{
+			"detail": "start mila для проверки озвучки",
+			"id": "voice_dialogue",
+			"ok": true
+		},
+		{
+			"detail": "is_voice_playing()=true node=mila_01",
+			"id": "voice_playing",
+			"ok": true
+		},
+		{
+			"detail": "LineLabel='Нил. Ты сегодня поздно.' vs 'Нил. Ты сегодня поздно.'",
+			"id": "subtitle_text",
+			"ok": true
+		},
+		{
+			"detail": "после E при озвучке node=mila_01 active=true",
+			"id": "voice_holds_line",
+			"ok": true
+		},
+		{
+			"detail": "субтитр жив: text='Нил. Ты сегодня поздно.' visible=true",
+			"id": "subtitle_not_cut",
+			"ok": true
+		},
+		{
+			"detail": "после stop_voice node=mila_02",
+			"id": "voice_advance_after_end",
+			"ok": true
+		},
+		{
+			"detail": "шин: 5",
+			"id": "buses_5",
+			"ok": true
+		},
+		{
+			"detail": "index=0 db=0.0",
+			"id": "bus_Master",
+			"ok": true
+		},
+		{
+			"detail": "index=1 db=-12.0",
+			"id": "bus_Music",
+			"ok": true
+		},
+		{
+			"detail": "index=2 db=-8.0",
+			"id": "bus_SFX",
+			"ok": true
+		},
+		{
+			"detail": "index=3 db=-4.0",
+			"id": "bus_Voice",
+			"ok": true
+		},
+		{
+			"detail": "index=4 db=-14.0",
+			"id": "bus_Ambience",
+			"ok": true
+		},
+		{
+			"detail": "отклонения: []",
+			"id": "bus_defaults",
+			"ok": true
+		},
+		{
+			"detail": "файлов в assets/audio: 176",
+			"id": "audio_files_176",
+			"ok": true
+		},
+		{
+			"detail": "не читаются: 0 []; суммарно 812.4 с",
+			"id": "audio_files_readable",
+			"ok": true
+		},
+		{
+			"detail": "окружение: 'rain_light_loop'",
+			"id": "ambience_start",
+			"ok": true
+		},
+		{
+			"detail": "музыка: 'mus_night_shift_loop'",
+			"id": "music_start",
+			"ok": true
+		},
+		{
+			"detail": "Ambience player.playing=true",
+			"id": "ambience_playing",
+			"ok": true
+		},
+		{
+			"detail": "AudioOneShots: было 0, стало 1",
+			"id": "footsteps",
+			"ok": true
+		},
+		{
+			"detail": "audio.cfg sfx=0.37",
+			"id": "audio_cfg",
+			"ok": true
+		},
+		{
+			"detail": "после reload SFX=0.370",
+			"id": "audio_cfg_reload",
+			"ok": true
+		},
+		{
+			"detail": "settings.cfg master=0.42",
+			"id": "settings_cfg",
+			"ok": true
+		},
+		{
+			"detail": "после reload Master=0.420",
+			"id": "settings_cfg_reload",
+			"ok": true
+		},
+		{
+			"detail": "MasterSlider",
+			"id": "pause_slider",
+			"ok": true
+		},
+		{
+			"detail": "settings.cfg master=0.37",
+			"id": "pause_slider_saves",
+			"ok": true
+		},
+		{
+			"detail": "save_game=true",
+			"id": "save_write",
+			"ok": true
+		},
+		{
+			"detail": "save.json читается",
+			"id": "save_json",
+			"ok": true
+		},
+		{
+			"detail": "version=1.0 stage=talk_to_kostya flags={ \"item_flashlight\": true, \"mila_confessed\": true } inv=[{ \"id\": \"flashlight\", \"name\": \"Фонарь\" }] pos=[4.5, 0.00009765475988, 6.25]",
+			"id": "save_fields",
+			"ok": true
+		},
+		{
+			"detail": "load_game=true",
+			"id": "save_load",
+			"ok": true
+		},
+		{
+			"detail": "позиция (4.5, 0.000098, 6.25) vs (4.5, 0.000098, 6.25)",
+			"id": "save_position",
+			"ok": true
+		},
+		{
+			"detail": "стадия=talk_to_kostya",
+			"id": "save_stage",
+			"ok": true
+		},
+		{
+			"detail": "mila_confessed",
+			"id": "save_flag",
+			"ok": true
+		},
+		{
+			"detail": "инвентарь={ \"id\": \"flashlight\", \"name\": \"Фонарь\" }",
+			"id": "save_item",
+			"ok": true
+		},
+		{
+			"detail": "item_state={ \"position\": [-2.0, -0.7, 36.8], \"state\": \"dropped\" }",
+			"id": "save_item_state",
+			"ok": true
+		},
+		{
+			"detail": "цель='Поговори с Костей' титул='Поговори с Костей'",
+			"id": "save_objective",
+			"ok": true
+		},
+		{
+			"detail": "старый сейв загрузился=true",
+			"id": "old_save_load",
+			"ok": true
+		},
+		{
+			"detail": "позиция=(7.0, 0.1, 3.0)",
+			"id": "old_save_position",
+			"ok": true
+		},
+		{
+			"detail": "стадия=check_answerphone",
+			"id": "old_save_stage",
+			"ok": true
+		},
+		{
+			"detail": "цель='Проверь автоответчик у входа'",
+			"id": "old_save_objective",
+			"ok": true
+		},
+		{
+			"detail": "предметы={ \"id\": \"flashlight\", \"name\": \"Фонарь\" }",
+			"id": "old_save_inventory",
+			"ok": true
+		},
+		{
+			"detail": "флаги сохранены",
+			"id": "old_save_flags",
+			"ok": true
+		},
+		{
+			"detail": "ending=2 completed=true stage=finished",
+			"id": "old_save_ending",
+			"ok": true
+		},
+		{
+			"detail": "res://docs/shots_phase2: PNG 13",
+			"id": "shots_count_shots_phase2",
+			"ok": true
+		},
+		{
+			"detail": "мелких/битых: 0 []",
+			"id": "shots_valid_shots_phase2",
+			"ok": true
+		},
+		{
+			"detail": "res://docs/shots_final2: PNG 3",
+			"id": "shots_count_shots_final2",
+			"ok": true
+		},
+		{
+			"detail": "мелких/битых: 0 []",
+			"id": "shots_valid_shots_final2",
+			"ok": true
+		},
+		{
+			"detail": "docs/qa PNG: 10",
+			"id": "qa_shots",
+			"ok": true
+		}
+	]
+}

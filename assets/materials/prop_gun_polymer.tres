@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=1 format=3]
+
+; Оружие, чёрный полимер (t46). Подключать на weapon_grip в scenes/objects/pistol.tscn.
+; Матовый: блик не должен спорить со сталью затвора.
+
+[resource]
+resource_name = "prop_gun_polymer"
+albedo_color = Color(0.045, 0.048, 0.052, 1)
+metallic = 0.0
+metallic_specular = 0.35
+roughness = 0.72

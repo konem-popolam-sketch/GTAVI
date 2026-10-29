@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3]
+
+; Знак «мокрый пол»: A-образная стойка из двух панелей.
+
+[ext_resource type="Material" path="res://assets/materials/prop_sign_white.tres" id="1_sign"]
+
+[sub_resource type="BoxMesh" id="MeshPanel"]
+size = Vector3(0.36, 0.62, 0.02)
+
+[sub_resource type="BoxShape3D" id="ShapeBody"]
+size = Vector3(0.4, 0.62, 0.35)
+
+[node name="WetSign" type="Node3D"]
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="PanelFront" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.31, 0.09)
+rotation = Vector3(-0.32, 0, 0)
+mesh = SubResource("MeshPanel")
+material_override = ExtResource("1_sign")
+
+[node name="PanelBack" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.31, -0.09)
+rotation = Vector3(0.32, 0, 0)
+mesh = SubResource("MeshPanel")
+material_override = ExtResource("1_sign")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 0.31, 0)
+shape = SubResource("ShapeBody")

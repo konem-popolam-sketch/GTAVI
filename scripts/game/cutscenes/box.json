@@ -1,0 +1,72 @@
+{
+  "id": "cut_box",
+  "title": "Коробка открывается",
+  "duration": 10.0,
+  "skippable": true,
+  "seen_flag": "cut_box_seen",
+  "fade_in": 0.4,
+  "steps": [
+    {
+      "t": 0.0,
+      "type": "camera",
+      "pos": [10.0, 1.78, -25.15],
+      "look_at": [6.2, 1.25, -24.9],
+      "fov": 55.0,
+      "to": [8.7, 1.72, -25.3],
+      "duration": 9.0,
+      "ease": "in_out"
+    },
+    {
+      "t": 0.8,
+      "type": "player_move",
+      "from": [4.6, 0.0, -24.3],
+      "to": [5.3, 0.0, -24.35],
+      "duration": 2.2,
+      "face_movement": true
+    },
+    {
+      "t": 1.6,
+      "type": "line",
+      "dialogue_id": "cut_box",
+      "node_id": "cb_01",
+      "speaker": "Плёнка",
+      "duration": 2.0
+    },
+    {
+      "t": 3.8,
+      "type": "line",
+      "dialogue_id": "cut_box",
+      "node_id": "cb_02",
+      "speaker": "Нил",
+      "duration": 1.6
+    },
+    {
+      "t": 5.2,
+      "type": "line",
+      "dialogue_id": "cut_box",
+      "node_id": "cb_03",
+      "speaker": "Плёнка",
+      "duration": 1.5
+    },
+    {
+      "t": 6.8,
+      "type": "line",
+      "dialogue_id": "cut_box",
+      "node_id": "cb_04",
+      "speaker": "Нил",
+      "duration": 2.6
+    },
+    {
+      "t": 9.6,
+      "type": "fade",
+      "alpha": 1.0,
+      "duration": 0.4
+    },
+    {
+      "t": 10.0,
+      "type": "end",
+      "player_position": [5.3, 0.0, -24.35],
+      "player_yaw": 1.57
+    }
+  ]
+}

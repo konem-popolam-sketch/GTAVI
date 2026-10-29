@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/player/interactor.gd" id="2_interactor"]
+[ext_resource type="PackedScene" path="res://scenes/actors/humanoid.tscn" id="3_humanoid"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+radius = 0.4
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="Body" parent="." instance=ExtResource("3_humanoid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92, 0)
+skin_preset = "player"
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+collision_mask = 1
+spring_length = 4.2
+margin = 0.15
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+current = true
+fov = 70.0
+near = 0.05
+far = 400.0
+
+[node name="Interactor" type="RayCast3D" parent="SpringArm3D/Camera3D"]
+target_position = Vector3(0, 0, -7.2)
+collide_with_areas = true
+collision_mask = 1
+script = ExtResource("2_interactor")
+interact_range = 3.0
+
+[node name="PlayerFill" type="OmniLight3D" parent="." groups=["player_fill"]]
+position = Vector3(0, 1.6, 0)
+light_color = Color(0.78, 0.82, 0.95, 1)
+light_energy = 1.1
+light_indirect_energy = 0.45
+omni_range = 10.0
+shadow_enabled = false

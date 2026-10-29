@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+; Тканевый козырёк/маркиза (t42): тёмно-красный холст, матовый.
+; Даёт геометрическую тень над витриной и «человеческий» масштаб улицы.
+
+[resource]
+resource_name = "awning_canvas"
+albedo_color = Color(0.12, 0.04, 0.05, 1)
+metallic = 0.0
+metallic_specular = 0.2
+roughness = 0.88

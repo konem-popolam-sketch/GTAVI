@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/npc/humanoid.gd" id="1_humanoid"]
+
+[node name="Hips" type="MeshInstance3D"]
+script = ExtResource("1_humanoid")
+skin_preset = "npc"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

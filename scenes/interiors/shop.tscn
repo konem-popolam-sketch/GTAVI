@@ -1,0 +1,531 @@
+[gd_scene load_steps=16 format=3]
+
+[ext_resource type="Script" path="res://scenes/interiors/interior_scene.gd" id="1_scene"]
+[ext_resource type="Script" path="res://scripts/world/interior_door.gd" id="2_door"]
+[ext_resource type="Material" path="res://assets/materials/concrete_pbr.tres" id="3_concrete"]
+[ext_resource type="Material" path="res://assets/materials/metal_pbr.tres" id="4_metal"]
+[ext_resource type="Material" path="res://assets/materials/brick_grey_pbr.tres" id="5_brick"]
+[ext_resource type="Material" path="res://assets/materials/neon_cyan.tres" id="6_cyan"]
+[ext_resource type="Material" path="res://assets/materials/window_warm.tres" id="7_warm"]
+[ext_resource type="Material" path="res://assets/materials/door_glass.tres" id="8_glass"]
+[ext_resource type="Material" path="res://assets/materials/prop_plastic.tres" id="9_plastic"]
+[ext_resource type="Material" path="res://assets/materials/prop_wood_olive.tres" id="10_wood"]
+[ext_resource type="Material" path="res://assets/materials/prop_sign_white.tres" id="11_sign"]
+[ext_resource type="Material" path="res://assets/materials/prop_bag_dark.tres" id="12_bag"]
+
+[sub_resource type="Environment" id="EnvShop"]
+background_mode = 1
+background_color = Color(0.012, 0.014, 0.022, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.2, 0.22, 0.28, 1)
+ambient_light_energy = 0.5
+fog_enabled = true
+fog_light_color = Color(0.1, 0.12, 0.18, 1)
+fog_light_energy = 0.8
+fog_density = 0.012
+glow_enabled = true
+tonemap_mode = 3
+
+[sub_resource type="BoxMesh" id="UnitBox"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="ShapeExitDoor"]
+size = Vector3(1.6, 2.4, 0.2)
+
+[node name="ShopInterior" type="Node3D"]
+script = ExtResource("1_scene")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("EnvShop")
+
+[node name="PreviewCamera" type="Camera3D" parent="."]
+position = Vector3(-2.7, 1.7, 2.0)
+rotation = Vector3(-0.1, -0.9, 0)
+current = true
+fov = 68.0
+near = 0.05
+far = 80.0
+
+[node name="ShopEntry" type="Marker3D" parent="." groups=["interior_shop", "interior_entry"]]
+position = Vector3(0, 0.05, 2.1)
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, -0.15, 0)
+size = Vector3(8, 0.3, 6)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="Ceiling" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 3.7, 0)
+size = Vector3(8, 0.2, 6)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="WallNorth" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 1.8, -2.85)
+size = Vector3(8, 3.6, 0.3)
+material = ExtResource("5_brick")
+use_collision = true
+
+[node name="WallSouthL" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-2.45, 1.8, 2.85)
+size = Vector3(3.1, 3.6, 0.3)
+material = ExtResource("5_brick")
+use_collision = true
+
+[node name="WallSouthR" type="CSGBox3D" parent="Geometry"]
+position = Vector3(2.45, 1.8, 2.85)
+size = Vector3(3.1, 3.6, 0.3)
+material = ExtResource("5_brick")
+use_collision = true
+
+[node name="WallSouthTop" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 3.0, 2.85)
+size = Vector3(1.8, 1.2, 0.3)
+material = ExtResource("5_brick")
+use_collision = true
+
+[node name="WallWest" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.85, 1.8, 0)
+size = Vector3(0.3, 3.6, 6)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="WallEast" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.85, 1.8, 0)
+size = Vector3(0.3, 3.6, 6)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="Counter" type="CSGBox3D" parent="Geometry"]
+position = Vector3(2.2, 0.55, -1.6)
+size = Vector3(2.6, 1.1, 0.8)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="Register" type="CSGBox3D" parent="Geometry"]
+position = Vector3(2.2, 1.25, -1.55)
+size = Vector3(0.45, 0.3, 0.35)
+material = ExtResource("12_bag")
+
+[node name="RegisterScreen" type="CSGBox3D" parent="Geometry"]
+position = Vector3(2.2, 1.45, -1.72)
+size = Vector3(0.35, 0.22, 0.04)
+material = ExtResource("6_cyan")
+
+[node name="CigaretteRack" type="CSGBox3D" parent="Geometry"]
+position = Vector3(2.9, 2.1, -2.62)
+size = Vector3(1.4, 1.2, 0.18)
+material = ExtResource("4_metal")
+
+[node name="CigaretteBoxA" type="CSGBox3D" parent="Geometry"]
+position = Vector3(2.5, 2.0, -2.5)
+size = Vector3(0.18, 0.28, 0.1)
+material = ExtResource("7_warm")
+
+[node name="CigaretteBoxB" type="CSGBox3D" parent="Geometry"]
+position = Vector3(2.8, 2.0, -2.5)
+size = Vector3(0.18, 0.28, 0.1)
+material = ExtResource("11_sign")
+
+[node name="CigaretteBoxC" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.1, 2.0, -2.5)
+size = Vector3(0.18, 0.28, 0.1)
+material = ExtResource("9_plastic")
+
+[node name="RackWestBack" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.72, 0.9, 0.2)
+size = Vector3(0.05, 1.8, 2.8)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="RackWestSideLow" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.9, -1.2)
+size = Vector3(0.55, 1.8, 0.06)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="RackWestSideHigh" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.9, 1.6)
+size = Vector3(0.55, 1.8, 0.06)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="RackWestShelfLow" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.5, 0.2)
+size = Vector3(0.58, 0.05, 2.8)
+material = ExtResource("4_metal")
+
+[node name="RackWestShelfMid" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.95, 0.2)
+size = Vector3(0.58, 0.05, 2.8)
+material = ExtResource("4_metal")
+
+[node name="RackWestShelfHigh" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.4, 0.2)
+size = Vector3(0.58, 0.05, 2.8)
+material = ExtResource("4_metal")
+
+[node name="ProductW01" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.68, -1.0)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="ProductW02" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.68, -0.6)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("10_wood")
+
+[node name="ProductW03" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.68, -0.2)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("11_sign")
+
+[node name="ProductW04" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.68, 0.2)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("12_bag")
+
+[node name="ProductW05" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.68, 0.6)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="ProductW06" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.68, 1.0)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("10_wood")
+
+[node name="ProductW07" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 0.68, 1.4)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("11_sign")
+
+[node name="ProductW08" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.13, -1.0)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("12_bag")
+
+[node name="ProductW09" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.13, -0.6)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="ProductW10" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.13, -0.2)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("10_wood")
+
+[node name="ProductW11" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.13, 0.2)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("11_sign")
+
+[node name="ProductW12" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.13, 0.6)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("12_bag")
+
+[node name="ProductW13" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.13, 1.0)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="ProductW14" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.13, 1.4)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("10_wood")
+
+[node name="ProductW15" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.58, -1.0)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("11_sign")
+
+[node name="ProductW16" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.58, -0.6)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("12_bag")
+
+[node name="ProductW17" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.58, -0.2)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="ProductW18" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.58, 0.2)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("10_wood")
+
+[node name="ProductW19" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.58, 0.6)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("11_sign")
+
+[node name="ProductW20" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.58, 1.0)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("12_bag")
+
+[node name="ProductW21" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 1.58, 1.4)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="RackNorthBack" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.4, 0.9, -2.72)
+size = Vector3(2.4, 1.8, 0.05)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="RackNorthSideL" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-2.6, 0.9, -2.5)
+size = Vector3(0.06, 1.8, 0.5)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="RackNorthSideR" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-0.2, 0.9, -2.5)
+size = Vector3(0.06, 1.8, 0.5)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="RackNorthShelfLow" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.4, 0.5, -2.5)
+size = Vector3(2.4, 0.05, 0.48)
+material = ExtResource("4_metal")
+
+[node name="RackNorthShelfMid" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.4, 0.95, -2.5)
+size = Vector3(2.4, 0.05, 0.48)
+material = ExtResource("4_metal")
+
+[node name="RackNorthShelfHigh" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.4, 1.4, -2.5)
+size = Vector3(2.4, 0.05, 0.48)
+material = ExtResource("4_metal")
+
+[node name="ProductN01" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-2.3, 0.68, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="ProductN02" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.9, 0.68, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("10_wood")
+
+[node name="ProductN03" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.5, 0.68, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("11_sign")
+
+[node name="ProductN04" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.1, 0.68, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("12_bag")
+
+[node name="ProductN05" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-0.7, 0.68, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="ProductN06" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-2.3, 1.13, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("10_wood")
+
+[node name="ProductN07" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.9, 1.13, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("11_sign")
+
+[node name="ProductN08" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.5, 1.13, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("12_bag")
+
+[node name="ProductN09" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.1, 1.13, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="ProductN10" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-0.7, 1.13, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("10_wood")
+
+[node name="ProductN11" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-2.3, 1.58, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("11_sign")
+
+[node name="ProductN12" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.9, 1.58, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("12_bag")
+
+[node name="ProductN13" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.5, 1.58, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("9_plastic")
+
+[node name="ProductN14" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-1.1, 1.58, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("10_wood")
+
+[node name="ProductN15" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-0.7, 1.58, -2.5)
+size = Vector3(0.3, 0.3, 0.3)
+material = ExtResource("11_sign")
+
+[node name="FridgeBack" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.8, 1.2, 0.9)
+size = Vector3(0.05, 2.4, 1.6)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="FridgeSideLow" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.4, 1.2, 0.12)
+size = Vector3(0.9, 2.4, 0.06)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="FridgeSideHigh" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.4, 1.2, 1.68)
+size = Vector3(0.9, 2.4, 0.06)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="FridgeTop" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.4, 2.42, 0.9)
+size = Vector3(0.9, 0.06, 1.6)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="FridgeBottom" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.4, 0.03, 0.9)
+size = Vector3(0.9, 0.06, 1.6)
+material = ExtResource("4_metal")
+
+[node name="FridgeGlass" type="CSGBox3D" parent="Geometry"]
+position = Vector3(2.94, 1.2, 0.9)
+size = Vector3(0.05, 2.0, 1.4)
+material = ExtResource("8_glass")
+use_collision = true
+
+[node name="FridgeShelf" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.4, 0.9, 0.9)
+size = Vector3(0.6, 0.05, 1.4)
+material = ExtResource("4_metal")
+
+[node name="FridgeProductA" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.4, 1.15, 0.5)
+size = Vector3(0.25, 0.4, 0.25)
+material = ExtResource("7_warm")
+
+[node name="FridgeProductB" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.4, 1.15, 0.9)
+size = Vector3(0.25, 0.4, 0.25)
+material = ExtResource("9_plastic")
+
+[node name="FridgeProductC" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.4, 1.15, 1.3)
+size = Vector3(0.25, 0.4, 0.25)
+material = ExtResource("7_warm")
+
+[node name="FloorMat" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 0.02, 1.8)
+size = Vector3(1.6, 0.04, 1.0)
+material = ExtResource("12_bag")
+
+[node name="EntranceFrameL" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(0.18, 0, 0, 0, 2.8, 0, 0, 0, 0.3, -1.0, 1.4, 2.88)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("4_metal")
+
+[node name="EntranceFrameR" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(0.18, 0, 0, 0, 2.8, 0, 0, 0, 0.3, 1.0, 1.4, 2.88)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("4_metal")
+
+[node name="EntranceLintel" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(2.2, 0, 0, 0, 0.18, 0, 0, 0, 0.3, 0, 2.9, 2.88)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("4_metal")
+
+[node name="EntranceNeon" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1.5, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 2.74, 2.72)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_cyan")
+
+[node name="ShopLabel" type="Label3D" parent="Geometry"]
+position = Vector3(0, 2.9, -2.78)
+text = "ЛУНА 24 Ч"
+font_size = 64
+pixel_size = 0.011
+modulate = Color(0.35, 1.7, 2.0, 1)
+outline_size = 0
+
+[node name="OpenLabel" type="Label3D" parent="Geometry"]
+position = Vector3(-2.2, 2.35, -2.78)
+text = "ОТКРЫТО"
+font_size = 28
+pixel_size = 0.01
+modulate = Color(1.7, 0.35, 1.1, 1)
+outline_size = 0
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="CeilLightA" type="OmniLight3D" parent="Lights"]
+position = Vector3(-1.8, 3.25, 0.6)
+light_color = Color(1, 0.93, 0.8, 1)
+light_energy = 2.2
+light_indirect_energy = 0.4
+omni_range = 5.5
+shadow_enabled = true
+
+[node name="CeilLightB" type="OmniLight3D" parent="Lights" groups=["interior_flicker_light"]]
+position = Vector3(1.8, 3.25, -0.6)
+light_color = Color(1, 0.95, 0.86, 1)
+light_energy = 2.0
+light_indirect_energy = 0.4
+omni_range = 5.5
+shadow_enabled = true
+
+[node name="CashLight" type="OmniLight3D" parent="Lights"]
+position = Vector3(1.6, 2.5, -2.2)
+light_color = Color(0.7, 0.85, 1, 1)
+light_energy = 1.1
+light_indirect_energy = 0.2
+omni_range = 3.5
+shadow_enabled = false
+
+[node name="FridgeLight" type="OmniLight3D" parent="Lights"]
+position = Vector3(3.0, 1.9, 0.9)
+light_color = Color(0.35, 0.9, 1, 1)
+light_energy = 1.2
+light_indirect_energy = 0.2
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="ExitDoor" type="StaticBody3D" parent="."]
+position = Vector3(0, 1.22, 2.82)
+script = ExtResource("2_door")
+door_name = "Дверь «Луны»"
+interact_hint = "E — выйти на улицу"
+interior_group = "interior_shop"
+is_exit_door = true
+save_key = "interior_return_shop"
+fallback_exit_position = Vector3(-4, 0.1, -10.6)
+fallback_exit_yaw = 3.14159265
+
+[node name="Panel" type="MeshInstance3D" parent="ExitDoor"]
+transform = Transform3D(1.6, 0, 0, 0, 2.4, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("8_glass")
+
+[node name="Collision" type="CollisionShape3D" parent="ExitDoor"]
+shape = SubResource("ShapeExitDoor")

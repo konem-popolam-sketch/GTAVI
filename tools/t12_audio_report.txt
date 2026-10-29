@@ -1,0 +1,29 @@
+T12 AUDIO REPORT — синтезированные ассеты «Ночной смены» (дождь — t28)
+Формат: WAV PCM 16 бит, 44.1 кГц. Пик: дождь -6.0 dBFS (моно, кроссфейд 0.5 с), остальные файлы -1.0 dBFS.
+
+файл                                    длит., с  ch  пик, dBFS   rms, dBFS   тип        стык петли, dB
+assets/audio/ambience/city_hum_loop.wav     30.00  2        -1.00       -14.04  loop       -1.57
+assets/audio/ambience/neon_hum_loop.wav     22.00  2        -1.00       -10.94  loop       -2.15
+assets/audio/ambience/rain_heavy_loop.wav     28.00  1        -6.00       -20.15  loop       +0.16
+assets/audio/ambience/rain_light_loop.wav     24.00  1        -6.00       -20.04  loop       +0.17
+assets/audio/ambience/water_wind_loop.wav     26.00  2        -1.00       -16.84  loop       +2.82
+assets/audio/music/mus_night_shift_loop.wav     42.67  2        -1.00       -13.43  loop       -0.16
+assets/audio/sfx/car_door.wav               0.22  1        -1.00       -13.77  sfx        —
+assets/audio/sfx/car_engine_loop.wav        2.20  1        -6.00       -13.82  loop       +0.62
+assets/audio/sfx/door_creak.wav             1.70  1        -1.00       -13.42  sfx        —
+assets/audio/sfx/horn_distant.wav           3.20  1        -1.00       -15.66  sfx        —
+assets/audio/sfx/pickup.wav                 0.62  1        -1.00       -13.19  sfx        —
+assets/audio/sfx/pistol_empty.wav           0.15  1        -1.00       -19.98  sfx        —
+assets/audio/sfx/pistol_fire.wav            0.45  1        -1.00       -19.07  sfx        —
+assets/audio/sfx/pistol_reload.wav          0.75  1        -1.00       -21.78  sfx        —
+assets/audio/sfx/step_asphalt_01.wav        0.24  1        -1.00       -18.78  sfx        —
+assets/audio/sfx/step_asphalt_02.wav        0.24  1        -1.00       -20.42  sfx        —
+assets/audio/sfx/step_asphalt_03.wav        0.24  1        -1.00       -19.39  sfx        —
+assets/audio/sfx/step_asphalt_04.wav        0.24  1        -1.00       -18.64  sfx        —
+assets/audio/sfx/step_wood_01.wav           0.30  1        -1.00       -17.90  sfx        —
+assets/audio/sfx/step_wood_02.wav           0.30  1        -1.00       -20.58  sfx        —
+assets/audio/sfx/ui_click.wav               0.09  1        -1.00       -17.77  sfx        —
+
+Файлов: 21
+Озвучка: 203 файлов в assets/audio/voice — рендерит t13 (piper, 22050 Гц), в проверку пика/частоты не входит.
+Проверка: ОК — нормализация, формат, длительность и стыки петель.

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+; Окно города, тёплый оттенок B (t42) — чуть жёлтее и тише, для вариативности по фасаду.
+; Раскладка: 55% окон A, 25% B, 12% cool, 8% off — тогда фасад «живой», а не полоса.
+
+[resource]
+resource_name = "window_city_warm_b"
+albedo_color = Color(0.08, 0.065, 0.05, 1)
+metallic = 0.0
+metallic_specular = 0.35
+roughness = 0.40
+emission_enabled = true
+emission = Color(1, 0.75, 0.46, 1)
+emission_energy_multiplier = 1.20

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+; Белая LED-вывеска (t42): «24 Ч», аптека, такси. emission 1.35 — самый яркий
+; разрешённый уровень вывески; неоновые вывески остаются magenta/cyan (2.2/1.9).
+
+[resource]
+resource_name = "sign_neon_white"
+albedo_color = Color(0.55, 0.57, 0.60, 1)
+metallic = 0.0
+metallic_specular = 0.3
+roughness = 0.30
+emission_enabled = true
+emission = Color(0.92, 0.95, 1.0, 1)
+emission_energy_multiplier = 1.35

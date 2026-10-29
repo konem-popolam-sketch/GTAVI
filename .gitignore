@@ -1,0 +1,29 @@
+# Godot 4
+.godot/
+.godot_probe/
+.godot_profile/
+*.translation
+export_presets.cfg
+export/
+
+# Local tools and logs
+tools/*.zip
+tools/*.exe
+tools/piper/
+tools/*.log
+tools/godot_run.log
+tools/__pycache__/
+tools/_t*_user/
+*.pyc
+docs/shot_*.png
+
+# QA screenshots (кадры по задачам, не нужны для сборки)
+docs/shots_*/
+
+# Временные профили песочницы и рабочие каталоги QA
+.tmp_*/
+.agent-teams/
+
+# OS
+Thumbs.db
+.DS_Store

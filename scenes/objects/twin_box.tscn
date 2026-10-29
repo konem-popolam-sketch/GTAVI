@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/objects/twin_box.gd" id="1_twin"]
+[ext_resource type="Material" path="res://assets/materials/prop_wood_olive.tres" id="2_wood"]
+[ext_resource type="Material" path="res://assets/materials/prop_bag_dark.tres" id="3_tape"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aim"]
+size = Vector3(0.9, 1.7, 0.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_solid"]
+size = Vector3(0.6, 1.1, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_crate"]
+size = Vector3(0.55, 0.42, 0.42)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tape"]
+size = Vector3(0.06, 0.425, 0.425)
+
+[sub_resource type="BoxMesh" id="BoxMesh_leg"]
+size = Vector3(0.08, 0.75, 0.4)
+
+[node name="TwinBox" type="Area3D"]
+script = ExtResource("1_twin")
+
+[node name="AimVolume" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
+shape = SubResource("BoxShape3D_aim")
+
+[node name="Solid" type="StaticBody3D" parent="."]
+
+[node name="SolidShape" type="CollisionShape3D" parent="Solid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_solid")
+
+[node name="LegLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.375, 0)
+mesh = SubResource("BoxMesh_leg")
+surface_material_override/0 = ExtResource("2_wood")
+
+[node name="LegRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.375, 0)
+mesh = SubResource("BoxMesh_leg")
+surface_material_override/0 = ExtResource("2_wood")
+
+[node name="Crate" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96, 0)
+mesh = SubResource("BoxMesh_crate")
+surface_material_override/0 = ExtResource("2_wood")
+
+[node name="Tape" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96, 0)
+mesh = SubResource("BoxMesh_tape")
+surface_material_override/0 = ExtResource("3_tape")

@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+; Окно города, тёплый оттенок A (t42). Квад 1.1×1.5 м, не масштабировать под этаж —
+; окно должно читаться прямоугольником. emission 1.45 — под ACES+glow (порог 0.85)
+; ядро остаётся тёплым, не белым.
+
+[resource]
+resource_name = "window_city_warm_a"
+albedo_color = Color(0.10, 0.07, 0.05, 1)
+metallic = 0.0
+metallic_specular = 0.35
+roughness = 0.40
+emission_enabled = true
+emission = Color(1, 0.62, 0.30, 1)
+emission_energy_multiplier = 1.45

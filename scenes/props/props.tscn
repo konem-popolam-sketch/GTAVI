@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3]
+
+; Пропсы квартала «Ночная смена» — 16 экземпляров + переплёт витрины.
+; Геометрия процедурная (CSG/примитивы), материалы — процедурные PBR-текстуры проекта
+; (tools/gen_pbr_textures.py). Сцена самодостаточна: мировые координаты, вставляется
+; дочерним узлом Main рядом с World.
+; Коллизии есть у всех 16 пропсов (StaticBody3D + CollisionShape3D), у переплёта — нет.
+; Проходы и NPC-слоты не перекрыты: спавн (0,0.1,10) → магазин (-4,0,-10.9) →
+; переулок (4,0,-11.6) → пирс (0,-0.7,34.5).
+
+[ext_resource type="PackedScene" path="res://scenes/props/crate_wood.tscn" id="1_crate_wood"]
+[ext_resource type="PackedScene" path="res://scenes/props/crate_military.tscn" id="2_crate_military"]
+[ext_resource type="PackedScene" path="res://scenes/props/crate_plastic.tscn" id="3_crate_plastic"]
+[ext_resource type="PackedScene" path="res://scenes/props/barrel.tscn" id="4_barrel"]
+[ext_resource type="PackedScene" path="res://scenes/props/bench.tscn" id="5_bench"]
+[ext_resource type="PackedScene" path="res://scenes/props/pipes.tscn" id="6_pipes"]
+[ext_resource type="PackedScene" path="res://scenes/props/ladder.tscn" id="7_ladder"]
+[ext_resource type="PackedScene" path="res://scenes/props/wet_sign.tscn" id="8_wet_sign"]
+[ext_resource type="PackedScene" path="res://scenes/props/trash_can.tscn" id="9_trash_can"]
+[ext_resource type="PackedScene" path="res://scenes/props/trashbag.tscn" id="10_trashbag"]
+[ext_resource type="PackedScene" path="res://scenes/props/window_frame.tscn" id="11_window_frame"]
+
+[node name="Props" type="Node3D"]
+
+[node name="ShopWindowFrame" parent="." instance=ExtResource("11_window_frame")]
+position = Vector3(-4, 1.55, -11.8)
+
+[node name="TrashCanShop" parent="." instance=ExtResource("9_trash_can")]
+position = Vector3(1.35, 0, -10.55)
+
+[node name="WetSignShop" parent="." instance=ExtResource("8_wet_sign")]
+position = Vector3(0.2, 0, -11.4)
+rotation = Vector3(0, 0.1745, 0)
+
+[node name="BarrelPier" parent="." instance=ExtResource("4_barrel")]
+position = Vector3(2.15, -0.7, 37.8)
+rotation = Vector3(0, 0.3491, 0)
+
+[node name="BarrelAlleyA" parent="." instance=ExtResource("4_barrel")]
+position = Vector3(5.15, 0, -20.9)
+rotation = Vector3(0, 0.3491, 0)
+
+[node name="BarrelAlleyB" parent="." instance=ExtResource("4_barrel")]
+position = Vector3(5.2, 0, -19.8)
+rotation = Vector3(0, -0.2094, 0)
+
+[node name="CrateAlleyA" parent="." instance=ExtResource("1_crate_wood")]
+position = Vector3(2.45, 0, -16.4)
+rotation = Vector3(0, 0.1396, 0)
+
+[node name="CrateAlleyA_top" parent="." instance=ExtResource("1_crate_wood")]
+position = Vector3(2.5, 0.82, -16.35)
+rotation = Vector3(0, -0.1047, 0)
+scale = Vector3(0.85, 0.85, 0.85)
+
+[node name="CrateMilitaryAlley" parent="." instance=ExtResource("2_crate_military")]
+position = Vector3(5.25, 0, -15.1)
+rotation = Vector3(0, 0.2618, 0)
+
+[node name="CratePlasticAlley" parent="." instance=ExtResource("3_crate_plastic")]
+position = Vector3(4.95, 0, -13.2)
+rotation = Vector3(0, -0.4363, 0)
+
+[node name="TrashBagAlley" parent="." instance=ExtResource("10_trashbag")]
+position = Vector3(2.5, 0, -23.2)
+
+[node name="PipesWallA" parent="." instance=ExtResource("6_pipes")]
+position = Vector3(5.8, 0, -6.4)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="PipesWallB" parent="." instance=ExtResource("6_pipes")]
+position = Vector3(5.8, 0, -2)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="LadderAlley" parent="." instance=ExtResource("7_ladder")]
+position = Vector3(2.3, 0, -21)
+rotation = Vector3(0, 1.5708, 0)
+
+[node name="BenchSeafront" parent="." instance=ExtResource("5_bench")]
+position = Vector3(-6.6, 0, 20.3)
+rotation = Vector3(0, 3.1416, 0)
+
+[node name="CratePier" parent="." instance=ExtResource("1_crate_wood")]
+position = Vector3(2.05, -0.7, 36.2)
+rotation = Vector3(0, 0.4363, 0)
+
+[node name="TrashCanPier" parent="." instance=ExtResource("9_trash_can")]
+position = Vector3(-2.15, -0.7, 28)

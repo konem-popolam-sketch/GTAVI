@@ -1,0 +1,26 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3]
+
+; Процедурная PBR-текстура (tools/gen_pbr_textures.py), 2k, без внешних ассетов.
+
+[ext_resource type="Texture2D" path="res://assets/textures/brick/brick_diff_2k.png" id="1_albedo"]
+[ext_resource type="Texture2D" path="res://assets/textures/brick/brick_normal_2k.png" id="2_normal"]
+[ext_resource type="Texture2D" path="res://assets/textures/brick/brick_rough_2k.png" id="3_rough"]
+[ext_resource type="Texture2D" path="res://assets/textures/brick/brick_ao_2k.png" id="4_ao"]
+
+[resource]
+resource_name = "brick_grey_pbr"
+albedo_texture = ExtResource("1_albedo")
+albedo_color = Color(0.660, 0.720, 0.840, 1)
+metallic = 0.00
+metallic_specular = 0.35
+roughness = 0.90
+roughness_texture = ExtResource("3_rough")
+roughness_texture_channel = 0
+normal_enabled = true
+normal_texture = ExtResource("2_normal")
+normal_scale = 1.00
+ao_enabled = true
+ao_texture = ExtResource("4_ao")
+ao_texture_channel = 0
+ao_light_affect = 0.40
+uv1_scale = Vector3(7.0, 7.0, 7.0)

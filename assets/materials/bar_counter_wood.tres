@@ -1,0 +1,27 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3]
+
+; Барная стойка (t46): существующая процедурная текстура дерева (dock_planks),
+; БЕЗ перегенерации. Итоговый тон после умножения текстуры ≈ (0.22, 0.14, 0.09):
+; тёмное тёплое дерево, читается в свете ламп над стойкой.
+; Подключать на стойку бара и фасадные панели (интерьер клуба, t36).
+
+[ext_resource type="Texture2D" path="res://assets/textures/dock_planks/dock_planks_diff_2k.png" id="1_albedo"]
+[ext_resource type="Texture2D" path="res://assets/textures/dock_planks/dock_planks_normal_2k.png" id="2_normal"]
+[ext_resource type="Texture2D" path="res://assets/textures/dock_planks/dock_planks_rough_2k.png" id="3_rough"]
+[ext_resource type="Texture2D" path="res://assets/textures/dock_planks/dock_planks_ao_2k.png" id="4_ao"]
+
+[resource]
+resource_name = "bar_counter_wood"
+albedo_texture = ExtResource("1_albedo")
+albedo_color = Color(0.75, 0.55, 0.38, 1)
+metallic = 0.0
+metallic_specular = 0.35
+roughness = 0.55
+roughness_texture = ExtResource("3_rough")
+normal_enabled = true
+normal_texture = ExtResource("2_normal")
+normal_scale = 0.6
+ao_enabled = true
+ao_texture = ExtResource("4_ao")
+ao_light_affect = 0.35
+uv1_scale = Vector3(3.0, 3.0, 3.0)

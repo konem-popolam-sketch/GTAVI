@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+; Опциональная замена res://assets/materials/asphalt.tres (тот же асфальт, но
+; с процедурными лужами и рябью от дождя). По умолчанию в сцене НЕ стоит —
+; интегратор решает, ставить ли на Ground.material_override.
+
+[ext_resource type="Shader" path="res://assets/shaders/wet_asphalt.gdshader" id="1_wet"]
+
+[resource]
+resource_name = "asphalt_wet"
+shader = ExtResource("1_wet")
+shader_parameter/dry_color = Color(0.075, 0.078, 0.09, 1)
+shader_parameter/wet_color = Color(0.035, 0.038, 0.048, 1)
+shader_parameter/puddle_scale = 0.09
+shader_parameter/puddle_bias = 0.45
+shader_parameter/puddle_contrast = 2.0
+shader_parameter/dry_roughness = 0.5
+shader_parameter/wet_roughness = 0.07
+shader_parameter/asphalt_metallic = 0.4
+shader_parameter/rain_amount = 0.55
+shader_parameter/rain_speed = 1.0
+shader_parameter/ripple_scale = 2.4
+shader_parameter/ripple_strength = 0.3

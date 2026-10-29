@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3]
+
+; Палитра «складской квартал» (t42): тёмный бетон, крупная фактура, выше контраст.
+; uv1_scale 2.0 — номинал для фасада 12×18 м.
+
+[ext_resource type="Texture2D" path="res://assets/textures/concrete/concrete_diff_2k.png" id="1_albedo"]
+[ext_resource type="Texture2D" path="res://assets/textures/concrete/concrete_normal_2k.png" id="2_normal"]
+[ext_resource type="Texture2D" path="res://assets/textures/concrete/concrete_rough_2k.png" id="3_rough"]
+[ext_resource type="Texture2D" path="res://assets/textures/concrete/concrete_ao_2k.png" id="4_ao"]
+
+[resource]
+resource_name = "city_facade_industrial"
+albedo_texture = ExtResource("1_albedo")
+albedo_color = Color(0.40, 0.42, 0.46, 1)
+metallic = 0.05
+metallic_specular = 0.25
+roughness = 0.94
+roughness_texture = ExtResource("3_rough")
+normal_enabled = true
+normal_texture = ExtResource("2_normal")
+normal_scale = 0.9
+ao_enabled = true
+ao_texture = ExtResource("4_ao")
+ao_light_affect = 0.45
+uv1_scale = Vector3(2.0, 2.0, 2.0)

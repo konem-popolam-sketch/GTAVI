@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=1 format=3]
+
+; Стекло машины (t46): тёмное, полупрозрачное, alpha 0.55, cull back (0 — по умолчанию,
+; задан явно). Без emission: ночью читается отражениями, а не свечением.
+; Подключать на стёкла в scenes/objects/vehicle.tscn.
+
+[resource]
+resource_name = "car_glass"
+albedo_color = Color(0.02, 0.02, 0.025, 0.55)
+metallic = 0.0
+metallic_specular = 0.5
+roughness = 0.06
+transparency = 1
+cull_mode = 0

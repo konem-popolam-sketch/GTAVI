@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "neon_cyan"
+albedo_color = Color(0.03, 0.24, 0.3, 1)
+metallic = 0.0
+roughness = 0.25
+emission_enabled = true
+emission = Color(0.14, 0.86, 1, 1)
+emission_energy_multiplier = 1.9

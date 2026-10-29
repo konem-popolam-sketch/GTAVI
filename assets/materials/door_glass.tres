@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+; Витрина/дверь магазина (ревизия t13 по кадру 11_mila_closeup):
+; было emission (0.3,0.85,1) × 1.0 при metallic 0.6 / roughness 0.06 — плоскость 2.4×3 м
+; выжигалась bloom'ом в белый cyan-прямоугольник и глушила силуэты NPC.
+; Стало: глубокое тёмное стекло, emission ×0.95 и приглушённый цвет, roughness 0.16 —
+; блик остаётся, но витрина читается стеклом, а не «простынёй». Неоновую вывеску
+; (neon_magenta / neon_cyan) не трогаем — она хороша.
+
+[resource]
+resource_name = "door_glass"
+albedo_color = Color(0.03, 0.05, 0.06, 1)
+metallic = 0.15
+metallic_specular = 0.4
+roughness = 0.16
+emission_enabled = true
+emission = Color(0.12, 0.34, 0.42, 1)
+emission_energy_multiplier = 0.95

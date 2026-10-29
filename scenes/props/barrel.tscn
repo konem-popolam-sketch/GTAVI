@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3]
+
+; Ржавая бочка: корпус + два ребра жёсткости, цилиндрическая коллизия.
+
+[ext_resource type="Material" path="res://assets/materials/prop_rust.tres" id="1_rust"]
+
+[sub_resource type="CylinderMesh" id="MeshBody"]
+top_radius = 0.29
+bottom_radius = 0.29
+height = 0.88
+radial_segments = 24
+
+[sub_resource type="CylinderMesh" id="MeshRib"]
+top_radius = 0.305
+bottom_radius = 0.305
+height = 0.05
+radial_segments = 24
+
+[sub_resource type="CylinderShape3D" id="ShapeBody"]
+radius = 0.3
+height = 0.88
+
+[node name="Barrel" type="Node3D"]
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.44, 0)
+mesh = SubResource("MeshBody")
+material_override = ExtResource("1_rust")
+
+[node name="RibTop" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.62, 0)
+mesh = SubResource("MeshRib")
+material_override = ExtResource("1_rust")
+
+[node name="RibBottom" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.28, 0)
+mesh = SubResource("MeshRib")
+material_override = ExtResource("1_rust")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 0.44, 0)
+shape = SubResource("ShapeBody")

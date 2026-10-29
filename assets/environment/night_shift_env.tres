@@ -1,0 +1,65 @@
+[gd_resource type="Environment" load_steps=3 format=3]
+
+; NIGHT SHIFT — ночное окружение квартала.
+; Самодостаточный Environment-ресурс: интегратору достаточно поставить его
+; на узел WorldEnvironment (scene world/block.tscn) вместо встроенного EnvNight.
+;   env = load("res://assets/environment/night_shift_env.tres")
+;   $WorldEnvironment.environment = env
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMatNight"]
+sky_top_color = Color(0.006, 0.011, 0.032, 1)
+sky_horizon_color = Color(0.058, 0.082, 0.145, 1)
+sky_curve = 0.12
+sky_energy_multiplier = 0.9
+ground_bottom_color = Color(0.006, 0.008, 0.014, 1)
+ground_horizon_color = Color(0.042, 0.056, 0.092, 1)
+ground_curve = 0.08
+sun_angle_max = 24.0
+sun_curve = 0.12
+
+[sub_resource type="Sky" id="SkyNight"]
+sky_material = SubResource("SkyMatNight")
+process_mode = 2
+radiance_size = 3
+
+[resource]
+resource_name = "night_shift_env"
+background_mode = 2
+sky = SubResource("SkyNight")
+ambient_light_source = 2
+ambient_light_color = Color(0.18, 0.22, 0.35, 1)
+ambient_light_sky_contribution = 0.35
+ambient_light_energy = 1.15
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_exposure = 1.2
+tonemap_white = 6.0
+ssr_enabled = true
+ssr_max_steps = 48
+ssr_fade_in = 0.12
+ssr_fade_out = 2.0
+ssr_depth_tolerance = 0.35
+glow_enabled = true
+glow_levels/1 = 0.0
+glow_levels/2 = 0.35
+glow_levels/3 = 0.8
+glow_levels/4 = 0.75
+glow_levels/5 = 0.45
+glow_intensity = 0.95
+glow_strength = 1.05
+glow_bloom = 0.06
+glow_blend_mode = 1
+glow_hdr_threshold = 0.85
+glow_hdr_scale = 2.0
+glow_normalized = true
+fog_enabled = true
+fog_light_color = Color(0.15, 0.2, 0.33, 1)
+fog_light_energy = 0.9
+fog_sun_scatter = 0.0
+fog_density = 0.016
+fog_aerial_perspective = 0.45
+fog_sky_affect = 0.28
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.06
+adjustment_saturation = 1.1

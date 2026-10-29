@@ -1,0 +1,563 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scenes/interiors/interior_scene.gd" id="1_scene"]
+[ext_resource type="Script" path="res://scripts/world/interior_door.gd" id="2_door"]
+[ext_resource type="Material" path="res://assets/materials/concrete_pbr.tres" id="3_concrete"]
+[ext_resource type="Material" path="res://assets/materials/metal_pbr.tres" id="4_metal"]
+[ext_resource type="Material" path="res://assets/materials/brick_grey_pbr.tres" id="5_brick_grey"]
+[ext_resource type="Material" path="res://assets/materials/brick_red_pbr.tres" id="6_brick_red"]
+[ext_resource type="Material" path="res://assets/materials/neon_magenta.tres" id="7_neon"]
+[ext_resource type="Material" path="res://assets/materials/neon_cyan.tres" id="8_neon_cyan"]
+[ext_resource type="Material" path="res://assets/materials/door_glass.tres" id="9_glass"]
+[ext_resource type="Material" path="res://assets/materials/window_warm.tres" id="10_warm"]
+
+[sub_resource type="Environment" id="EnvClub"]
+background_mode = 1
+background_color = Color(0.008, 0.01, 0.018, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.16, 0.2, 0.3, 1)
+ambient_light_energy = 0.6
+fog_enabled = true
+fog_light_color = Color(0.08, 0.1, 0.18, 1)
+fog_light_energy = 1.0
+fog_density = 0.03
+glow_enabled = true
+tonemap_mode = 3
+
+[sub_resource type="BoxMesh" id="UnitBox"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="ShapeExitDoor"]
+size = Vector3(1.6, 2.6, 0.2)
+
+[node name="Club" type="Node3D"]
+script = ExtResource("1_scene")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("EnvClub")
+
+[node name="PreviewCamera" type="Camera3D" parent="."]
+position = Vector3(0, 2, 4.6)
+rotation = Vector3(-0.12, 0, 0)
+current = true
+fov = 70.0
+near = 0.05
+far = 100.0
+
+[node name="ClubEntry" type="Marker3D" parent="." groups=["interior_club", "interior_entry"]]
+position = Vector3(0, 0.05, 4.4)
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, -0.15, 0)
+size = Vector3(12, 0.3, 12)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="Ceiling" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 5.7, 0)
+size = Vector3(12, 0.2, 12)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="WallNorth" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 2.8, -5.85)
+size = Vector3(12, 5.6, 0.3)
+material = ExtResource("5_brick_grey")
+use_collision = true
+
+[node name="WallSouthL" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.45, 2.8, 5.85)
+size = Vector3(5.1, 5.6, 0.3)
+material = ExtResource("5_brick_grey")
+use_collision = true
+
+[node name="WallSouthR" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.45, 2.8, 5.85)
+size = Vector3(5.1, 5.6, 0.3)
+material = ExtResource("5_brick_grey")
+use_collision = true
+
+[node name="WallSouthTop" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 4.1, 5.85)
+size = Vector3(1.8, 3, 0.3)
+material = ExtResource("5_brick_grey")
+use_collision = true
+
+[node name="WallWest" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-5.85, 2.8, 0)
+size = Vector3(0.3, 5.6, 12)
+material = ExtResource("6_brick_red")
+use_collision = true
+
+[node name="WallEast" type="CSGBox3D" parent="Geometry"]
+position = Vector3(5.85, 2.8, 0)
+size = Vector3(0.3, 5.6, 12)
+material = ExtResource("6_brick_red")
+use_collision = true
+
+[node name="DanceFloor" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-0.9, 0.15, -1.1)
+size = Vector3(6, 0.3, 5.4)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="DanceStep" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-0.9, 0.075, 1.85)
+size = Vector3(6, 0.15, 0.6)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="DanceTileA" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-2.4, 0.31, -1.1)
+size = Vector3(0.08, 0.02, 4.8)
+material = ExtResource("8_neon_cyan")
+
+[node name="DanceTileB" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0.7, 0.31, -1.1)
+size = Vector3(0.08, 0.02, 4.8)
+material = ExtResource("7_neon")
+
+[node name="DanceTileC" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-0.9, 0.31, -3.2)
+size = Vector3(5.4, 0.02, 0.08)
+material = ExtResource("7_neon")
+
+[node name="DJ" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 0.75, -4.8)
+size = Vector3(4.2, 1.5, 1.2)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="DJPanel" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 1.56, -4.65)
+size = Vector3(3.8, 0.12, 0.7)
+material = ExtResource("7_neon")
+
+[node name="DJLabel" type="Label3D" parent="Geometry"]
+position = Vector3(0, 3.2, -5.62)
+text = "ЛУНА"
+font_size = 96
+pixel_size = 0.011
+modulate = Color(1.8, 0.32, 1.05, 1)
+outline_size = 0
+
+[node name="BarCounter" type="CSGBox3D" parent="Geometry"]
+position = Vector3(4.9, 0.55, 0.6)
+size = Vector3(0.7, 1.1, 4.6)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="BarShelfLow" type="CSGBox3D" parent="Geometry"]
+position = Vector3(5.55, 2.1, 0.6)
+size = Vector3(0.4, 0.1, 4.6)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="BarShelfHigh" type="CSGBox3D" parent="Geometry"]
+position = Vector3(5.55, 2.8, 0.6)
+size = Vector3(0.4, 0.1, 4.6)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="BarWarmStrip" type="CSGBox3D" parent="Geometry"]
+position = Vector3(5.42, 3.1, 0.6)
+size = Vector3(0.06, 0.06, 4.4)
+material = ExtResource("10_warm")
+
+[node name="Bottle01" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 2.32, -1.6)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("9_glass")
+
+[node name="Bottle02" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 2.32, -1.15)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("7_neon")
+
+[node name="Bottle03" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 2.32, -0.7)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("9_glass")
+
+[node name="Bottle04" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 2.32, -0.25)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("8_neon_cyan")
+
+[node name="Bottle05" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 2.32, 0.2)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("9_glass")
+
+[node name="Bottle06" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 2.32, 0.65)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("7_neon")
+
+[node name="Bottle07" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 2.32, 1.1)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("9_glass")
+
+[node name="Bottle08" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 2.32, 1.55)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("8_neon_cyan")
+
+[node name="Bottle09" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 2.32, 2.0)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("9_glass")
+
+[node name="Bottle10" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 3.02, -1.4)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("7_neon")
+
+[node name="Bottle11" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 3.02, -0.95)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("9_glass")
+
+[node name="Bottle12" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 3.02, -0.5)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("8_neon_cyan")
+
+[node name="Bottle13" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 3.02, -0.05)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("9_glass")
+
+[node name="Bottle14" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 3.02, 0.4)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("7_neon")
+
+[node name="Bottle15" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 3.02, 0.85)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("9_glass")
+
+[node name="Bottle16" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(5.6, 3.02, 1.3)
+radius = 0.07
+height = 0.34
+sides = 8
+material = ExtResource("8_neon_cyan")
+
+[node name="Stool01" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(3.7, 0.33, -0.8)
+radius = 0.24
+height = 0.66
+sides = 10
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="Stool02" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(3.7, 0.33, 0.6)
+radius = 0.24
+height = 0.66
+sides = 10
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="Stool03" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(3.7, 0.33, 2.0)
+radius = 0.24
+height = 0.66
+sides = 10
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="TableA" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(-4.6, 0.72, 3.6)
+radius = 0.55
+height = 0.06
+sides = 14
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="TableALeg" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(-4.6, 0.35, 3.6)
+radius = 0.08
+height = 0.7
+sides = 8
+material = ExtResource("4_metal")
+
+[node name="TableB" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(-4.7, 0.72, 0.2)
+radius = 0.55
+height = 0.06
+sides = 14
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="TableBLeg" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(-4.7, 0.35, 0.2)
+radius = 0.08
+height = 0.7
+sides = 8
+material = ExtResource("4_metal")
+
+[node name="TableC" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(2.6, 0.72, 4.2)
+radius = 0.55
+height = 0.06
+sides = 14
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="TableCLeg" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(2.6, 0.35, 4.2)
+radius = 0.08
+height = 0.7
+sides = 8
+material = ExtResource("4_metal")
+
+[node name="ChairA" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-3.7, 0.3, 3.6)
+size = Vector3(0.45, 0.6, 0.45)
+material = ExtResource("6_brick_red")
+
+[node name="ChairB" type="CSGBox3D" parent="Geometry"]
+position = Vector3(2.6, 0.3, 3.3)
+size = Vector3(0.45, 0.6, 0.45)
+material = ExtResource("6_brick_red")
+
+[node name="VipPartition" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-5.0, 0.6, -3.4)
+size = Vector3(2, 1.2, 0.2)
+material = ExtResource("6_brick_red")
+use_collision = true
+
+[node name="VipNeon" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-5.0, 1.24, -3.4)
+size = Vector3(1.8, 0.05, 0.1)
+material = ExtResource("7_neon")
+
+[node name="VipSofa" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-4.2, 0.3, -5.2)
+size = Vector3(3.0, 0.6, 0.9)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="VipSofaBack" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-4.2, 0.75, -5.58)
+size = Vector3(3.0, 0.7, 0.2)
+material = ExtResource("6_brick_red")
+use_collision = true
+
+[node name="VipTable" type="CSGCylinder3D" parent="Geometry"]
+position = Vector3(-3.0, 0.45, -4.4)
+radius = 0.35
+height = 0.06
+sides = 12
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="VipLabel" type="Label3D" parent="Geometry"]
+position = Vector3(-4.2, 1.8, -3.32)
+text = "VIP"
+font_size = 48
+pixel_size = 0.01
+modulate = Color(1.6, 0.3, 1.05, 1)
+outline_size = 0
+
+[node name="BackRoomWall" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.15, 2.8, -4.8)
+size = Vector3(0.15, 5.6, 2.4)
+material = ExtResource("5_brick_grey")
+use_collision = true
+
+[node name="BackRoomSouthL" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.6, 2.8, -3.6)
+size = Vector3(0.8, 5.6, 0.15)
+material = ExtResource("5_brick_grey")
+use_collision = true
+
+[node name="BackRoomSouthR" type="CSGBox3D" parent="Geometry"]
+position = Vector3(5.6, 2.8, -3.6)
+size = Vector3(0.8, 5.6, 0.15)
+material = ExtResource("5_brick_grey")
+use_collision = true
+
+[node name="BackRoomSouthTop" type="CSGBox3D" parent="Geometry"]
+position = Vector3(4.6, 4.1, -3.6)
+size = Vector3(1.2, 3, 0.15)
+material = ExtResource("5_brick_grey")
+use_collision = true
+
+[node name="BackRoomShelf" type="CSGBox3D" parent="Geometry"]
+position = Vector3(3.7, 1.0, -5.4)
+size = Vector3(0.5, 2.0, 1.2)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="CrateA" type="CSGBox3D" parent="Geometry"]
+position = Vector3(5.3, 0.3, -5.3)
+size = Vector3(0.6, 0.6, 0.6)
+material = ExtResource("10_warm")
+use_collision = true
+
+[node name="CrateB" type="CSGBox3D" parent="Geometry"]
+position = Vector3(5.3, 0.3, -4.5)
+size = Vector3(0.6, 0.6, 0.6)
+material = ExtResource("4_metal")
+use_collision = true
+
+[node name="NeonNorth" type="CSGBox3D" parent="Geometry"]
+position = Vector3(0, 4.9, -5.62)
+size = Vector3(10, 0.08, 0.08)
+material = ExtResource("7_neon")
+
+[node name="NeonWest" type="CSGBox3D" parent="Geometry"]
+position = Vector3(-5.62, 4.2, 0)
+size = Vector3(0.08, 0.08, 10)
+material = ExtResource("8_neon_cyan")
+
+[node name="NeonEast" type="CSGBox3D" parent="Geometry"]
+position = Vector3(5.62, 4.2, 0)
+size = Vector3(0.08, 0.08, 10)
+material = ExtResource("7_neon")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="PivotMagentaA" type="Node3D" parent="Lights" groups=["interior_light_pivot"]]
+position = Vector3(-2.2, 4.4, -1.5)
+
+[node name="Light" type="OmniLight3D" parent="Lights/PivotMagentaA"]
+position = Vector3(1.0, 0, 0)
+light_color = Color(1, 0.28, 0.8, 1)
+light_energy = 2.2
+light_indirect_energy = 0.5
+omni_range = 8.0
+shadow_enabled = false
+
+[node name="PivotCyanA" type="Node3D" parent="Lights" groups=["interior_light_pivot"]]
+position = Vector3(2.2, 4.4, -1.5)
+
+[node name="Light" type="OmniLight3D" parent="Lights/PivotCyanA"]
+position = Vector3(-1.0, 0, 0)
+light_color = Color(0.2, 0.85, 1, 1)
+light_energy = 2.2
+light_indirect_energy = 0.5
+omni_range = 8.0
+shadow_enabled = false
+
+[node name="PivotMagentaB" type="Node3D" parent="Lights" groups=["interior_light_pivot"]]
+position = Vector3(-2.2, 4.4, 3.2)
+
+[node name="Light" type="OmniLight3D" parent="Lights/PivotMagentaB"]
+position = Vector3(1.0, 0, 0)
+light_color = Color(1, 0.28, 0.8, 1)
+light_energy = 2.0
+light_indirect_energy = 0.4
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="PivotCyanB" type="Node3D" parent="Lights" groups=["interior_light_pivot"]]
+position = Vector3(2.2, 4.4, 3.2)
+
+[node name="Light" type="OmniLight3D" parent="Lights/PivotCyanB"]
+position = Vector3(-1.0, 0, 0)
+light_color = Color(0.2, 0.85, 1, 1)
+light_energy = 2.0
+light_indirect_energy = 0.4
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="BarLight" type="OmniLight3D" parent="Lights" groups=["interior_flicker_light"]]
+position = Vector3(4.6, 3.0, 0.6)
+light_color = Color(1, 0.62, 0.36, 1)
+light_energy = 1.6
+light_indirect_energy = 0.4
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="EntryLight" type="OmniLight3D" parent="Lights"]
+position = Vector3(0, 3.0, 4.8)
+light_color = Color(0.3, 0.85, 1, 1)
+light_energy = 1.2
+light_indirect_energy = 0.3
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="VipLight" type="OmniLight3D" parent="Lights"]
+position = Vector3(-4.2, 2.6, -4.6)
+light_color = Color(1, 0.28, 0.8, 1)
+light_energy = 1.3
+light_indirect_energy = 0.3
+omni_range = 5.0
+shadow_enabled = false
+
+[node name="EntranceFrameL" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 0.3, -1.0, 1.5, 5.85)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("4_metal")
+
+[node name="EntranceFrameR" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 0.3, 1.0, 1.5, 5.85)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("4_metal")
+
+[node name="EntranceLintel" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(2.2, 0, 0, 0, 0.25, 0, 0, 0, 0.3, 0, 3.15, 5.85)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("4_metal")
+
+[node name="EntranceNeon" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1.7, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 2.95, 5.7)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("8_neon_cyan")
+
+[node name="ExitDoor" type="StaticBody3D" parent="."]
+position = Vector3(0, 1.32, 5.82)
+script = ExtResource("2_door")
+door_name = "Выход из клуба"
+interact_hint = "E — выйти на улицу"
+interior_group = "interior_club"
+is_exit_door = true
+save_key = "interior_return_club"
+fallback_exit_position = Vector3(0, 0.15, -64.4)
+fallback_exit_yaw = 3.14159265
+
+[node name="Panel" type="MeshInstance3D" parent="ExitDoor"]
+transform = Transform3D(1.6, 0, 0, 0, 2.6, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("4_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="ExitDoor"]
+shape = SubResource("ShapeExitDoor")

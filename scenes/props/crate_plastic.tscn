@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3]
+
+; Пластиковый ящик (складская тара) — синий, читается в тёмном переулке.
+
+[ext_resource type="Material" path="res://assets/materials/prop_plastic.tres" id="1_plastic"]
+
+[sub_resource type="BoxMesh" id="MeshBody"]
+size = Vector3(0.6, 0.42, 0.4)
+
+[sub_resource type="BoxShape3D" id="ShapeBody"]
+size = Vector3(0.6, 0.42, 0.4)
+
+[node name="CratePlastic" type="Node3D"]
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.21, 0)
+mesh = SubResource("MeshBody")
+material_override = ExtResource("1_plastic")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 0.21, 0)
+shape = SubResource("ShapeBody")

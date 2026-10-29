@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=1 format=3]
+
+; Тёмный трим машины (t46): бамперы, накладки, зеркала, решётка.
+; Чуть металличный, чтобы не был «чёрной дырой».
+
+[resource]
+resource_name = "car_trim_dark"
+albedo_color = Color(0.03, 0.03, 0.035, 1)
+metallic = 0.30
+metallic_specular = 0.4
+roughness = 0.55

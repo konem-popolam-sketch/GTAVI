@@ -1,0 +1,1823 @@
+[gd_scene load_steps=58 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/world.gd" id="1_world"]
+[ext_resource type="Environment" path="res://assets/environment/night_shift_env.tres" id="17_env_night"]
+[ext_resource type="Material" path="res://assets/materials/asphalt_pbr.tres" id="2_asphalt"]
+[ext_resource type="Material" path="res://assets/materials/concrete_pbr.tres" id="3_concrete"]
+[ext_resource type="Material" path="res://assets/materials/brick_red_pbr.tres" id="4_brick"]
+[ext_resource type="Material" path="res://assets/materials/brick_grey_pbr.tres" id="4b_brick_grey"]
+[ext_resource type="Material" path="res://assets/materials/shop_front.tres" id="5_shop_front"]
+[ext_resource type="Material" path="res://assets/materials/metal_pbr.tres" id="6_metal"]
+[ext_resource type="Material" path="res://assets/materials/neon_magenta.tres" id="7_neon_magenta"]
+[ext_resource type="Material" path="res://assets/materials/neon_cyan.tres" id="8_neon_cyan"]
+[ext_resource type="Material" path="res://assets/materials/door_glass.tres" id="9_door_glass"]
+[ext_resource type="Material" path="res://assets/materials/water.tres" id="10_water"]
+[ext_resource type="Material" path="res://assets/materials/lamp_glass.tres" id="11_lamp_glass"]
+[ext_resource type="Material" path="res://assets/materials/window_warm.tres" id="12_window_warm"]
+[ext_resource type="Material" path="res://assets/materials/markings.tres" id="13_markings"]
+[ext_resource type="Material" path="res://assets/materials/dock_planks_pbr.tres" id="14_dock_planks"]
+[ext_resource type="Material" path="res://assets/materials/car_dark.tres" id="15_car_dark"]
+[ext_resource type="Material" path="res://assets/materials/sign_dark.tres" id="16_sign_dark"]
+[ext_resource type="Script" path="res://scripts/world/interior_door.gd" id="18_interior_door"]
+
+[sub_resource type="CylinderMesh" id="CylPoleTall"]
+top_radius = 0.07
+bottom_radius = 0.12
+height = 5.6
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="CylPoleMid"]
+top_radius = 0.065
+bottom_radius = 0.11
+height = 5.2
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="CylPoleShort"]
+top_radius = 0.06
+bottom_radius = 0.1
+height = 4.2
+radial_segments = 12
+
+[sub_resource type="SphereMesh" id="BulbMesh"]
+radius = 0.17
+height = 0.34
+radial_segments = 12
+rings = 6
+
+[sub_resource type="PlaneMesh" id="WaterPlane"]
+size = Vector2(160, 80)
+
+[sub_resource type="BoxMesh" id="UnitBox"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="BoxMesh" id="RampMesh"]
+size = Vector3(1.5, 0.2, 11.18)
+
+[sub_resource type="BoxMesh" id="RailRampMesh"]
+size = Vector3(0.06, 1, 11.18)
+
+[sub_resource type="BoxMesh" id="StairRampMesh"]
+size = Vector3(4.5, 0.2, 2.4)
+
+[sub_resource type="CylinderMesh" id="TankMesh"]
+top_radius = 0.9
+bottom_radius = 0.9
+height = 1.6
+radial_segments = 16
+
+[sub_resource type="BoxShape3D" id="ShapeAnnex"]
+size = Vector3(2.4, 4.2, 16)
+
+[sub_resource type="BoxShape3D" id="ShapePillar"]
+size = Vector3(0.5, 3.2, 0.5)
+
+[sub_resource type="BoxShape3D" id="ShapeLintel"]
+size = Vector3(3.4, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="ShapeBench"]
+size = Vector3(0.5, 0.45, 1.8)
+
+[sub_resource type="BoxShape3D" id="ShapeBuildingC"]
+size = Vector3(6, 9, 20)
+
+[sub_resource type="BoxShape3D" id="ShapeDumpster"]
+size = Vector3(1.7, 1.2, 1.1)
+
+[sub_resource type="BoxShape3D" id="ShapeCrate"]
+size = Vector3(0.8, 0.8, 0.8)
+
+[sub_resource type="BoxShape3D" id="ShapeBin"]
+size = Vector3(1.2, 1, 0.8)
+
+[sub_resource type="BoxShape3D" id="ShapeRamp"]
+size = Vector3(1.5, 0.2, 11.18)
+
+[sub_resource type="BoxShape3D" id="ShapeRampRail"]
+size = Vector3(0.12, 1, 11.18)
+
+[sub_resource type="BoxShape3D" id="ShapeLanding"]
+size = Vector3(2.6, 0.2, 1.4)
+
+[sub_resource type="BoxShape3D" id="ShapeParapetLong"]
+size = Vector3(12, 0.9, 0.4)
+
+[sub_resource type="BoxShape3D" id="ShapeParapetWest"]
+size = Vector3(0.4, 0.9, 12)
+
+[sub_resource type="BoxShape3D" id="ShapeParapetEdge"]
+size = Vector3(0.4, 0.9, 0.8)
+
+[sub_resource type="BoxShape3D" id="ShapeParapetMid"]
+size = Vector3(0.4, 0.9, 10.2)
+
+[sub_resource type="BoxShape3D" id="ShapeShed"]
+size = Vector3(2.4, 2.2, 2)
+
+[sub_resource type="BoxShape3D" id="ShapeAc"]
+size = Vector3(1.2, 0.8, 0.9)
+
+[sub_resource type="BoxShape3D" id="ShapeTank"]
+size = Vector3(1.8, 1.6, 1.8)
+
+[sub_resource type="BoxShape3D" id="ShapeScreen"]
+size = Vector3(0.24, 3, 1.9)
+
+[sub_resource type="BoxShape3D" id="ShapePost"]
+size = Vector3(0.16, 3, 0.16)
+
+[sub_resource type="BoxShape3D" id="ShapeCanopy"]
+size = Vector3(4.5, 0.2, 1.9)
+
+[sub_resource type="BoxShape3D" id="ShapeQuay"]
+size = Vector3(4.5, 0.4, 3)
+
+[sub_resource type="BoxShape3D" id="ShapeStairRamp"]
+size = Vector3(4.5, 0.2, 2.4)
+
+[sub_resource type="BoxShape3D" id="ShapeStairRail"]
+size = Vector3(0.1, 1.6, 3)
+
+[sub_resource type="BoxShape3D" id="ShapeQuayRail"]
+size = Vector3(0.12, 0.9, 3.2)
+
+[sub_resource type="BoxShape3D" id="ShapeQuayParapet"]
+size = Vector3(4.5, 0.9, 0.15)
+
+[sub_resource type="BoxShape3D" id="ShapeSeaRail"]
+size = Vector3(14.9, 1, 0.12)
+
+[sub_resource type="BoxShape3D" id="ShapeInteriorDoor"]
+size = Vector3(1.6, 2.6, 0.2)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_world")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("17_env_night")
+
+[node name="MoonLight" type="DirectionalLight3D" parent="."]
+position = Vector3(0, 20, 0)
+rotation = Vector3(-0.95, -0.6, 0)
+light_color = Color(0.55, 0.65, 0.9, 1)
+light_energy = 0.15
+shadow_enabled = false
+
+[node name="Ground" type="CSGBox3D" parent="."]
+position = Vector3(0, -0.5, -5)
+size = Vector3(60, 1, 54)
+material = ExtResource("2_asphalt")
+use_collision = true
+
+[node name="RoadMarkings" type="Node3D" parent="."]
+
+[node name="DashA" type="CSGBox3D" parent="RoadMarkings"]
+position = Vector3(0, 0.02, -6)
+size = Vector3(0.2, 0.02, 2.4)
+material = ExtResource("13_markings")
+
+[node name="DashB" type="CSGBox3D" parent="RoadMarkings"]
+position = Vector3(0, 0.02, 0)
+size = Vector3(0.2, 0.02, 2.4)
+material = ExtResource("13_markings")
+
+[node name="DashC" type="CSGBox3D" parent="RoadMarkings"]
+position = Vector3(0, 0.02, 6)
+size = Vector3(0.2, 0.02, 2.4)
+material = ExtResource("13_markings")
+
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="BuildingA" type="CSGBox3D" parent="Buildings"]
+position = Vector3(-17, 6.5, -13)
+size = Vector3(14, 13, 22)
+material = ExtResource("4_brick")
+use_collision = true
+
+[node name="BuildingB" type="CSGBox3D" parent="Buildings"]
+position = Vector3(13, 5, -10)
+size = Vector3(14, 10, 28)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="WindowsA" type="Node3D" parent="Buildings"]
+
+[node name="WinA1" type="CSGBox3D" parent="Buildings/WindowsA"]
+position = Vector3(-22, 4.5, -1.94)
+size = Vector3(0.9, 1.1, 0.14)
+material = ExtResource("12_window_warm")
+
+[node name="WinA2" type="CSGBox3D" parent="Buildings/WindowsA"]
+position = Vector3(-19, 4.5, -1.94)
+size = Vector3(0.9, 1.1, 0.14)
+material = ExtResource("12_window_warm")
+
+[node name="WinA3" type="CSGBox3D" parent="Buildings/WindowsA"]
+position = Vector3(-22, 7.5, -1.94)
+size = Vector3(0.9, 1.1, 0.14)
+material = ExtResource("12_window_warm")
+
+[node name="WinA4" type="CSGBox3D" parent="Buildings/WindowsA"]
+position = Vector3(-9.94, 5, -6)
+size = Vector3(0.14, 1.2, 1.4)
+material = ExtResource("12_window_warm")
+
+[node name="WinA5" type="CSGBox3D" parent="Buildings/WindowsA"]
+position = Vector3(-9.94, 8, -9)
+size = Vector3(0.14, 1.2, 1.4)
+material = ExtResource("12_window_warm")
+
+[node name="WindowsB" type="Node3D" parent="Buildings"]
+
+[node name="WinB1" type="CSGBox3D" parent="Buildings/WindowsB"]
+position = Vector3(5.94, 4.5, 0)
+size = Vector3(0.14, 1.2, 1.6)
+material = ExtResource("12_window_warm")
+
+[node name="WinB2" type="CSGBox3D" parent="Buildings/WindowsB"]
+position = Vector3(5.94, 4.5, -4)
+size = Vector3(0.14, 1.2, 1.6)
+material = ExtResource("12_window_warm")
+
+[node name="WinB3" type="CSGBox3D" parent="Buildings/WindowsB"]
+position = Vector3(5.94, 7, -2)
+size = Vector3(0.14, 1.2, 1.6)
+material = ExtResource("12_window_warm")
+
+[node name="WinB4" type="CSGBox3D" parent="Buildings/WindowsB"]
+position = Vector3(5.94, 5.5, -16)
+size = Vector3(0.14, 1.2, 1.6)
+material = ExtResource("12_window_warm")
+
+[node name="WinB5" type="CSGBox3D" parent="Buildings/WindowsB"]
+position = Vector3(11, 4.5, 4.06)
+size = Vector3(1.6, 1.2, 0.14)
+material = ExtResource("12_window_warm")
+
+[node name="WinB6" type="CSGBox3D" parent="Buildings/WindowsB"]
+position = Vector3(16, 4.5, 4.06)
+size = Vector3(1.6, 1.2, 0.14)
+material = ExtResource("12_window_warm")
+
+[node name="WinB7" type="CSGBox3D" parent="Buildings/WindowsB"]
+position = Vector3(13, 7.5, 4.06)
+size = Vector3(1.6, 1.2, 0.14)
+material = ExtResource("12_window_warm")
+
+[node name="Shop" type="Node3D" parent="."]
+
+[node name="Shell" type="CSGBox3D" parent="Shop"]
+position = Vector3(-4, 2.5, -18)
+size = Vector3(12, 5, 12)
+material = ExtResource("5_shop_front")
+use_collision = true
+
+[node name="Entrance" type="CSGBox3D" parent="Shop"]
+position = Vector3(-4, 1.55, -11.9)
+size = Vector3(2.4, 3, 0.14)
+material = ExtResource("9_door_glass")
+
+[node name="SignBoard" type="CSGBox3D" parent="Shop"]
+position = Vector3(-4, 4.2, -11.94)
+size = Vector3(6.4, 1.5, 0.2)
+material = ExtResource("16_sign_dark")
+
+[node name="NeonBar" type="CSGBox3D" parent="Shop"]
+position = Vector3(-4, 3.38, -11.82)
+size = Vector3(6.4, 0.1, 0.1)
+material = ExtResource("7_neon_magenta")
+
+[node name="CyanStrip" type="CSGBox3D" parent="Shop"]
+position = Vector3(-4, 3.05, -11.8)
+size = Vector3(3.6, 0.08, 0.08)
+material = ExtResource("8_neon_cyan")
+
+[node name="SignLabel" type="Label3D" parent="Shop"]
+position = Vector3(-4, 4.2, -11.78)
+text = "ЛУНА"
+font_size = 96
+pixel_size = 0.011
+modulate = Color(1.9, 0.32, 1.15, 1)
+outline_size = 0
+
+[node name="SignSub" type="Label3D" parent="Shop"]
+position = Vector3(-4, 3.62, -11.78)
+text = "24 Ч"
+font_size = 36
+pixel_size = 0.011
+modulate = Color(0.35, 1.6, 1.85, 1)
+outline_size = 0
+
+[node name="NeonLight" type="OmniLight3D" parent="Shop" groups=["neon_sign"]]
+position = Vector3(-4, 3.9, -10.4)
+light_color = Color(1, 0.3, 0.85, 1)
+light_energy = 1.9
+light_indirect_energy = 0.6
+omni_range = 9.0
+shadow_enabled = true
+
+[node name="Alley" type="Node3D" parent="."]
+
+[node name="BackWall" type="CSGBox3D" parent="Alley"]
+position = Vector3(4, 3, -24)
+size = Vector3(4.2, 6, 0.5)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="Dumpster" type="CSGBox3D" parent="Alley"]
+position = Vector3(4.6, 0.55, -22.4)
+size = Vector3(1.6, 1.1, 1.1)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="DumpsterLid" type="CSGBox3D" parent="Alley"]
+position = Vector3(4.6, 1.14, -22.4)
+size = Vector3(1.72, 0.08, 1.2)
+material = ExtResource("6_metal")
+
+[node name="Crate" type="CSGBox3D" parent="Alley"]
+position = Vector3(2.75, 0.4, -19.4)
+size = Vector3(0.8, 0.8, 0.8)
+material = ExtResource("14_dock_planks")
+use_collision = true
+
+[node name="AlleyBulb" type="MeshInstance3D" parent="Alley"]
+position = Vector3(4.9, 3.4, -21.5)
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="AlleyLight" type="OmniLight3D" parent="Alley" groups=["street_lamp"]]
+position = Vector3(4.9, 3.4, -21.5)
+light_color = Color(1, 0.7, 0.42, 1)
+light_energy = 2.69
+light_indirect_energy = 0.7
+omni_range = 13.0
+shadow_enabled = true
+
+[node name="Parking" type="Node3D" parent="."]
+
+[node name="Curbs" type="Node3D" parent="Parking"]
+
+[node name="CurbNorth" type="CSGBox3D" parent="Parking/Curbs"]
+position = Vector3(-17, 0.09, 6)
+size = Vector3(18, 0.18, 0.3)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="CurbSouth" type="CSGBox3D" parent="Parking/Curbs"]
+position = Vector3(-17, 0.09, 18)
+size = Vector3(18, 0.18, 0.3)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="CurbWest" type="CSGBox3D" parent="Parking/Curbs"]
+position = Vector3(-26, 0.09, 12)
+size = Vector3(0.3, 0.18, 12)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="CurbEast" type="CSGBox3D" parent="Parking/Curbs"]
+position = Vector3(-8, 0.09, 9.5)
+size = Vector3(0.3, 0.18, 7)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="StallLines" type="Node3D" parent="Parking"]
+
+[node name="StallA" type="CSGBox3D" parent="Parking/StallLines"]
+position = Vector3(-23, 0.02, 11.6)
+size = Vector3(0.12, 0.02, 5.4)
+material = ExtResource("13_markings")
+
+[node name="StallB" type="CSGBox3D" parent="Parking/StallLines"]
+position = Vector3(-19, 0.02, 11.6)
+size = Vector3(0.12, 0.02, 5.4)
+material = ExtResource("13_markings")
+
+[node name="StallC" type="CSGBox3D" parent="Parking/StallLines"]
+position = Vector3(-15, 0.02, 11.6)
+size = Vector3(0.12, 0.02, 5.4)
+material = ExtResource("13_markings")
+
+[node name="StallD" type="CSGBox3D" parent="Parking/StallLines"]
+position = Vector3(-11, 0.02, 11.6)
+size = Vector3(0.12, 0.02, 5.4)
+material = ExtResource("13_markings")
+
+[node name="FenceNorth" type="CSGBox3D" parent="Parking"]
+position = Vector3(-17, 1, 6)
+size = Vector3(18, 0.9, 0.12)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="FenceSouth" type="CSGBox3D" parent="Parking"]
+position = Vector3(-17, 1, 18)
+size = Vector3(18, 0.9, 0.12)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="FenceWest" type="CSGBox3D" parent="Parking"]
+position = Vector3(-26, 1, 12)
+size = Vector3(0.12, 0.9, 12)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="FenceEast" type="CSGBox3D" parent="Parking"]
+position = Vector3(-8, 1, 9.5)
+size = Vector3(0.12, 0.9, 7)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="GatePostA" type="CSGBox3D" parent="Parking"]
+position = Vector3(-8, 0.75, 13)
+size = Vector3(0.2, 1.5, 0.2)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="GatePostB" type="CSGBox3D" parent="Parking"]
+position = Vector3(-8, 0.75, 18)
+size = Vector3(0.2, 1.5, 0.2)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="PostA" type="CSGBox3D" parent="Parking"]
+position = Vector3(-26, 0.85, 6)
+size = Vector3(0.16, 1.7, 0.16)
+material = ExtResource("6_metal")
+
+[node name="PostB" type="CSGBox3D" parent="Parking"]
+position = Vector3(-17, 0.85, 6)
+size = Vector3(0.16, 1.7, 0.16)
+material = ExtResource("6_metal")
+
+[node name="PostC" type="CSGBox3D" parent="Parking"]
+position = Vector3(-8, 0.85, 6)
+size = Vector3(0.16, 1.7, 0.16)
+material = ExtResource("6_metal")
+
+[node name="PostD" type="CSGBox3D" parent="Parking"]
+position = Vector3(-26, 0.85, 18)
+size = Vector3(0.16, 1.7, 0.16)
+material = ExtResource("6_metal")
+
+[node name="PostE" type="CSGBox3D" parent="Parking"]
+position = Vector3(-17, 0.85, 18)
+size = Vector3(0.16, 1.7, 0.16)
+material = ExtResource("6_metal")
+
+[node name="PostF" type="CSGBox3D" parent="Parking"]
+position = Vector3(-26, 0.85, 12)
+size = Vector3(0.16, 1.7, 0.16)
+material = ExtResource("6_metal")
+
+[node name="Car1" type="Node3D" parent="Parking"]
+position = Vector3(-20, 0, 10)
+
+[node name="Body" type="CSGBox3D" parent="Parking/Car1"]
+position = Vector3(0, 0.65, 0)
+size = Vector3(1.9, 0.7, 4.4)
+material = ExtResource("15_car_dark")
+use_collision = true
+
+[node name="Cabin" type="CSGBox3D" parent="Parking/Car1"]
+position = Vector3(0, 1.25, -0.2)
+size = Vector3(1.7, 0.6, 2)
+material = ExtResource("15_car_dark")
+use_collision = true
+
+[node name="Car2" type="Node3D" parent="Parking"]
+position = Vector3(-14.5, 0, 14.5)
+
+[node name="Body" type="CSGBox3D" parent="Parking/Car2"]
+position = Vector3(0, 0.65, 0)
+size = Vector3(1.9, 0.7, 4.4)
+material = ExtResource("15_car_dark")
+use_collision = true
+
+[node name="Cabin" type="CSGBox3D" parent="Parking/Car2"]
+position = Vector3(0, 1.25, -0.2)
+size = Vector3(1.7, 0.6, 2)
+material = ExtResource("15_car_dark")
+use_collision = true
+
+[node name="Waterfront" type="Node3D" parent="."]
+
+[node name="Slope" type="CSGBox3D" parent="Waterfront"]
+position = Vector3(0, -0.4, 24)
+rotation = Vector3(0.175, 0, 0)
+size = Vector3(8, 0.3, 4.4)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="PierDeck" type="CSGBox3D" parent="Waterfront"]
+position = Vector3(0, -0.95, 33)
+size = Vector3(6, 0.5, 14)
+material = ExtResource("14_dock_planks")
+use_collision = true
+
+[node name="PierPost1" type="CSGBox3D" parent="Waterfront"]
+position = Vector3(-2.7, -2, 27.5)
+size = Vector3(0.28, 3, 0.28)
+material = ExtResource("6_metal")
+
+[node name="PierPost2" type="CSGBox3D" parent="Waterfront"]
+position = Vector3(2.7, -2, 27.5)
+size = Vector3(0.28, 3, 0.28)
+material = ExtResource("6_metal")
+
+[node name="PierPost3" type="CSGBox3D" parent="Waterfront"]
+position = Vector3(-2.7, -2, 38.5)
+size = Vector3(0.28, 3, 0.28)
+material = ExtResource("6_metal")
+
+[node name="PierPost4" type="CSGBox3D" parent="Waterfront"]
+position = Vector3(2.7, -2, 38.5)
+size = Vector3(0.28, 3, 0.28)
+material = ExtResource("6_metal")
+
+[node name="PierRailLeft" type="CSGBox3D" parent="Waterfront"]
+position = Vector3(-2.85, -0.3, 33)
+size = Vector3(0.1, 0.9, 14)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="PierRailRight" type="CSGBox3D" parent="Waterfront"]
+position = Vector3(2.85, -0.3, 33)
+size = Vector3(0.1, 0.9, 14)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="Water" type="MeshInstance3D" parent="Waterfront"]
+position = Vector3(0, -1.5, 60)
+mesh = SubResource("WaterPlane")
+material_override = ExtResource("10_water")
+
+[node name="Perimeter" type="Node3D" parent="."]
+
+[node name="WallNorthWest" type="CSGBox3D" parent="Perimeter"]
+position = Vector3(-16.5, 1.2, -26.4)
+size = Vector3(27, 2.4, 0.6)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="WallNorthEast" type="CSGBox3D" parent="Perimeter"]
+position = Vector3(16.5, 1.2, -26.4)
+size = Vector3(27, 2.4, 0.6)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="WallWest" type="CSGBox3D" parent="Perimeter"]
+position = Vector3(-29.7, 1.2, -1.95)
+size = Vector3(0.6, 2.4, 48.9)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="WallEast" type="CSGBox3D" parent="Perimeter"]
+position = Vector3(29.7, 1.2, -1.95)
+size = Vector3(0.6, 2.4, 48.9)
+material = ExtResource("3_concrete")
+use_collision = true
+
+[node name="SeaRailWest" type="CSGBox3D" parent="Perimeter"]
+position = Vector3(-17.2, 0.55, 21.9)
+size = Vector3(24.4, 1, 0.12)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="SeaRailEast" type="CSGBox3D" parent="Perimeter"]
+position = Vector3(7.5, 0.55, 21.9)
+size = Vector3(5, 1, 0.12)
+material = ExtResource("6_metal")
+use_collision = true
+
+[node name="Lamps" type="Node3D" parent="."]
+
+[node name="LampShop" type="Node3D" parent="Lamps"]
+position = Vector3(-7.6, 0, -10.2)
+
+[node name="Pole" type="MeshInstance3D" parent="Lamps/LampShop"]
+position = Vector3(0, 2.8, 0)
+mesh = SubResource("CylPoleTall")
+material_override = ExtResource("6_metal")
+
+[node name="Arm" type="CSGBox3D" parent="Lamps/LampShop"]
+position = Vector3(0.7, 5.5, 0)
+size = Vector3(1.5, 0.1, 0.1)
+material = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="Lamps/LampShop"]
+position = Vector3(1.4, 5.4, 0)
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="Lamps/LampShop" groups=["street_lamp"]]
+position = Vector3(1.4, 5.3, 0)
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 3.58
+light_indirect_energy = 0.7
+omni_range = 15.0
+shadow_enabled = true
+
+[node name="LampAlley" type="Node3D" parent="Lamps"]
+position = Vector3(5.7, 4.4, -11.2)
+
+[node name="Bracket" type="CSGBox3D" parent="Lamps/LampAlley"]
+position = Vector3(0.25, 0.12, 0)
+size = Vector3(0.6, 0.08, 0.08)
+material = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="Lamps/LampAlley"]
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="Lamps/LampAlley" groups=["street_lamp"]]
+position = Vector3(-0.1, -0.12, 0.15)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.46
+light_indirect_energy = 0.5
+omni_range = 10.0
+shadow_enabled = true
+
+[node name="LampPlaza" type="Node3D" parent="Lamps"]
+position = Vector3(2.4, 0, 3.2)
+
+[node name="Pole" type="MeshInstance3D" parent="Lamps/LampPlaza"]
+position = Vector3(0, 2.8, 0)
+mesh = SubResource("CylPoleTall")
+material_override = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="Lamps/LampPlaza"]
+position = Vector3(0, 5.72, 0)
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="Lamps/LampPlaza" groups=["street_lamp"]]
+position = Vector3(0, 5.65, 0)
+light_color = Color(1, 0.74, 0.45, 1)
+light_energy = 3.81
+light_indirect_energy = 0.8
+omni_range = 17.0
+shadow_enabled = true
+
+[node name="LampParking" type="Node3D" parent="Lamps"]
+position = Vector3(-5.2, 0, 9.6)
+
+[node name="Pole" type="MeshInstance3D" parent="Lamps/LampParking"]
+position = Vector3(0, 2.6, 0)
+mesh = SubResource("CylPoleMid")
+material_override = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="Lamps/LampParking"]
+position = Vector3(0, 5.32, 0)
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="Lamps/LampParking" groups=["street_lamp"]]
+position = Vector3(0, 5.25, 0)
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 3.36
+light_indirect_energy = 0.7
+omni_range = 14.0
+shadow_enabled = true
+
+[node name="LampPierTop" type="Node3D" parent="Lamps"]
+position = Vector3(3.4, 0, 20.2)
+
+[node name="Pole" type="MeshInstance3D" parent="Lamps/LampPierTop"]
+position = Vector3(0, 2.6, 0)
+mesh = SubResource("CylPoleMid")
+material_override = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="Lamps/LampPierTop"]
+position = Vector3(0, 5.32, 0)
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="Lamps/LampPierTop" groups=["street_lamp"]]
+position = Vector3(0, 5.25, 0)
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 4.03
+light_indirect_energy = 0.9
+omni_range = 18.0
+shadow_enabled = true
+
+[node name="LampPierEnd" type="Node3D" parent="Lamps"]
+position = Vector3(2.4, -0.7, 35.2)
+
+[node name="Pole" type="MeshInstance3D" parent="Lamps/LampPierEnd"]
+position = Vector3(0, 2.1, 0)
+mesh = SubResource("CylPoleShort")
+material_override = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="Lamps/LampPierEnd"]
+position = Vector3(0, 4.32, 0)
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="Lamps/LampPierEnd" groups=["street_lamp"]]
+position = Vector3(0, 4.25, 0)
+light_color = Color(0.82, 0.86, 1, 1)
+light_energy = 4.26
+light_indirect_energy = 1.1
+omni_range = 18.0
+shadow_enabled = true
+
+[node name="StreetFillSpawn" type="OmniLight3D" parent="Lamps" groups=["street_lamp"]]
+position = Vector3(0, 4.2, 8)
+light_color = Color(1, 0.82, 0.62, 1)
+light_energy = 1.45
+light_indirect_energy = 0.4
+omni_range = 12.0
+shadow_enabled = false
+
+[node name="StreetFillSlope" type="OmniLight3D" parent="Lamps" groups=["street_lamp"]]
+position = Vector3(0.4, 3.6, 23.6)
+light_color = Color(1, 0.8, 0.6, 1)
+light_energy = 1.35
+light_indirect_energy = 0.4
+omni_range = 11.0
+shadow_enabled = false
+
+[node name="PointsOfInterest" type="Node3D" parent="."]
+
+[node name="POI_Shop" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(-4, 0, -10.9)
+
+[node name="POI_Pier" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(0, -0.7, 34.5)
+
+[node name="POI_Fence" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(-8.2, 0, 11.5)
+
+[node name="POI_Alley" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(4, 0, -11.6)
+
+[node name="POI_ShopPorch" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(-4, 0, -10.1)
+
+[node name="POI_Courtyard" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(-25.5, 0, -13.5)
+
+[node name="POI_BackPassage" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(8, 0, -25)
+
+[node name="POI_Alley2" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(21, 0, -15)
+
+[node name="POI_Rooftop" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(-4, 5.02, -18)
+
+[node name="POI_WaterStairs" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(12.25, 0, 20.9)
+
+[node name="POI_Quay" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(12.25, -0.7, 25.6)
+
+[node name="POI_Club" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(0, 0.15, -63.5)
+
+[node name="POI_Garage" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(84, 0.15, -58)
+
+[node name="POI_Fuel" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(-80, 0.15, -118)
+
+[node name="POI_Bridge" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(0, 0, 21.5)
+
+[node name="POI_Parking" type="Marker3D" parent="PointsOfInterest" groups=["poi"]]
+position = Vector3(-17, 0, 12)
+
+[node name="Markers" type="Node3D" parent="."]
+
+[node name="PlayerSpawn" type="Marker3D" parent="Markers"]
+position = Vector3(0, 0.1, 10)
+
+[node name="NpcSlots" type="Node3D" parent="Markers"]
+
+[node name="NPC_Mila" type="Marker3D" parent="Markers/NpcSlots" groups=["npc_slot"]]
+position = Vector3(-5.8, 0, -10.6)
+
+[node name="NPC_Foreman" type="Marker3D" parent="Markers/NpcSlots" groups=["npc_slot"]]
+position = Vector3(0, -0.7, 35.5)
+
+[node name="NPC_Kostya" type="Marker3D" parent="Markers/NpcSlots" groups=["npc_slot"]]
+position = Vector3(-6.5, 0, 11.2)
+
+[node name="NPC_Phone" type="Marker3D" parent="Markers/NpcSlots" groups=["npc_slot"]]
+position = Vector3(-1.9, 0, -11.1)
+
+[node name="NPC_Alley2" type="Marker3D" parent="Markers/NpcSlots" groups=["npc_slot"]]
+position = Vector3(20.8, 0, -19)
+rotation = Vector3(0, 3.1416, 0)
+
+[node name="NPC_Courtyard" type="Marker3D" parent="Markers/NpcSlots" groups=["npc_slot"]]
+position = Vector3(-26.2, 0, -10.5)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="NPC_Rooftop" type="Marker3D" parent="Markers/NpcSlots" groups=["npc_slot"]]
+position = Vector3(-7.5, 5, -20.5)
+rotation = Vector3(0, 2.2, 0)
+
+[node name="NPC_Quay" type="Marker3D" parent="Markers/NpcSlots" groups=["npc_slot"]]
+position = Vector3(11.2, -0.7, 26.2)
+rotation = Vector3(0, 3.1416, 0)
+
+[node name="DistrictExpansion" type="Node3D" parent="."]
+
+[node name="Buildings" type="Node3D" parent="DistrictExpansion"]
+
+[node name="BuildingC" type="StaticBody3D" parent="DistrictExpansion/Buildings"]
+position = Vector3(26.4, 4.5, -13)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Buildings/BuildingC"]
+transform = Transform3D(6, 0, 0, 0, 9, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("4b_brick_grey")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Buildings/BuildingC"]
+shape = SubResource("ShapeBuildingC")
+
+[node name="AnnexWest" type="StaticBody3D" parent="DistrictExpansion/Buildings"]
+position = Vector3(-28.2, 2.1, -14)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Buildings/AnnexWest"]
+transform = Transform3D(2.4, 0, 0, 0, 4.2, 0, 0, 0, 16, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Buildings/AnnexWest"]
+shape = SubResource("ShapeAnnex")
+
+[node name="AnnexDoor" type="MeshInstance3D" parent="DistrictExpansion/Buildings"]
+transform = Transform3D(0.1, 0, 0, 0, 2.3, 0, 0, 0, 1.1, -26.95, 1.15, -8)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("5_shop_front")
+
+[node name="AnnexDoorGlass" type="MeshInstance3D" parent="DistrictExpansion/Buildings"]
+transform = Transform3D(0.04, 0, 0, 0, 1.9, 0, 0, 0, 0.8, -26.89, 1.15, -8)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("9_door_glass")
+
+[node name="Courtyard" type="Node3D" parent="DistrictExpansion"]
+
+[node name="ArchPillarL" type="StaticBody3D" parent="DistrictExpansion/Courtyard"]
+position = Vector3(-27.6, 1.6, -2.6)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/ArchPillarL"]
+transform = Transform3D(0.5, 0, 0, 0, 3.2, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Courtyard/ArchPillarL"]
+shape = SubResource("ShapePillar")
+
+[node name="ArchPillarR" type="StaticBody3D" parent="DistrictExpansion/Courtyard"]
+position = Vector3(-24.5, 1.6, -2.6)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/ArchPillarR"]
+transform = Transform3D(0.5, 0, 0, 0, 3.2, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Courtyard/ArchPillarR"]
+shape = SubResource("ShapePillar")
+
+[node name="ArchLintel" type="StaticBody3D" parent="DistrictExpansion/Courtyard"]
+position = Vector3(-26.05, 3.5, -2.6)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/ArchLintel"]
+transform = Transform3D(3.4, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Courtyard/ArchLintel"]
+shape = SubResource("ShapeLintel")
+
+[node name="Bench1" type="StaticBody3D" parent="DistrictExpansion/Courtyard"]
+position = Vector3(-26.55, 0.225, -15.5)
+
+[node name="Seat" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/Bench1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 1.8, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("14_dock_planks")
+
+[node name="Back" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/Bench1"]
+transform = Transform3D(0.08, 0, 0, 0, 0.7, 0, 0, 0, 1.8, 0.22, 0.5, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("14_dock_planks")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Courtyard/Bench1"]
+shape = SubResource("ShapeBench")
+
+[node name="Bench2" type="StaticBody3D" parent="DistrictExpansion/Courtyard"]
+position = Vector3(-26.55, 0.225, -18.5)
+
+[node name="Seat" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/Bench2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.45, 0, 0, 0, 1.8, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("14_dock_planks")
+
+[node name="Back" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/Bench2"]
+transform = Transform3D(0.08, 0, 0, 0, 0.7, 0, 0, 0, 1.8, 0.22, 0.5, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("14_dock_planks")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Courtyard/Bench2"]
+shape = SubResource("ShapeBench")
+
+[node name="CrateA" type="StaticBody3D" parent="DistrictExpansion/Courtyard"]
+position = Vector3(-26.6, 0.4, -22.8)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/CrateA"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("14_dock_planks")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Courtyard/CrateA"]
+shape = SubResource("ShapeCrate")
+
+[node name="CrateB" type="StaticBody3D" parent="DistrictExpansion/Courtyard"]
+position = Vector3(-25.7, 0.4, -22.8)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/CrateB"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("14_dock_planks")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Courtyard/CrateB"]
+shape = SubResource("ShapeCrate")
+
+[node name="Drain" type="MeshInstance3D" parent="DistrictExpansion/Courtyard"]
+transform = Transform3D(0.9, 0, 0, 0, 0.04, 0, 0, 0, 0.9, -25.5, 0.02, -10.5)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="Cable" type="MeshInstance3D" parent="DistrictExpansion/Courtyard"]
+transform = Transform3D(0.1, 0, 0, 0, 0.08, 0, 0, 0, 18, -24.12, 3.6, -13)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="CourtyardLamp" type="Node3D" parent="DistrictExpansion/Courtyard"]
+position = Vector3(-26.85, 3.95, -13.5)
+
+[node name="Bracket" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/CourtyardLamp"]
+transform = Transform3D(0.4, 0, 0, 0, 0.08, 0, 0, 0, 0.08, -0.2, 0.1, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="DistrictExpansion/Courtyard/CourtyardLamp"]
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="DistrictExpansion/Courtyard/CourtyardLamp" groups=["street_lamp"]]
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 2.91
+light_indirect_energy = 0.7
+omni_range = 9.0
+shadow_enabled = true
+
+[node name="BackPassage" type="Node3D" parent="DistrictExpansion"]
+
+[node name="PipeA" type="MeshInstance3D" parent="DistrictExpansion/BackPassage"]
+transform = Transform3D(12, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 13, 2.7, -24.15)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="PipeB" type="MeshInstance3D" parent="DistrictExpansion/BackPassage"]
+transform = Transform3D(12, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 13, 3, -24.15)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="PipeShop" type="MeshInstance3D" parent="DistrictExpansion/BackPassage"]
+transform = Transform3D(11, 0, 0, 0, 0.12, 0, 0, 0, 0.12, -4, 3.2, -24.15)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="DoorA" type="MeshInstance3D" parent="DistrictExpansion/BackPassage"]
+transform = Transform3D(1, 0, 0, 0, 2.2, 0, 0, 0, 0.12, 13, 1.3, -24.07)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("5_shop_front")
+
+[node name="DoorB" type="MeshInstance3D" parent="DistrictExpansion/BackPassage"]
+transform = Transform3D(0.9, 0, 0, 0, 2, 0, 0, 0, 0.12, 17.5, 1.3, -24.07)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("5_shop_front")
+
+[node name="DoorShop" type="MeshInstance3D" parent="DistrictExpansion/BackPassage"]
+transform = Transform3D(1.1, 0, 0, 0, 2.2, 0, 0, 0, 0.12, -4, 1.3, -24.07)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("5_shop_front")
+
+[node name="Tap" type="MeshInstance3D" parent="DistrictExpansion/BackPassage"]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.3, -4, 1.1, -24.16)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="TapPuddle" type="MeshInstance3D" parent="DistrictExpansion/BackPassage"]
+transform = Transform3D(1.6, 0, 0, 0, 0.03, 0, 0, 0, 1.1, -4, 0.02, -24.65)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("10_water")
+
+[node name="DumpsterBack" type="StaticBody3D" parent="DistrictExpansion/BackPassage"]
+position = Vector3(22.55, 0.6, -17.8)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/BackPassage/DumpsterBack"]
+transform = Transform3D(1.7, 0, 0, 0, 1.2, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Lid" type="MeshInstance3D" parent="DistrictExpansion/BackPassage/DumpsterBack"]
+transform = Transform3D(1.8, 0, 0, 0, 0.08, 0, 0, 0, 1.2, 0, 0.64, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/BackPassage/DumpsterBack"]
+shape = SubResource("ShapeDumpster")
+
+[node name="Bin" type="StaticBody3D" parent="DistrictExpansion/BackPassage"]
+position = Vector3(18, 0.5, -24.4)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/BackPassage/Bin"]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Lid" type="MeshInstance3D" parent="DistrictExpansion/BackPassage/Bin"]
+transform = Transform3D(1.3, 0, 0, 0, 0.08, 0, 0, 0, 0.9, 0, 0.54, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/BackPassage/Bin"]
+shape = SubResource("ShapeBin")
+
+[node name="BackLamp" type="Node3D" parent="DistrictExpansion/BackPassage"]
+position = Vector3(8, 3.4, -25.85)
+
+[node name="Bracket" type="MeshInstance3D" parent="DistrictExpansion/BackPassage/BackLamp"]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.5, 0, 0.1, 0.25)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="DistrictExpansion/BackPassage/BackLamp"]
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="DistrictExpansion/BackPassage/BackLamp" groups=["street_lamp"]]
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.35
+light_indirect_energy = 0.5
+omni_range = 8.0
+shadow_enabled = true
+
+[node name="Alley2" type="Node3D" parent="DistrictExpansion"]
+
+[node name="DumpsterA" type="StaticBody3D" parent="DistrictExpansion/Alley2"]
+position = Vector3(22.55, 0.6, -21.9)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Alley2/DumpsterA"]
+transform = Transform3D(1.7, 0, 0, 0, 1.2, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Lid" type="MeshInstance3D" parent="DistrictExpansion/Alley2/DumpsterA"]
+transform = Transform3D(1.8, 0, 0, 0, 0.08, 0, 0, 0, 1.2, 0, 0.64, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Alley2/DumpsterA"]
+shape = SubResource("ShapeDumpster")
+
+[node name="DumpsterB" type="StaticBody3D" parent="DistrictExpansion/Alley2"]
+position = Vector3(22.55, 0.6, -20.1)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Alley2/DumpsterB"]
+transform = Transform3D(1.7, 0, 0, 0, 1.2, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Lid" type="MeshInstance3D" parent="DistrictExpansion/Alley2/DumpsterB"]
+transform = Transform3D(1.8, 0, 0, 0, 0.08, 0, 0, 0, 1.2, 0, 0.64, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Alley2/DumpsterB"]
+shape = SubResource("ShapeDumpster")
+
+[node name="Crate" type="StaticBody3D" parent="DistrictExpansion/Alley2"]
+position = Vector3(22.8, 0.4, -9)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Alley2/Crate"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("14_dock_planks")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Alley2/Crate"]
+shape = SubResource("ShapeCrate")
+
+[node name="PipeVert" type="MeshInstance3D" parent="DistrictExpansion/Alley2"]
+transform = Transform3D(0.14, 0, 0, 0, 3.6, 0, 0, 0, 0.14, 20.08, 1.8, -11)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="PipeHoriz" type="MeshInstance3D" parent="DistrictExpansion/Alley2"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 12, 20.1, 2.9, -15)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="PipeC" type="MeshInstance3D" parent="DistrictExpansion/Alley2"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 9, 23.32, 2.6, -13)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Puddle" type="MeshInstance3D" parent="DistrictExpansion/Alley2"]
+transform = Transform3D(3.2, 0, 0, 0, 0.03, 0, 0, 0, 2.6, 21.6, 0.02, -17.5)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("10_water")
+
+[node name="WallVent" type="MeshInstance3D" parent="DistrictExpansion/Alley2"]
+transform = Transform3D(0.1, 0, 0, 0, 0.6, 0, 0, 0, 0.9, 23.36, 2.2, -18.5)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="Alley2Lamp" type="Node3D" parent="DistrictExpansion/Alley2"]
+position = Vector3(23.15, 3.9, -15.5)
+
+[node name="Bracket" type="MeshInstance3D" parent="DistrictExpansion/Alley2/Alley2Lamp"]
+transform = Transform3D(0.25, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.125, 0.1, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="DistrictExpansion/Alley2/Alley2Lamp"]
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="DistrictExpansion/Alley2/Alley2Lamp" groups=["street_lamp"]]
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.80
+light_indirect_energy = 0.6
+omni_range = 9.0
+shadow_enabled = true
+
+[node name="Rooftop" type="Node3D" parent="DistrictExpansion"]
+
+[node name="FireEscape" type="Node3D" parent="DistrictExpansion/Rooftop"]
+
+[node name="Ramp" type="StaticBody3D" parent="DistrictExpansion/Rooftop/FireEscape"]
+position = Vector3(2.85, 2.59, -17.4)
+rotation = Vector3(0.46365, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+mesh = SubResource("RampMesh")
+material_override = ExtResource("6_metal")
+
+[node name="RailL" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72, 0.55, 0)
+mesh = SubResource("RailRampMesh")
+material_override = ExtResource("6_metal")
+
+[node name="RailR" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72, 0.55, 0)
+mesh = SubResource("RailRampMesh")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+shape = SubResource("ShapeRamp")
+
+[node name="Grip1" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1.3, 0, 0, 0, 0.04, 0, 0, 0, 0.16, 0, 0.115, -4.5)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("13_markings")
+
+[node name="Grip2" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1.3, 0, 0, 0, 0.04, 0, 0, 0, 0.16, 0, 0.115, -3)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("13_markings")
+
+[node name="Grip3" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1.3, 0, 0, 0, 0.04, 0, 0, 0, 0.16, 0, 0.115, -1.5)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("13_markings")
+
+[node name="Grip4" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1.3, 0, 0, 0, 0.04, 0, 0, 0, 0.16, 0, 0.115, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("13_markings")
+
+[node name="Grip5" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1.3, 0, 0, 0, 0.04, 0, 0, 0, 0.16, 0, 0.115, 1.5)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("13_markings")
+
+[node name="Grip6" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1.3, 0, 0, 0, 0.04, 0, 0, 0, 0.16, 0, 0.115, 3)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("13_markings")
+
+[node name="RailCollisionL" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72, 0.55, 0)
+shape = SubResource("ShapeRampRail")
+
+[node name="RailCollisionR" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/FireEscape/Ramp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72, 0.55, 0)
+shape = SubResource("ShapeRampRail")
+
+[node name="Landing" type="StaticBody3D" parent="DistrictExpansion/Rooftop/FireEscape"]
+position = Vector3(2.3, 4.95, -22.6)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape/Landing"]
+transform = Transform3D(2.6, 0, 0, 0, 0.2, 0, 0, 0, 1.4, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/FireEscape/Landing"]
+shape = SubResource("ShapeLanding")
+
+[node name="Support1" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape"]
+transform = Transform3D(0.12, 0, 0, 0, 3.8, 0, 0, 0, 0.12, 2.2, 1.9, -20)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Support2" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/FireEscape"]
+transform = Transform3D(0.12, 0, 0, 0, 3.8, 0, 0, 0, 0.12, 3.5, 1.9, -20)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="ParapetN" type="StaticBody3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(-4, 5.45, -23.8)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/ParapetN"]
+transform = Transform3D(12, 0, 0, 0, 0.9, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/ParapetN"]
+shape = SubResource("ShapeParapetLong")
+
+[node name="ParapetS" type="StaticBody3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(-4, 5.45, -12.2)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/ParapetS"]
+transform = Transform3D(12, 0, 0, 0, 0.9, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/ParapetS"]
+shape = SubResource("ShapeParapetLong")
+
+[node name="ParapetW" type="StaticBody3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(-9.8, 5.45, -18)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/ParapetW"]
+transform = Transform3D(0.4, 0, 0, 0, 0.9, 0, 0, 0, 12, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/ParapetW"]
+shape = SubResource("ShapeParapetWest")
+
+[node name="ParapetE1" type="StaticBody3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(1.8, 5.45, -23.6)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/ParapetE1"]
+transform = Transform3D(0.4, 0, 0, 0, 0.9, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/ParapetE1"]
+shape = SubResource("ShapeParapetEdge")
+
+[node name="ParapetE2" type="StaticBody3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(1.8, 5.45, -17.1)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/ParapetE2"]
+transform = Transform3D(0.4, 0, 0, 0, 0.9, 0, 0, 0, 10.2, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/ParapetE2"]
+shape = SubResource("ShapeParapetMid")
+
+[node name="Ac1" type="StaticBody3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(-6, 5.4, -13)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/Ac1"]
+transform = Transform3D(1.2, 0, 0, 0, 0.8, 0, 0, 0, 0.9, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/Ac1"]
+shape = SubResource("ShapeAc")
+
+[node name="Ac2" type="StaticBody3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(-2, 5.4, -13)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/Ac2"]
+transform = Transform3D(1.2, 0, 0, 0, 0.8, 0, 0, 0, 0.9, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/Ac2"]
+shape = SubResource("ShapeAc")
+
+[node name="Tank" type="StaticBody3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(0.2, 5.8, -14)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/Tank"]
+mesh = SubResource("TankMesh")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/Tank"]
+shape = SubResource("ShapeTank")
+
+[node name="Shed" type="StaticBody3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(-8.4, 6.1, -22.6)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/Shed"]
+transform = Transform3D(2.4, 0, 0, 0, 2.2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Door" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/Shed"]
+transform = Transform3D(0.9, 0, 0, 0, 1.9, 0, 0, 0, 0.08, 0, -0.15, 1.04)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("5_shop_front")
+
+[node name="Window" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/Shed"]
+transform = Transform3D(0.08, 0, 0, 0, 0.8, 0, 0, 0, 1, 1.22, 0.1, -0.4)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="Keypad" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/Shed"]
+transform = Transform3D(0.16, 0, 0, 0, 0.28, 0, 0, 0, 0.06, 0.62, -0.05, 1.05)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="DoorStrip" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/Shed"]
+transform = Transform3D(0.3, 0, 0, 0, 0.05, 0, 0, 0, 0.06, 0, 0.9, 1.07)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("8_neon_cyan")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Rooftop/Shed"]
+shape = SubResource("ShapeShed")
+
+[node name="RoofLamp" type="Node3D" parent="DistrictExpansion/Rooftop"]
+position = Vector3(-8.6, 8.15, -15.5)
+
+[node name="Pole" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/RoofLamp"]
+transform = Transform3D(0.12, 0, 0, 0, 3.2, 0, 0, 0, 0.12, 0, -1.6, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="DistrictExpansion/Rooftop/RoofLamp"]
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="DistrictExpansion/Rooftop/RoofLamp" groups=["street_lamp"]]
+position = Vector3(0, -0.05, 0)
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 3.58
+light_indirect_energy = 0.8
+omni_range = 12.0
+shadow_enabled = true
+
+[node name="ShopPorch" type="Node3D" parent="DistrictExpansion"]
+
+[node name="Canopy" type="StaticBody3D" parent="DistrictExpansion/ShopPorch"]
+position = Vector3(-4.85, 3.05, -10.95)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/ShopPorch/Canopy"]
+transform = Transform3D(4.5, 0, 0, 0, 0.2, 0, 0, 0, 1.9, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/ShopPorch/Canopy"]
+shape = SubResource("ShapeCanopy")
+
+[node name="LeftScreen" type="StaticBody3D" parent="DistrictExpansion/ShopPorch"]
+position = Vector3(-6.85, 1.5, -10.95)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/ShopPorch/LeftScreen"]
+transform = Transform3D(0.24, 0, 0, 0, 3, 0, 0, 0, 1.9, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("5_shop_front")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/ShopPorch/LeftScreen"]
+shape = SubResource("ShapeScreen")
+
+[node name="RightPost" type="StaticBody3D" parent="DistrictExpansion/ShopPorch"]
+position = Vector3(-2.75, 1.5, -10.15)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/ShopPorch/RightPost"]
+transform = Transform3D(0.16, 0, 0, 0, 3, 0, 0, 0, 0.16, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/ShopPorch/RightPost"]
+shape = SubResource("ShapePost")
+
+[node name="Threshold" type="MeshInstance3D" parent="DistrictExpansion/ShopPorch"]
+transform = Transform3D(4.3, 0, 0, 0, 0.04, 0, 0, 0, 1.9, -4.85, 0.02, -10.95)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Mat" type="MeshInstance3D" parent="DistrictExpansion/ShopPorch"]
+transform = Transform3D(2, 0, 0, 0, 0.03, 0, 0, 0, 1.2, -4, 0.05, -10.4)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="SconceL" type="MeshInstance3D" parent="DistrictExpansion/ShopPorch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 2.75, -10.8)
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="SconceR" type="MeshInstance3D" parent="DistrictExpansion/ShopPorch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.75, -10.8)
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="SignLabel" type="Label3D" parent="DistrictExpansion/ShopPorch"]
+position = Vector3(-4.85, 3.24, -9.92)
+text = "ЛУНА"
+font_size = 48
+pixel_size = 0.009
+modulate = Color(1.7, 0.3, 1.05, 1)
+outline_size = 0
+
+[node name="PorchLight" type="OmniLight3D" parent="DistrictExpansion/ShopPorch"]
+position = Vector3(-4.5, 2.65, -10.5)
+light_color = Color(1, 0.78, 0.5, 1)
+light_energy = 2.02
+light_indirect_energy = 0.5
+omni_range = 6.0
+shadow_enabled = true
+
+[node name="Quay" type="Node3D" parent="DistrictExpansion"]
+
+[node name="StairRamp" type="StaticBody3D" parent="DistrictExpansion/Quay"]
+position = Vector3(12.25, -0.474, 22.91)
+rotation = Vector3(0.32175, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Quay/StairRamp"]
+mesh = SubResource("StairRampMesh")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Quay/StairRamp"]
+shape = SubResource("ShapeStairRamp")
+
+[node name="Step1" type="MeshInstance3D" parent="DistrictExpansion/Quay"]
+transform = Transform3D(4.5, 0, 0, 0, 0.18, 0, 0, 0, 0.62, 12.25, -0.14, 22)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Step2" type="MeshInstance3D" parent="DistrictExpansion/Quay"]
+transform = Transform3D(4.5, 0, 0, 0, 0.18, 0, 0, 0, 0.62, 12.25, -0.33, 22.6)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Step3" type="MeshInstance3D" parent="DistrictExpansion/Quay"]
+transform = Transform3D(4.5, 0, 0, 0, 0.18, 0, 0, 0, 0.62, 12.25, -0.52, 23.2)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Step4" type="MeshInstance3D" parent="DistrictExpansion/Quay"]
+transform = Transform3D(4.5, 0, 0, 0, 0.18, 0, 0, 0, 0.62, 12.25, -0.71, 23.8)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="StairRailL" type="StaticBody3D" parent="DistrictExpansion/Quay"]
+position = Vector3(10.05, 0.1, 22.9)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Quay/StairRailL"]
+transform = Transform3D(0.1, 0, 0, 0, 1.6, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Quay/StairRailL"]
+shape = SubResource("ShapeStairRail")
+
+[node name="StairRailR" type="StaticBody3D" parent="DistrictExpansion/Quay"]
+position = Vector3(14.45, 0.1, 22.9)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Quay/StairRailR"]
+transform = Transform3D(0.1, 0, 0, 0, 1.6, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Quay/StairRailR"]
+shape = SubResource("ShapeStairRail")
+
+[node name="QuayDeck" type="StaticBody3D" parent="DistrictExpansion/Quay"]
+position = Vector3(12.25, -0.9, 25.5)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Quay/QuayDeck"]
+transform = Transform3D(4.5, 0, 0, 0, 0.4, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Quay/QuayDeck"]
+shape = SubResource("ShapeQuay")
+
+[node name="QuayRailL" type="StaticBody3D" parent="DistrictExpansion/Quay"]
+position = Vector3(10.05, -0.25, 25.5)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Quay/QuayRailL"]
+transform = Transform3D(0.12, 0, 0, 0, 0.9, 0, 0, 0, 3.2, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Quay/QuayRailL"]
+shape = SubResource("ShapeQuayRail")
+
+[node name="QuayRailR" type="StaticBody3D" parent="DistrictExpansion/Quay"]
+position = Vector3(14.45, -0.25, 25.5)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Quay/QuayRailR"]
+transform = Transform3D(0.12, 0, 0, 0, 0.9, 0, 0, 0, 3.2, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Quay/QuayRailR"]
+shape = SubResource("ShapeQuayRail")
+
+[node name="QuayParapet" type="StaticBody3D" parent="DistrictExpansion/Quay"]
+position = Vector3(12.25, -0.25, 27)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Quay/QuayParapet"]
+transform = Transform3D(4.5, 0, 0, 0, 0.9, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Quay/QuayParapet"]
+shape = SubResource("ShapeQuayParapet")
+
+[node name="SupportPillarL" type="MeshInstance3D" parent="DistrictExpansion/Quay"]
+transform = Transform3D(0.3, 0, 0, 0, 2, 0, 0, 0, 0.3, 11.2, -1.9, 27)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="SupportPillarR" type="MeshInstance3D" parent="DistrictExpansion/Quay"]
+transform = Transform3D(0.3, 0, 0, 0, 2, 0, 0, 0, 0.3, 13.3, -1.9, 27)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="BollardL" type="MeshInstance3D" parent="DistrictExpansion/Quay"]
+transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 10.7, -0.45, 27)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="BollardR" type="MeshInstance3D" parent="DistrictExpansion/Quay"]
+transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 13.8, -0.45, 27)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="SeaRailFar" type="StaticBody3D" parent="DistrictExpansion/Quay"]
+position = Vector3(21.95, 0.55, 21.9)
+
+[node name="Mesh" type="MeshInstance3D" parent="DistrictExpansion/Quay/SeaRailFar"]
+transform = Transform3D(14.9, 0, 0, 0, 1, 0, 0, 0, 0.12, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="DistrictExpansion/Quay/SeaRailFar"]
+shape = SubResource("ShapeSeaRail")
+
+[node name="QuayLamp" type="Node3D" parent="DistrictExpansion/Quay"]
+position = Vector3(14.2, 2.55, 26.3)
+
+[node name="Pole" type="MeshInstance3D" parent="DistrictExpansion/Quay/QuayLamp"]
+transform = Transform3D(0.12, 0, 0, 0, 3.2, 0, 0, 0, 0.12, 0, -1.6, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Bulb" type="MeshInstance3D" parent="DistrictExpansion/Quay/QuayLamp"]
+mesh = SubResource("BulbMesh")
+material_override = ExtResource("11_lamp_glass")
+
+[node name="Light" type="OmniLight3D" parent="DistrictExpansion/Quay/QuayLamp" groups=["street_lamp"]]
+light_color = Color(0.82, 0.86, 1, 1)
+light_energy = 2.91
+light_indirect_energy = 0.8
+omni_range = 9.0
+shadow_enabled = true
+
+[node name="Windows" type="Node3D" parent="DistrictExpansion"]
+
+[node name="WinA_W1" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, -24.07, 4.5, -20)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinA_W2" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, -24.07, 7.5, -20)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="WinA_W3" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, -24.07, 4.5, -15)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinA_W4" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, -24.07, 7.5, -15)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="WinA_W5" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, -24.07, 10.5, -17.5)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinAn_E1" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1, 0, 0, 0, 1.2, -26.93, 2.4, -10)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinAn_E2" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1, 0, 0, 0, 1.2, -26.93, 2.4, -14)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="WinC_W1" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 23.33, 3.6, -20)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinC_W2" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 23.33, 6.4, -20)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="WinC_W3" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 23.33, 3.6, -16)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="WinC_W4" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 23.33, 6.4, -16)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinC_W5" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 23.33, 3.6, -12)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinC_W6" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 23.33, 6.4, -12)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="WinC_W7" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 23.33, 3.6, -8)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="WinC_W8" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 23.33, 6.4, -8)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinC_S1" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(1.6, 0, 0, 0, 1.2, 0, 0, 0, 0.14, 25.5, 3.6, -2.93)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinC_S2" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(1.6, 0, 0, 0, 1.2, 0, 0, 0, 0.14, 28, 3.6, -2.93)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="WinB_E1" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 20.07, 4.5, -18)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinB_E2" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 20.07, 7, -18)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="WinB_E3" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 20.07, 4.5, -11)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="WinB_E4" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(0.14, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 20.07, 7, -11)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="RearWinA" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(1.4, 0, 0, 0, 1.2, 0, 0, 0, 0.14, -16, 6.5, -24.07)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="RearWinA2" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 0.14, -16, 3, -24.07)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="RearWinB" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(1.4, 0, 0, 0, 1.2, 0, 0, 0, 0.14, 11, 5, -24.07)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("12_window_warm")
+
+[node name="RearWinB2" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(1.4, 0, 0, 0, 1.2, 0, 0, 0, 0.14, 16, 7, -24.07)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="RearWinShop" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 0.14, -6.5, 3.4, -24.07)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="ShopWinL" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 0.12, -8.4, 1.6, -11.87)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="ShopWinR" type="MeshInstance3D" parent="DistrictExpansion/Windows"]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 0.12, 0.1, 1.6, -11.87)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("16_sign_dark")
+
+[node name="City" type="Node3D" parent="."]
+
+[node name="InteriorEntrances" type="Node3D" parent="."]
+
+[node name="ClubDoor" type="StaticBody3D" parent="InteriorEntrances"]
+position = Vector3(0, 1.32, -65.84)
+script = ExtResource("18_interior_door")
+door_name = "Клуб «Луна»"
+interact_hint = "E — войти в клуб"
+interior_group = "interior_club"
+save_key = "interior_return_club"
+fallback_exit_position = Vector3(0, 0.15, -64.4)
+fallback_exit_yaw = 3.14159265
+
+[node name="Panel" type="MeshInstance3D" parent="InteriorEntrances/ClubDoor"]
+transform = Transform3D(1, 0, 0, 0, 2.4, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="InteriorEntrances/ClubDoor"]
+shape = SubResource("ShapeInteriorDoor")
+
+[node name="ClubFrameL" type="MeshInstance3D" parent="InteriorEntrances"]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 0.3, -1.0, 1.5, -65.9)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="ClubFrameR" type="MeshInstance3D" parent="InteriorEntrances"]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 0.3, 1.0, 1.5, -65.9)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="ClubLintel" type="MeshInstance3D" parent="InteriorEntrances"]
+transform = Transform3D(2.2, 0, 0, 0, 0.25, 0, 0, 0, 0.3, 0, 3.15, -65.9)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("3_concrete")
+
+[node name="ClubNeon" type="MeshInstance3D" parent="InteriorEntrances"]
+transform = Transform3D(1.7, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 2.95, -65.74)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("7_neon_magenta")
+
+[node name="ShopDoor" type="StaticBody3D" parent="InteriorEntrances"]
+position = Vector3(-4, 1.22, -11.84)
+script = ExtResource("18_interior_door")
+door_name = "Дверь «Луны»"
+interact_hint = "E — войти в магазин"
+interior_group = "interior_shop"
+save_key = "interior_return_shop"
+fallback_exit_position = Vector3(-4, 0.1, -10.6)
+fallback_exit_yaw = 3.14159265
+
+[node name="Panel" type="MeshInstance3D" parent="InteriorEntrances/ShopDoor"]
+transform = Transform3D(1.6, 0, 0, 0, 2.4, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("9_door_glass")
+
+[node name="Collision" type="CollisionShape3D" parent="InteriorEntrances/ShopDoor"]
+shape = SubResource("ShapeInteriorDoor")
+
+[node name="ShopFrameL" type="MeshInstance3D" parent="InteriorEntrances"]
+transform = Transform3D(0.18, 0, 0, 0, 2.8, 0, 0, 0, 0.3, -4.82, 1.4, -11.88)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="ShopFrameR" type="MeshInstance3D" parent="InteriorEntrances"]
+transform = Transform3D(0.18, 0, 0, 0, 2.8, 0, 0, 0, 0.3, -3.18, 1.4, -11.88)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="ShopLintel" type="MeshInstance3D" parent="InteriorEntrances"]
+transform = Transform3D(1.9, 0, 0, 0, 0.18, 0, 0, 0, 0.3, -4, 2.9, -11.88)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("6_metal")
+
+[node name="ShopNeon" type="MeshInstance3D" parent="InteriorEntrances"]
+transform = Transform3D(1.5, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -4, 2.74, -11.72)
+mesh = SubResource("UnitBox")
+material_override = ExtResource("8_neon_cyan")

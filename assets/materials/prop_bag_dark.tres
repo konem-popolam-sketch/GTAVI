@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "prop_bag_dark"
+albedo_color = Color(0.045, 0.050, 0.055, 1)
+metallic = 0.00
+metallic_specular = 0.30
+roughness = 0.62

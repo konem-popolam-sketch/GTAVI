@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/game/weapon.gd" id="1_weapon"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.055, 0.06, 0.068, 1)
+metallic = 0.9
+roughness = 0.32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grip"]
+albedo_color = Color(0.08, 0.075, 0.07, 1)
+metallic = 0.15
+roughness = 0.88
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flash"]
+shading_mode = 0
+transparency = 1
+albedo_color = Color(1, 0.86, 0.55, 0.92)
+emission_enabled = true
+emission = Color(1, 0.72, 0.3, 1)
+emission_energy_multiplier = 4.5
+billboard_mode = 1
+no_depth_test = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_frame"]
+size = Vector3(0.055, 0.06, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_slide"]
+size = Vector3(0.058, 0.045, 0.21)
+
+[sub_resource type="BoxMesh" id="BoxMesh_barrel"]
+size = Vector3(0.026, 0.026, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_grip"]
+size = Vector3(0.05, 0.14, 0.062)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trigger"]
+size = Vector3(0.014, 0.014, 0.06)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sight"]
+size = Vector3(0.01, 0.012, 0.015)
+
+[sub_resource type="QuadMesh" id="QuadMesh_flash"]
+size = Vector2(0.13, 0.13)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pickup"]
+size = Vector3(0.45, 0.35, 0.5)
+
+[node name="Pistol" type="Node3D"]
+position = Vector3(-5, 0.22, -10.7)
+rotation = Vector3(0, 0.4, 0)
+script = ExtResource("1_weapon")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Frame" type="MeshInstance3D" parent="Model"]
+mesh = SubResource("BoxMesh_frame")
+material_override = SubResource("StandardMaterial3D_metal")
+cast_shadow = 1
+
+[node name="Slide" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.052, 0.005)
+mesh = SubResource("BoxMesh_slide")
+material_override = SubResource("StandardMaterial3D_metal")
+cast_shadow = 1
+
+[node name="Barrel" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.052, -0.145)
+mesh = SubResource("BoxMesh_barrel")
+material_override = SubResource("StandardMaterial3D_metal")
+cast_shadow = 1
+
+[node name="Grip" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.095, 0.055)
+mesh = SubResource("BoxMesh_grip")
+material_override = SubResource("StandardMaterial3D_grip")
+cast_shadow = 1
+
+[node name="TriggerGuard" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.034, -0.005)
+mesh = SubResource("BoxMesh_trigger")
+material_override = SubResource("StandardMaterial3D_metal")
+cast_shadow = 1
+
+[node name="FrontSight" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.084, -0.19)
+mesh = SubResource("BoxMesh_sight")
+material_override = SubResource("StandardMaterial3D_metal")
+cast_shadow = 1
+
+[node name="Muzzle" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.052, -0.205)
+
+[node name="FlashLight" type="OmniLight3D" parent="Muzzle"]
+visible = false
+light_color = Color(1, 0.78, 0.42, 1)
+light_energy = 2.2
+omni_range = 2.2
+shadow_enabled = false
+
+[node name="FlashQuad" type="MeshInstance3D" parent="Muzzle"]
+visible = false
+cast_shadow = 0
+mesh = SubResource("QuadMesh_flash")
+material_override = SubResource("StandardMaterial3D_flash")
+
+[node name="PickupArea" type="Area3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+monitoring = false
+monitorable = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
+shape = SubResource("BoxShape3D_pickup")

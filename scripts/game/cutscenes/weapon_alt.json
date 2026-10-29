@@ -1,0 +1,62 @@
+{
+  "id": "cut_weapon_alt",
+  "title": "Голос",
+  "duration": 10.0,
+  "skippable": true,
+  "seen_flag": "cut_weapon_alt_seen",
+  "fade_in": 0.4,
+  "steps": [
+    {
+      "t": 0.0,
+      "type": "camera",
+      "pos": [1.0, -0.12, 32.2],
+      "look_at": [0.1, -0.5, 34.8],
+      "fov": 55.0,
+      "to": [1.2, 0.8, 32.6],
+      "look_at_to": [-0.4, -0.35, 35.4],
+      "duration": 10.0,
+      "ease": "in_out"
+    },
+    {
+      "t": 1.0,
+      "type": "line",
+      "dialogue_id": "cut_weapon_alt",
+      "node_id": "cwa_01",
+      "speaker": "Плёнка",
+      "duration": 1.6
+    },
+    {
+      "t": 4.0,
+      "type": "line",
+      "dialogue_id": "cut_weapon_alt",
+      "node_id": "cwa_02",
+      "speaker": "Нил",
+      "duration": 2.4
+    },
+    {
+      "t": 7.0,
+      "type": "sfx",
+      "name": "door_creak"
+    },
+    {
+      "t": 7.0,
+      "type": "line",
+      "dialogue_id": "cut_weapon_alt",
+      "node_id": "cwa_03",
+      "speaker": "Плёнка",
+      "duration": 1.5
+    },
+    {
+      "t": 9.6,
+      "type": "fade",
+      "alpha": 1.0,
+      "duration": 0.4
+    },
+    {
+      "t": 10.0,
+      "type": "end",
+      "player_position": [0.4, -0.7, 33.2],
+      "player_yaw": 0.0
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3]
+
+; Лавка: сиденье и спинка из досок, ноги металлические, одна коробчатая коллизия.
+
+[ext_resource type="Material" path="res://assets/materials/dock_planks_pbr.tres" id="1_wood"]
+[ext_resource type="Material" path="res://assets/materials/metal_pbr.tres" id="2_metal"]
+
+[sub_resource type="BoxMesh" id="MeshSeat"]
+size = Vector3(1.7, 0.07, 0.5)
+
+[sub_resource type="BoxMesh" id="MeshBack"]
+size = Vector3(1.7, 0.42, 0.06)
+
+[sub_resource type="BoxMesh" id="MeshLeg"]
+size = Vector3(0.08, 0.46, 0.46)
+
+[sub_resource type="BoxShape3D" id="ShapeBody"]
+size = Vector3(1.7, 0.95, 0.55)
+
+[node name="Bench" type="Node3D"]
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Seat" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.46, 0)
+mesh = SubResource("MeshSeat")
+material_override = ExtResource("1_wood")
+
+[node name="Back" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.72, -0.22)
+mesh = SubResource("MeshBack")
+material_override = ExtResource("1_wood")
+
+[node name="LegLeft" type="MeshInstance3D" parent="Body"]
+position = Vector3(-0.7, 0.23, 0)
+mesh = SubResource("MeshLeg")
+material_override = ExtResource("2_metal")
+
+[node name="LegRight" type="MeshInstance3D" parent="Body"]
+position = Vector3(0.7, 0.23, 0)
+mesh = SubResource("MeshLeg")
+material_override = ExtResource("2_metal")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+position = Vector3(0, 0.475, 0)
+shape = SubResource("ShapeBody")

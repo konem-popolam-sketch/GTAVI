@@ -1,0 +1,26 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3]
+
+; Жалюзи/ставни на закрытой витрине (t42, ревизия t45): на кадре клуба панель
+; читалась коричневой из-за ржавых пятен процедурной металл-текстуры в тёплом свете.
+; Стало: светлее и нейтральнее (0.40/0.42/0.46), metallic 0.45 — «серебристая сталь»,
+; а не ржавчина. Ржавый вариант остаётся у storefront_roll_gate для складов.
+
+[ext_resource type="Texture2D" path="res://assets/textures/metal/metal_diff_2k.png" id="1_albedo"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal/metal_normal_2k.png" id="2_normal"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal/metal_rough_2k.png" id="3_rough"]
+[ext_resource type="Texture2D" path="res://assets/textures/metal/metal_ao_2k.png" id="4_ao"]
+
+[resource]
+resource_name = "storefront_shutter"
+albedo_texture = ExtResource("1_albedo")
+albedo_color = Color(0.40, 0.42, 0.46, 1)
+metallic = 0.45
+metallic_specular = 0.45
+roughness = 0.62
+normal_enabled = true
+normal_texture = ExtResource("2_normal")
+normal_scale = 0.55
+ao_enabled = true
+ao_texture = ExtResource("4_ao")
+ao_light_affect = 0.35
+uv1_scale = Vector3(2.0, 2.0, 2.0)

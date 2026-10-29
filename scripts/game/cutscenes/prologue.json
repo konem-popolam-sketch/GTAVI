@@ -1,0 +1,56 @@
+{
+  "id": "cut_prologue",
+  "title": "Нил приезжает на смену",
+  "duration": 8.0,
+  "skippable": true,
+  "seen_flag": "cut_prologue_seen",
+  "fade_in": 0.4,
+  "steps": [
+    {
+      "t": 0.0,
+      "type": "camera",
+      "pos": [3.4, 2.2, 3.2],
+      "look_at": [-4.2, 1.45, -9.0],
+      "fov": 58.0,
+      "to": [2.6, 2.0, 1.4],
+      "duration": 8.0,
+      "ease": "in_out"
+    },
+    {
+      "t": 0.0,
+      "type": "player_move",
+      "from": [0.0, 0.1, 10.0],
+      "to": [-3.0, 0.1, -6.4],
+      "duration": 4.3,
+      "face_movement": true
+    },
+    {
+      "t": 1.0,
+      "type": "line",
+      "dialogue_id": "cut_prologue",
+      "node_id": "cp_01",
+      "speaker": "Нил",
+      "duration": 2.0
+    },
+    {
+      "t": 5.6,
+      "type": "line",
+      "dialogue_id": "cut_prologue",
+      "node_id": "cp_02",
+      "speaker": "Нил",
+      "duration": 2.4
+    },
+    {
+      "t": 6.2,
+      "type": "title",
+      "text": "НОЧНАЯ СМЕНА · 22:40",
+      "duration": 1.4
+    },
+    {
+      "t": 8.0,
+      "type": "end",
+      "player_position": [-3.0, 0.1, -6.4],
+      "player_yaw": 0.588
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+	"player": {
+		"position": [
+			-8.5218563079834,
+			5.00094318389893,
+			-21.1990623474121
+		],
+		"rotation_y": -0.126000002026558
+	},
+	"quest": {
+		"completed": false,
+		"ending_id": 0,
+		"ending_title": "",
+		"flags": {
+			"ending_delivered": true,
+			"kostya_told": true,
+			"night_started": true
+		},
+		"inventory": [],
+		"item_states": {},
+		"objective": "Поднимись в диспетчерскую над «Луной»",
+		"stage_id": "reach_dispatcher"
+	},
+	"saved_at": 1792970846,
+	"version": 1
+}
