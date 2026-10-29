@@ -28,6 +28,24 @@
 .\tools\Godot_v4.7.2-stable_win64.exe --editor --path .
 ```
 
+### Если игра скачана с GitHub
+
+В репозитории нет **самого движка** (он весит 172 МБ) и голосовых моделей Piper — иначе архив
+был бы 1,3 ГБ вместо 235 МБ. Всё остальное (сцены, скрипты, текстуры, звук, готовая озвучка)
+на месте. Перед первым запуском:
+
+1. Скачай **Godot 4.7.2, стандартную версию (не .NET)** с
+   [godotengine.org/download/archive](https://godotengine.org/download/archive/).
+2. Распакуй архив и положи `Godot_v4.7.2-stable_win64.exe` в папку `tools\`.
+3. Запусти `play.bat` — он сам найдёт движок.
+
+Голосовые модели нужны только для **перегенерации** озвучки (`tools/gen_voice.ps1`); уже
+готовые реплики лежат в `assets/audio/`, поэтому без Piper игра озвучивается как обычно.
+
+Если `play.bat` при двойном клике выдаёт ошибки вида `'fresh' is not recognized` или
+`'.7.2-stable_win64.exe" (' is not recognized` — значит файл распакован с LF-переводами строк
+(старые архивы до коммита `dae4b0c`). Скачай архив заново — в актуальном `play.bat` лежат CRLF.
+
 Сообщения вроде `Could not create directory: 'user://logs'` и `Failed to read the root
 certificate store` в консоли — известный шум песочницы Windows, на игру не влияют.
 
