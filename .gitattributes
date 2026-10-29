@@ -1,0 +1,30 @@
+# Нормализация переводов строк.
+# ВАЖНО: .bat/.cmd обязаны лежать в репозитории с CRLF, иначе после скачивания
+# ZIP-архива с GitHub Windows-cmd ломает такое файлы ('fresh' is not recognized...).
+# Поэтому для них отключено любое преобразование (-text): git хранит ровно те байты,
+# что лежат в рабочей копии, и архив с GitHub отдаёт их же.
+
+* text=auto
+
+*.bat -text
+*.cmd -text
+*.ps1 text eol=crlf
+*.sh  text eol=lf
+
+# Бинарные ассеты: никогда не трогать
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.exr binary
+*.hdr binary
+*.ogg binary
+*.wav binary
+*.mp3 binary
+*.onnx binary
+*.ttf binary
+*.otf binary
+*.blend binary
+*.glb binary
+*.gltf binary
+*.zip binary
+*.exe binary
